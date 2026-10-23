@@ -385,6 +385,7 @@
 <script>
 const PAYPAL_CLIENT_ID = "BAA4_VAKoF6MbVFaA4BNhvkzYEFxCFu-HI-Z72pn6QO56_Kvt9brmK2viITHcqoyrlQtxgP2je27EiLHsk"; // ← developer.paypal.com → Apps & Credentials → Live
 const PRICE = "49.00";
+const MAIL_HOOK = "";   // URL del Apps Script que envía el correo de confirmación (vacío = desactivado)
 const FORMS = {                                      // formularios de Tally por idioma
   es: "https://tally.so/r/QoKXOg",
   en: "https://tally.so/r/0VQlaZ",
@@ -583,6 +584,7 @@ function loadPayPal(){
       onApprove:(data,actions)=>actions.order.capture().then(order=>{
         payMsg("pay_redirect");
         const email=(order.payer && order.payer.email_address) || "";
+        if(MAIL_HOOK){ try{ fetch(MAIL_HOOK,{method:"POST",mode:"no-cors",keepalive:true,headers:{"Content-Type":"text/plain"},body:JSON.stringify({order:order.id,lang:current})}); }catch(e){} }
         location.href = FORMS[current] + "?order=" + encodeURIComponent(order.id) + "&paypal_email=" + encodeURIComponent(email);
       }),
       onError:()=>payMsg("pay_err")
