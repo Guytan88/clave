@@ -17,7 +17,12 @@ export default async function handler(req, res) {
       if (g) return res.json({ editUrl: links(base, g).edit });
     }
 
-    const o = await getPayPalOrder(order);
+    // Test orders (no payment): only while TEST_EMAIL is set in Vercel, and they always go to that address.
+    const test = order.startsWith("TEST") && process.env.TEST_EMAIL;
+    const o = test
+      ? { status: "COMPLETED", payer: { email_address: process.env.TEST_EMAIL, name: { given_name: "Test" } },
+          purchase_units: [{ payments: { captures: [{ amount: { value: cfg.priceUsd.toFixed(2), currency_code: "USD" } }] } }] }
+      : await getPayPalOrder(order);
     const cap = o?.purchase_units?.[0]?.payments?.captures?.[0];
     if (!o || o.status !== "COMPLETED" || !cap) return res.status(402).json({ error: "not_paid" });
     if (Number(cap.amount?.value) < cfg.priceUsd || cap.amount?.currency_code !== "USD") return res.status(402).json({ error: "amount" });
