@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>Clave · Tu guía</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EDEFEA; --surface:#FFFFFF; --ink:#1D2B24; --muted:#56625B; --green:#2E5E4E; --green-deep:#22463A;
+    --marigold:#F2B632; --line:#CFD5CC; --soft:#F5F7F3; --err:#9b2c1f;
+    --head:'Bricolage Grotesque','Rubik',system-ui,sans-serif; --body:'Rubik',system-ui,sans-serif;
+  }
+  html[lang="he"]{ --head:'Rubik',system-ui,sans-serif; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--green)}
+  .wrap{max-width:720px;margin-inline:auto;padding-inline:16px}
+  :focus-visible{outline:3px solid var(--marigold);outline-offset:2px;border-radius:6px}
+  header{padding-block:16px}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{font-family:var(--head);font-weight:800;font-size:22px;text-decoration:none;color:var(--ink)}
+  .lang{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px}
+  .lang button{border:0;background:none;font:500 14px var(--body);color:var(--muted);padding:6px 11px;border-radius:999px;cursor:pointer}
+  .lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+  h1{font-family:var(--head);font-weight:800;font-size:clamp(28px,6vw,40px);line-height:1.1;letter-spacing:-.02em;margin:10px 0 8px}
+  html[lang="he"] h1,html[lang="he"] h2{letter-spacing:0}
+  .lead{color:var(--muted);margin:0 0 22px;max-width:56ch}
+  .card{background:var(--surface);border-radius:18px;padding:24px 22px;margin-bottom:16px}
+  .card h2{font-family:var(--head);font-weight:800;font-size:21px;margin:0 0 4px;letter-spacing:-.01em}
+  .card .hint{color:var(--muted);font-size:14.5px;margin:0 0 16px}
+  .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--marigold);font-size:14px;font-weight:600;margin-inline-end:8px;vertical-align:2px}
+  label.f{display:block;margin-bottom:14px}
+  label.f > span{display:block;font-weight:500;font-size:15px;margin-bottom:5px}
+  label.f > span em{font-style:normal;font-weight:400;color:var(--muted);font-size:13.5px}
+  input[type=text],input[type=tel],input[type=time],textarea{width:100%;font:400 16px var(--body);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:11px 12px}
+  textarea{min-height:110px;resize:vertical;line-height:1.5}
+  textarea.big{min-height:260px}
+  input:focus,textarea:focus{outline:2px solid var(--green);outline-offset:0;background:#fff}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .themes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .theme{position:relative;border:1.5px solid var(--line);border-radius:12px;padding:10px 8px;text-align:center;cursor:pointer;background:#fff;font-size:14px}
+  .theme input{position:absolute;opacity:0;pointer-events:none}
+  .theme .sw{display:block;width:34px;height:34px;border-radius:50%;margin:0 auto 6px;border:1px solid rgba(0,0,0,.12)}
+  .theme:has(input:checked){border-color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+  .langs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+  .lg{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:8px 10px;cursor:pointer;font-size:14.5px;background:#fff}
+  .lg input{accent-color:var(--green);width:16px;height:16px;margin:0}
+  .lg:has(input:checked){border-color:var(--green);background:#EEF4F0}
+  .lg b{margin-inline-start:auto;font-size:11px;font-weight:600;background:var(--green);color:#fff;border-radius:999px;padding:1px 7px}
+  .seg{display:grid;grid-template-columns:1fr 1fr;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:4px;margin-bottom:16px}
+  .seg button{border:0;background:none;border-radius:9px;padding:10px;font:500 15px var(--body);color:var(--muted);cursor:pointer}
+  .seg button[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  .warn{background:#FFF6DD;border:1px solid #F0D58A;border-radius:12px;padding:12px 14px;font-size:14.5px;margin:0 0 16px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 17px var(--body);border-radius:12px;padding:15px 24px;border:0;cursor:pointer;text-decoration:none}
+  .btn-main{background:var(--marigold);color:var(--ink);width:100%}
+  .btn-main:disabled{opacity:.6;cursor:wait}
+  .btn-ghost{background:#fff;border:1.5px solid var(--ink);color:var(--ink);padding:10px 16px;font-size:15px}
+  .err{color:var(--err);font-size:14.5px;margin:10px 0 0}
+  .bad{border-color:var(--err)!important}
+  .status{border-radius:18px;padding:22px;margin-bottom:16px;background:var(--green-deep);color:#fff}
+  .status h2{font-family:var(--head);font-weight:800;font-size:22px;margin:0 0 6px;color:#fff}
+  .status p{margin:0 0 12px;opacity:.9}
+  .status .link{display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:rgba(255,255,255,.1);border-radius:12px;padding:10px 12px;word-break:break-all;font-size:15px}
+  .status .link a{color:#fff;font-weight:500}
+  .status .btn-ghost{border-color:#fff;color:var(--ink)}
+  .spin{width:20px;height:20px;border:3px solid rgba(255,255,255,.35);border-top-color:var(--marigold);border-radius:50%;animation:s 1s linear infinite;display:inline-block;vertical-align:-4px;margin-inline-end:8px}
+  @keyframes s{to{transform:rotate(360deg)}}
+  .center{text-align:center;padding:60px 0;color:var(--muted)}
+  footer{padding:24px 0 40px;color:var(--muted);font-size:14px;text-align:center}
+  @media (max-width:600px){ .themes,.langs{grid-template-columns:repeat(2,1fr)} .row{grid-template-columns:1fr} .card{padding:20px 16px} }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="/">Clave</a>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button data-ui="es">ES</button><button data-ui="en">EN</button><button data-ui="he">עב</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="center" id="loading">…</div>
+  <div class="center" id="notfound" hidden></div>
+
+  <div id="page" hidden>
+    <div class="status" id="status" hidden></div>
+    <h1 id="h1"></h1>
+    <p class="lead" id="lead"></p>
+
+    <form id="form" novalidate>
+      <section class="card">
+        <h2><span class="num">1</span><span data-t="s_style"></span></h2>
+        <p class="hint"><span data-t="s_style_h"></span> <a href="/demo" target="_blank" rel="noopener" data-t="see_styles"></a></p>
+        <div class="themes" id="themes"></div>
+      </section>
+
+      <section class="card">
+        <h2><span class="num">2</span><span data-t="s_langs"></span></h2>
+        <p class="hint" data-t="s_langs_h"></p>
+        <div class="langs" id="langs"></div>
+      </section>
+
+      <section class="card">
+        <h2><span class="num">3</span><span data-t="s_place"></span></h2>
+        <p class="hint" data-t="s_place_h"></p>
+        <label class="f"><span data-t="f_name"></span><input type="text" name="name" maxlength="80" required></label>
+        <label class="f"><span data-t="f_place"></span><input type="text" name="place" maxlength="120" required></label>
+        <div class="row">
+          <label class="f"><span data-t="f_host"></span><input type="text" name="host" maxlength="60" required></label>
+          <label class="f"><span data-t="f_wa"></span><input type="tel" name="whatsapp" maxlength="30" placeholder="+52 55 1234 5678" required dir="ltr"></label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2><span class="num">4</span><span data-t="s_ess"></span></h2>
+        <p class="hint" data-t="s_ess_h"></p>
+        <div class="row">
+          <label class="f"><span data-t="f_ci"></span><input type="time" name="ci"></label>
+          <label class="f"><span data-t="f_co"></span><input type="time" name="co"></label>
+        </div>
+        <div class="row">
+          <label class="f"><span data-t="f_wn"></span><input type="text" name="wifi_net" maxlength="60" dir="ltr"></label>
+          <label class="f"><span data-t="f_wp"></span><input type="text" name="wifi_pw" maxlength="60" dir="ltr"></label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2><span class="num">5</span><span data-t="s_content"></span></h2>
+        <p class="hint" data-t="s_content_h"></p>
+        <div class="seg" role="group">
+          <button type="button" data-mode="paste" data-t="m_paste"></button>
+          <button type="button" data-mode="fields" data-t="m_fields"></button>
+        </div>
+        <p class="warn" data-t="no_codes"></p>
+        <div id="m-paste">
+          <label class="f"><span data-t="f_paste"></span><textarea class="big" name="paste" maxlength="15000"></textarea></label>
+        </div>
+        <div id="m-fields" hidden>
+          <label class="f"><span data-t="f_arrival"></span><textarea name="arrival" maxlength="3000"></textarea></label>
+          <label class="f"><span data-t="f_house"></span><textarea name="house" maxlength="6000"></textarea></label>
+          <label class="f"><span data-t="f_rules"></span><textarea name="rules" maxlength="3000"></textarea></label>
+          <label class="f"><span data-t="f_checkout"></span><textarea name="checkout" maxlength="3000"></textarea></label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2><span class="num">6</span><span data-t="s_extra"></span></h2>
+        <p class="hint" data-t="s_extra_h"></p>
+        <label class="f"><span data-t="f_welcome"></span><textarea name="welcome" maxlength="1500"></textarea></label>
+        <label class="f"><span data-t="f_recs"></span><textarea name="recs" maxlength="5000"></textarea></label>
+        <label class="f"><span data-t="f_sos"></span><input type="text" name="emergency" maxlength="600"></label>
+      </section>
+
+      <button class="btn btn-main" id="submit" type="submit"></button>
+      <p class="err" id="err" hidden></p>
+    </form>
+  </div>
+</main>
+<footer><a href="/legal" data-t="legal"></a> · shasi.contact@gmail.com</footer>
+
+<script type="module">
+import { LANGS, LANG, THEMES } from "/langs.js";
+
+const SW = { colonial:"#5E2328", playa:"#1C6E8C", ciudad:"#2F4BFF", cabana:"#24382C", villa:"#0F2627", campo:"#5E6B2F", lago:"#3D6E8F", familiar:"#FFC93C" };
+const TL = {
+  es:{ colonial:"Colonial", playa:"Playa", ciudad:"Ciudad", cabana:"Cabaña", villa:"Villa de lujo", campo:"Campo", lago:"Lago", familiar:"Familiar" },
+  en:{ colonial:"Colonial", playa:"Beach", ciudad:"City", cabana:"Cabin", villa:"Luxury villa", campo:"Countryside", lago:"Lake", familiar:"Family" },
+  he:{ colonial:"קולוניאלי", playa:"חוף", ciudad:"עירוני", cabana:"בקתה", villa:"וילת יוקרה", campo:"כפרי", lago:"אגם", familiar:"משפחתי" },
+};
+const T = {
+es:{
+  h1_new:"Cuéntame de tu alojamiento", lead_new:"Llena lo que puedas; los campos opcionales se pueden dejar vacíos. Yo me encargo de ordenar, traducir y diseñar tu guía.",
+  h1_edit:"Editar mi guía", lead_edit:"Cambia lo que quieras y guarda. Tu guía se actualiza en un par de minutos.",
+  s_style:"Estilo de diseño", s_style_h:"Elige el que mejor va con tu alojamiento.", see_styles:"Ver los estilos en la guía de ejemplo →",
+  s_langs:"Idiomas de la guía", s_langs_h:"Elige hasta 20. El primero que marques será el idioma principal; tus huéspedes cambian con un toque.", main:"principal",
+  s_place:"Tu alojamiento", s_place_h:"Así aparecerá en la portada de la guía.",
+  f_name:"Nombre del alojamiento", f_place:"Ciudad o zona", f_host:"Tu nombre (como te verán los huéspedes)", f_wa:"WhatsApp con código de país",
+  s_ess:"Horarios y wifi", s_ess_h:"Opcional. Si los dejas vacíos, no aparecen en la guía.",
+  f_ci:"Check-in desde", f_co:"Check-out hasta", f_wn:"Nombre de la red wifi", f_wp:"Contraseña del wifi",
+  s_content:"Información para tus huéspedes", s_content_h:"Lo más fácil: pega los mensajes de WhatsApp que ya les mandas. O llénalo por secciones.",
+  m_paste:"Pegar mis mensajes", m_fields:"Llenar por secciones",
+  no_codes:"No incluyas códigos de acceso, de caja de llaves ni números de departamento: la guía es pública. Las instrucciones de acceso se las sigues mandando por mensaje.",
+  f_paste:"Pega aquí tus mensajes de siempre (bienvenida, instrucciones, reglas, salida…)",
+  f_arrival:"Llegada (estacionamiento, cómo encontrar el lugar…)", f_house:"Instrucciones de la casa (agua caliente, aire, cocina, lavadora…)",
+  f_rules:"Normas de la casa", f_checkout:"Antes de irse (llaves, toallas, basura…)",
+  s_extra:"Toques personales", s_extra_h:"Opcional, pero es lo que hace única tu guía.",
+  f_welcome:"Mensaje de bienvenida", f_recs:"Tus recomendaciones (lugares para comer, pasear… una frase de cada uno)", f_sos:"Teléfonos de emergencia",
+  submit_new:"Crear mi guía", submit_edit:"Guardar cambios", sending:"Enviando…",
+  missing:"Faltan datos: ", m_theme:"estilo", m_languages:"idiomas", m_name:"nombre del alojamiento", m_place:"ciudad", m_host:"tu nombre", m_whatsapp:"WhatsApp", m_content:"información para huéspedes",
+  e_busy:"Tu guía todavía se está generando. Espera un minuto e inténtalo de nuevo.", e_many:"Llegaste al límite de ediciones. Escríbeme y lo resolvemos.", e_gen:"No se pudo guardar. Inténtalo de nuevo o escríbeme.",
+  st_proc:"Preparando tu guía…", st_proc_p:"Estoy ordenando y traduciendo tu información. Tarda uno o dos minutos; puedes cerrar esta página.",
+  st_review:"¡Recibido!", st_review_p:"Voy a revisar tu guía y te llegará por correo en menos de 24 horas, con el enlace para tus huéspedes. Si quieres cambiar algo mientras tanto, puedes editar abajo.",
+  st_pub:"Tu guía está en línea", st_pub_p:"Comparte este enlace con tus huéspedes:", st_pub_upd:"Se está actualizando con tus cambios…",
+  st_err:"Algo salió mal", st_err_p:"Ya me llegó un aviso. Puedes intentar guardar de nuevo, o esperar a que te escriba.",
+  copy:"Copiar", copied:"Copiado", open:"Abrir", notfound:"No encontramos esta guía. Revisa el enlace de tu correo.", legal:"Términos y privacidad"
+},
+en:{
+  h1_new:"Tell me about your place", lead_new:"Fill in what you can; optional fields can stay empty. I'll organize, translate and design your guide.",
+  h1_edit:"Edit my guide", lead_edit:"Change anything you like and save. Your guide updates within a couple of minutes.",
+  s_style:"Design style", s_style_h:"Pick the one that suits your place best.", see_styles:"See the styles in the example guide →",
+  s_langs:"Guide languages", s_langs_h:"Choose up to 20. The first one you tick is the main language; guests switch with one tap.", main:"main",
+  s_place:"Your place", s_place_h:"This is how it appears on the guide's cover.",
+  f_name:"Property name", f_place:"City or area", f_host:"Your name (as guests will see it)", f_wa:"WhatsApp with country code",
+  s_ess:"Times and wifi", s_ess_h:"Optional. If left empty, they won't appear in the guide.",
+  f_ci:"Check-in from", f_co:"Check-out by", f_wn:"Wifi network name", f_wp:"Wifi password",
+  s_content:"Information for your guests", s_content_h:"Easiest: paste the WhatsApp messages you already send. Or fill it in by sections.",
+  m_paste:"Paste my messages", m_fields:"Fill in by sections",
+  no_codes:"Don't include door codes, key-box codes or unit numbers: the guide is public. Keep sending access instructions by message.",
+  f_paste:"Paste your usual messages here (welcome, instructions, rules, checkout…)",
+  f_arrival:"Arrival (parking, how to find the place…)", f_house:"House instructions (hot water, AC, kitchen, washing machine…)",
+  f_rules:"House rules", f_checkout:"Before leaving (keys, towels, trash…)",
+  s_extra:"Personal touches", s_extra_h:"Optional, but it's what makes your guide special.",
+  f_welcome:"Welcome message", f_recs:"Your recommendations (places to eat, things to do… one line each)", f_sos:"Emergency numbers",
+  submit_new:"Create my guide", submit_edit:"Save changes", sending:"Sending…",
+  missing:"Missing: ", m_theme:"style", m_languages:"languages", m_name:"property name", m_place:"city", m_host:"your name", m_whatsapp:"WhatsApp", m_content:"information for guests",
+  e_busy:"Your guide is still being generated. Wait a minute and try again.", e_many:"You've reached the edit limit. Write to me and we'll sort it out.", e_gen:"Couldn't save. Try again or write to me.",
+  st_proc:"Preparing your guide…", st_proc_p:"I'm organizing and translating your information. It takes a minute or two; you can close this page.",
+  st_review:"Received!", st_review_p:"I'll review your guide and email it to you within 24 hours, with the link for your guests. Want to change something meanwhile? You can edit below.",
+  st_pub:"Your guide is live", st_pub_p:"Share this link with your guests:", st_pub_upd:"Updating with your changes…",
+  st_err:"Something went wrong", st_err_p:"I've been notified. You can try saving again, or wait for my email.",
+  copy:"Copy", copied:"Copied", open:"Open", notfound:"We couldn't find this guide. Check the link in your email.", legal:"Terms & privacy"
+},
+he:{
+  h1_new:"ספרו לי על הנכס", lead_new:"מלאו מה שאפשר; שדות רשות אפשר להשאיר ריקים. אני אסדר, אתרגם ואעצב את המדריך.",
+  h1_edit:"עריכת המדריך", lead_edit:"שנו מה שרוצים ושמרו. המדריך מתעדכן תוך דקה־שתיים.",
+  s_style:"סגנון עיצוב", s_style_h:"בחרו את מה שהכי מתאים לנכס.", see_styles:"לצפייה בסגנונות במדריך לדוגמה ←",
+  s_langs:"שפות המדריך", s_langs_h:"עד 20 שפות. הראשונה שתסמנו תהיה השפה הראשית; האורחים מחליפים בנגיעה.", main:"ראשית",
+  s_place:"הנכס", s_place_h:"כך זה יופיע בשער המדריך.",
+  f_name:"שם הנכס", f_place:"עיר או אזור", f_host:"השם שלך (כמו שהאורחים יראו)", f_wa:"וואטסאפ עם קידומת מדינה",
+  s_ess:"שעות ווייפיי", s_ess_h:"רשות. אם תשאירו ריק, זה לא יופיע במדריך.",
+  f_ci:"צ'ק־אין החל מ", f_co:"צ'ק־אאוט עד", f_wn:"שם רשת הוויי־פיי", f_wp:"סיסמת הוויי־פיי",
+  s_content:"מידע לאורחים", s_content_h:"הכי פשוט: הדביקו את הודעות הוואטסאפ שאתם כבר שולחים. או מלאו לפי חלקים.",
+  m_paste:"להדביק הודעות", m_fields:"למלא לפי חלקים",
+  no_codes:"אל תכתבו קודי כניסה, קוד של כספת מפתחות או מספר דירה: המדריך ציבורי. את הוראות הכניסה ממשיכים לשלוח בהודעה.",
+  f_paste:"הדביקו כאן את ההודעות הרגילות שלכם (ברוכים הבאים, הוראות, חוקים, יציאה…)",
+  f_arrival:"הגעה (חניה, איך מוצאים את המקום…)", f_house:"הוראות הבית (מים חמים, מזגן, מטבח, כביסה…)",
+  f_rules:"חוקי הבית", f_checkout:"לפני היציאה (מפתחות, מגבות, זבל…)",
+  s_extra:"נגיעות אישיות", s_extra_h:"רשות, אבל זה מה שעושה את המדריך מיוחד.",
+  f_welcome:"הודעת ברוכים הבאים", f_recs:"ההמלצות שלכם (מקומות לאכול, לטייל… שורה לכל אחד)", f_sos:"מספרי חירום",
+  submit_new:"צור את המדריך", submit_edit:"שמירת שינויים", sending:"שולח…",
+  missing:"חסר: ", m_theme:"סגנון", m_languages:"שפות", m_name:"שם הנכס", m_place:"עיר", m_host:"השם שלך", m_whatsapp:"וואטסאפ", m_content:"מידע לאורחים",
+  e_busy:"המדריך עדיין נוצר. חכו דקה ונסו שוב.", e_many:"הגעתם למגבלת העריכות. כתבו לי ונסדר.", e_gen:"השמירה נכשלה. נסו שוב או כתבו לי.",
+  st_proc:"מכין את המדריך…", st_proc_p:"מסדר ומתרגם את המידע. לוקח דקה־שתיים; אפשר לסגור את הדף.",
+  st_review:"התקבל!", st_review_p:"אבדוק את המדריך והוא יגיע אליכם במייל תוך פחות מ־24 שעות, עם הלינק לאורחים. רוצים לשנות משהו בינתיים? אפשר לערוך למטה.",
+  st_pub:"המדריך באוויר", st_pub_p:"שתפו את הלינק הזה עם האורחים:", st_pub_upd:"מתעדכן עם השינויים שלכם…",
+  st_err:"משהו השתבש", st_err_p:"כבר קיבלתי התראה. אפשר לנסות לשמור שוב, או לחכות למייל ממני.",
+  copy:"העתקה", copied:"הועתק", open:"פתיחה", notfound:"לא מצאנו את המדריך. בדקו את הלינק במייל.", legal:"תנאי שימוש ופרטיות"
+}};
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const q = new URLSearchParams(location.search);
+const ID = q.get("id"), K = q.get("k");
+let ui = "es", rec = null, mode = "paste", chosen = [], poll = null;
+const form = $("form");
+
+function t(k) { return T[ui][k] ?? T.en[k] ?? k; }
+
+function setUi(l) {
+  ui = T[l] ? l : "en";
+  document.documentElement.lang = ui;
+  document.documentElement.dir = ui === "he" ? "rtl" : "ltr";
+  document.querySelectorAll("[data-ui]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.ui === ui));
+  document.querySelectorAll("[data-t]").forEach((el) => { el.textContent = t(el.dataset.t); });
+  $("notfound").textContent = t("notfound");
+  drawThemes(); drawLangs(); drawStatus(); drawHead();
+  try { localStorage.setItem("clave-lang", ui); } catch (e) {}
+}
+
+function drawHead() {
+  const edit = rec && rec.input;
+  $("h1").textContent = t(edit ? "h1_edit" : "h1_new");
+  $("lead").textContent = t(edit ? "lead_edit" : "lead_new");
+  $("submit").textContent = t(rec && rec.approved ? "submit_edit" : edit ? "submit_edit" : "submit_new");
+}
+
+function drawThemes() {
+  const cur = form.theme?.value || rec?.input?.theme || "";
+  $("themes").innerHTML = THEMES.map((k) => `<label class="theme"><input type="radio" name="theme" value="${k}" ${k === cur ? "checked" : ""}><span class="sw" style="background:${SW[k]}"></span>${esc(TL[ui][k])}</label>`).join("");
+  $("themes").querySelectorAll("input").forEach((i) => i.onchange = () => $("themes").classList.remove("bad"));
+}
+
+function drawLangs() {
+  $("langs").innerHTML = LANGS.map((l) => {
+    const i = chosen.indexOf(l.code);
+    return `<label class="lg"><input type="checkbox" value="${l.code}" ${i >= 0 ? "checked" : ""}><span>${esc(l.name)}</span>${i === 0 ? `<b>${esc(t("main"))}</b>` : ""}</label>`;
+  }).join("");
+  $("langs").querySelectorAll("input").forEach((c) => c.onchange = () => {
+    if (c.checked) { if (chosen.length >= 20) { c.checked = false; return; } chosen.push(c.value); }
+    else chosen = chosen.filter((x) => x !== c.value);
+    $("langs").classList.remove("bad");
+    drawLangs();
+  });
+}
+
+function setMode(m) {
+  mode = m;
+  document.querySelectorAll("[data-mode]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.mode === m));
+  $("m-paste").hidden = m !== "paste"; $("m-fields").hidden = m !== "fields";
+}
+document.querySelectorAll("[data-mode]").forEach((b) => b.onclick = () => setMode(b.dataset.mode));
+
+function drawStatus() {
+  const s = $("status");
+  if (!rec) { s.hidden = true; return; }
+  clearInterval(poll); poll = null;
+  let h = "";
+  const link = rec.guideUrl ? `<div class="link"><a href="${esc(rec.guideUrl)}" target="_blank" rel="noopener">${esc(rec.guideUrl)}</a>
+    <button class="btn btn-ghost" type="button" id="cp">${esc(t("copy"))}</button></div>` : "";
+  if (rec.status === "processing") {
+    h = rec.approved
+      ? `<h2>${esc(t("st_pub"))}</h2><p>${esc(t("st_pub_p"))}</p>${link}<p style="margin:12px 0 0"><span class="spin"></span>${esc(t("st_pub_upd"))}</p>`
+      : `<h2><span class="spin"></span>${esc(t("st_proc"))}</h2><p>${esc(t("st_proc_p"))}</p>`;
+    poll = setInterval(refresh, 5000);
+  } else if (rec.status === "review") h = `<h2>${esc(t("st_review"))}</h2><p>${esc(t("st_review_p"))}</p>`;
+  else if (rec.status === "published") h = `<h2>${esc(t("st_pub"))}</h2><p>${esc(t("st_pub_p"))}</p>${link}`;
+  else if (rec.status === "error") h = `<h2>${esc(t("st_err"))}</h2><p>${esc(t("st_err_p"))}</p>${link}`;
+  s.innerHTML = h; s.hidden = !h;
+  const cp = $("cp");
+  if (cp) cp.onclick = async () => { try { await navigator.clipboard.writeText(rec.guideUrl); } catch (e) {} cp.textContent = t("copied"); setTimeout(() => cp.textContent = t("copy"), 1500); };
+  $("submit").disabled = rec.status === "processing";
+}
+
+function fill(i) {
+  for (const k of ["name", "place", "host", "whatsapp", "ci", "co", "wifi_net", "wifi_pw", "welcome", "paste", "arrival", "house", "rules", "checkout", "recs", "emergency"])
+    if (form[k] && i[k] != null) form[k].value = i[k];
+  chosen = [...(i.languages || [])];
+  setMode(i.mode || "paste");
+}
+
+async function refresh() {
+  const r = await fetch(`/api/guide?id=${encodeURIComponent(ID)}&k=${encodeURIComponent(K)}`);
+  if (!r.ok) return null;
+  rec = await r.json();
+  drawStatus(); drawHead();
+  return rec;
+}
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const err = $("err"); err.hidden = true;
+  document.querySelectorAll(".bad").forEach((x) => x.classList.remove("bad"));
+  const data = Object.fromEntries(new FormData(form));
+  data.languages = chosen; data.mode = mode;
+  const miss = [];
+  if (!data.theme) { miss.push("theme"); $("themes").classList.add("bad"); }
+  if (!chosen.length) { miss.push("languages"); $("langs").classList.add("bad"); }
+  for (const f of ["name", "place", "host"]) if (!data[f]?.trim()) { miss.push(f); form[f].classList.add("bad"); }
+  if ((data.whatsapp || "").replace(/\D/g, "").length < 7) { miss.push("whatsapp"); form.whatsapp.classList.add("bad"); }
+  const content = mode === "paste" ? (data.paste || "").trim().length >= 20 : ["arrival", "house", "rules", "checkout"].some((f) => data[f]?.trim());
+  if (!content) { miss.push("content"); (mode === "paste" ? form.paste : form.house).classList.add("bad"); }
+  if (miss.length) { err.textContent = t("missing") + miss.map((m) => t("m_" + m)).join(", "); err.hidden = false; document.querySelector(".bad")?.scrollIntoView({ block: "center", behavior: "smooth" }); return; }
+
+  const b = $("submit"); b.disabled = true; b.textContent = t("sending");
+  try {
+    const r = await fetch("/api/submit", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: ID, k: K, input: data }) });
+    if (!r.ok) {
+      const j = await r.json().catch(() => ({}));
+      err.textContent = j.error === "busy" ? t("e_busy") : j.error === "too_many_edits" ? t("e_many") : t("e_gen"); err.hidden = false;
+      b.disabled = false; drawHead(); return;
+    }
+    await refresh();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } catch (x) { err.textContent = t("e_gen"); err.hidden = false; b.disabled = false; drawHead(); }
+});
+
+document.querySelectorAll("[data-ui]").forEach((b) => b.onclick = () => setUi(b.dataset.ui));
+
+(async () => {
+  let saved = null; try { saved = localStorage.getItem("clave-lang"); } catch (e) {}
+  if (!ID || !K) { $("loading").hidden = true; $("notfound").hidden = false; setUi(saved || "es"); return; }
+  const r0 = await refresh().catch(() => null);
+  $("loading").hidden = true;
+  if (!r0) { setUi(saved || "es"); $("notfound").hidden = false; return; }
+  if (rec.input) fill(rec.input); else setMode("paste");
+  setUi(q.get("ui") || saved || rec.lang || "es");
+  $("page").hidden = false;
+})();
+</script>
+</body>
+</html>

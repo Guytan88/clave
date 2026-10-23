@@ -11,7 +11,6 @@
 <style>
   /* ======= CONFIG: cambia estos enlaces antes de publicar =======
      PAYPAL_CLIENT_ID → Client ID de tu app en developer.paypal.com (es público)
-     FORMS            → enlaces publicados de Tally por idioma
   ================================================================ */
   :root{
     --bg:#EDEFEA;
@@ -385,12 +384,7 @@
 <script>
 const PAYPAL_CLIENT_ID = "BAA4_VAKoF6MbVFaA4BNhvkzYEFxCFu-HI-Z72pn6QO56_Kvt9brmK2viITHcqoyrlQtxgP2je27EiLHsk"; // ← developer.paypal.com → Apps & Credentials → Live
 const PRICE = "49.00";
-const MAIL_HOOK = "";   // URL del Apps Script que envía el correo de confirmación (vacío = desactivado)
-const FORMS = {                                      // formularios de Tally por idioma
-  es: "https://tally.so/r/QoKXOg",
-  en: "https://tally.so/r/0VQlaZ",
-  he: "https://tally.so/r/RWGgkl"
-};
+
 
 const T = {
 es:{
@@ -399,7 +393,7 @@ es:{
   hero_p:"Armo la guía de tu alojamiento (wifi, llegada, reglas de la casa, recomendaciones) en una página que se abre en cualquier celular. Tú me mandas los datos; en 24 horas tienes tu enlace listo para compartir.",
   cta_main:"Quiero mi guía por US$49",
   cta_demo:"Ver guías de ejemplo",
-  hero_note:"Pago único. Cambios incluidos durante la primera semana.",
+  hero_note:"Pago único. La editas tú cuando quieras durante el año.",
   q1:"¿Cuál es la clave del wifi?", q2:"¿A qué hora puedo llegar?", q3:"¿Dónde dejo el coche?", q4:"¿Y la basura?",
   copy:"Copiar", copied:"Copiado",
   m_welcome:"Bienvenidos a", m_ci:"Check-in", m_ci_v:"15:00", m_co:"Check-out", m_co_v:"11:00", m_l1:"La casa", m_l2:"Normas de la casa", m_l3:"Recomendaciones",
@@ -419,24 +413,24 @@ es:{
   how_h:"Cómo funciona",
   s1t:"Me cuentas de tu alojamiento", s1d:"Llenas unos campos cortos o simplemente pegas los mensajes de WhatsApp que ya les mandas a tus huéspedes.",
   s2t:"Yo me encargo del resto", s2d:"Ordeno la información, la traduzco y la pongo en el diseño que elijas. Tú no haces nada más.",
-  s3t:"Recibes tu enlace", s3d:"En menos de 24 horas. Lo pegas en tu mensaje de bienvenida de Airbnb y listo.",
+  s3t:"Recibes tu enlace", s3d:"En menos de 24 horas, por correo. Lo pegas en tu mensaje de bienvenida de Airbnb y listo.",
   pr_h:"Un precio, sin mensualidades", pr_sub:"Pago único",
   pl1:"En línea garantizado durante al menos un año",
   pl2:"Varios estilos de diseño a elegir",
   pl3:"Lista en menos de 24 horas",
   pl4:"Elige entre 20 idiomas",
-  pl5:"Cambios a pedido durante la primera semana",
-  pr_after:"Puedes pedir cambios durante la primera semana después de la compra.",
+  pl5:"La editas tú cuando quieras, todo el año",
+  pr_after:"Recibes un enlace privado para editar tu guía cuando quieras durante el año.",
   ag_pre:"He leído y acepto los ", ag_terms:"Términos", ag_and:" y la ", ag_priv:"Política de privacidad", ag_end:".", ag_need:"Para continuar, marca la casilla de Términos y privacidad.",
-  f6q:"¿Hay reembolsos?", f6a:"Si cancelas antes de enviar el formulario, o si no puedo entregar tu guía, te devuelvo todo. Como cada guía se hace a la medida, una vez entregada no es reembolsable; para eso están los cambios gratis de la primera semana.",
+  f6q:"¿Hay reembolsos?", f6a:"Si cancelas antes de enviar el formulario, o si no puedo entregar tu guía, te devuelvo todo. Como cada guía se hace a la medida, una vez entregada no es reembolsable; para eso puedes editarla tú mismo todo el año.",
   ft_terms:"Términos", ft_priv:"Privacidad",
-  pay_note:"Paga con PayPal o con tarjeta. Al terminar pasas directo al formulario de tu alojamiento.", pay_soon:"El pago estará disponible muy pronto. Escríbeme a shasi.contact@gmail.com.", pay_err:"No se pudo completar el pago. Intenta de nuevo o escríbeme.", pay_redirect:"¡Pago recibido! Abriendo el formulario…",
+  pay_note:"Paga con PayPal o con tarjeta. Al terminar pasas directo al formulario de tu alojamiento (y te llega el enlace por correo).", pay_soon:"El pago estará disponible muy pronto. Escríbeme a shasi.contact@gmail.com.", pay_err:"No se pudo completar el pago. Intenta de nuevo o escríbeme.", pay_redirect:"¡Pago recibido! Abriendo el formulario…", pay_after_err:"El pago se recibió (pedido {id}), pero no pude abrir el formulario. Revisa tu correo o escríbeme a shasi.contact@gmail.com.",
   ab_h:"Sobre mí",
   ab_p:"Construyo sitios web y le hago la vida más fácil a los anfitriones. Armo cada guía personalmente, con tus datos, para que tus huéspedes tengan todo a mano y tú dejes de contestar lo mismo una y otra vez. ¿Tienes dudas antes de pedir? Escríbeme.",
   ab_btn:"Escribir por WhatsApp",
   faq_h:"Preguntas frecuentes",
   f1q:"¿Necesito saber de tecnología?", f1a:"No. Solo llenas un formulario desde el celular. Yo me encargo del resto.",
-  f2q:"¿Puedo hacer cambios después?", f2a:"Sí, durante la primera semana después de la compra. Escríbeme y los hago.",
+  f2q:"¿Puedo hacer cambios después?", f2a:"Sí. Recibes un enlace privado para editarla tú mismo cuando quieras durante el año, y se actualiza en minutos.",
   f3q:"¿Mis huéspedes tienen que descargar algo?", f3a:"No. Es una página web normal. Se abre con un toque desde WhatsApp, Airbnb o el correo.",
   f4q:"¿Cuánto tiempo estará en línea?", f4a:"Garantizo que tu guía esté en línea al menos un año, sin pagos adicionales. Después puede seguir funcionando, pero ya sin garantía.",
   f5q:"¿Y si tengo varios alojamientos?", f5a:"Cada alojamiento tiene su propia guía. Escríbeme y te hago un precio por varias.",
@@ -449,7 +443,7 @@ en:{
   hero_p:"I build your rental's guide (wifi, check-in, house rules, local tips) as a page that opens on any phone. You send me the details; within 24 hours you have a link ready to share.",
   cta_main:"Get my guide for US$49",
   cta_demo:"See example guides",
-  hero_note:"One payment. Changes included during the first week.",
+  hero_note:"One payment. Edit it yourself anytime during the year.",
   q1:"What's the wifi password?", q2:"What time can we check in?", q3:"Where do we park?", q4:"What about the trash?",
   copy:"Copy", copied:"Copied",
   m_welcome:"Welcome to", m_ci:"Check-in", m_ci_v:"3:00 pm", m_co:"Check-out", m_co_v:"11:00 am", m_l1:"The house", m_l2:"House rules", m_l3:"Recommendations",
@@ -469,24 +463,24 @@ en:{
   how_h:"How it works",
   s1t:"Tell me about your place", s1d:"Fill in a few short fields, or just paste the WhatsApp messages you already send your guests.",
   s2t:"I take care of the rest", s2d:"I organize it, translate it and put it in the design you choose. Nothing else for you to do.",
-  s3t:"Get your link", s3d:"In under 24 hours. Paste it into your Airbnb welcome message and you're done.",
+  s3t:"Get your link", s3d:"In under 24 hours, by email. Paste it into your Airbnb welcome message and you're done.",
   pr_h:"One price, no monthly fees", pr_sub:"One-time payment",
   pl1:"Online guaranteed for at least one year",
   pl2:"Several design styles to choose from",
   pl3:"Ready in under 24 hours",
   pl4:"Choose from 20 languages",
-  pl5:"Change requests during the first week",
-  pr_after:"You can request changes during the first week after purchase.",
+  pl5:"Edit it yourself anytime, all year",
+  pr_after:"You get a private link to edit your guide anytime during the year.",
   ag_pre:"I have read and agree to the ", ag_terms:"Terms", ag_and:" and ", ag_priv:"Privacy Policy", ag_end:".", ag_need:"To continue, tick the Terms and privacy box.",
-  f6q:"Are there refunds?", f6a:"If you cancel before submitting the form, or if I can't deliver your guide, you get everything back. Since each guide is custom-made, it isn't refundable once delivered; that's what the free first-week changes are for.",
+  f6q:"Are there refunds?", f6a:"If you cancel before submitting the form, or if I can't deliver your guide, you get everything back. Since each guide is custom-made, it isn't refundable once delivered; that's why you can edit it yourself all year.",
   ft_terms:"Terms", ft_priv:"Privacy",
-  pay_note:"Pay with PayPal or a card. When you're done, you go straight to your property form.", pay_soon:"Payment will be available very soon. Write to shasi.contact@gmail.com.", pay_err:"The payment didn't go through. Please try again or write to me.", pay_redirect:"Payment received! Opening the form…",
+  pay_note:"Pay with PayPal or a card. When you're done, you go straight to your property form (and get the link by email).", pay_soon:"Payment will be available very soon. Write to shasi.contact@gmail.com.", pay_err:"The payment didn't go through. Please try again or write to me.", pay_redirect:"Payment received! Opening the form…", pay_after_err:"Your payment went through (order {id}), but the form didn\'t open. Check your email or write to shasi.contact@gmail.com.",
   ab_h:"A bit about me",
   ab_p:"I build websites and make life easier for hosts. I put together every guide personally, with your details, so your guests have everything at hand and you stop answering the same questions over and over. Questions before ordering? Write to me.",
   ab_btn:"Message on WhatsApp",
   faq_h:"Questions",
   f1q:"Do I need any tech skills?", f1a:"No. You just fill in a form from your phone. I handle the rest.",
-  f2q:"Can I make changes later?", f2a:"Yes, during the first week after purchase. Just message me and I'll make them.",
+  f2q:"Can I make changes later?", f2a:"Yes. You get a private link to edit it yourself anytime during the year, and it updates within minutes.",
   f3q:"Do guests need to download anything?", f3a:"No. It's a regular web page. It opens with one tap from WhatsApp, Airbnb or email.",
   f4q:"How long will it stay online?", f4a:"I guarantee your guide stays online for at least one year, with no extra payments. After that it may keep working, but without a guarantee.",
   f5q:"What if I have several listings?", f5a:"Each listing gets its own guide. Message me for a multi-listing price.",
@@ -499,7 +493,7 @@ he:{
   hero_p:"אני בונה את מדריך הנכס שלך (וויי־פיי, הגעה, חוקי הבית והמלצות) בדף אחד שנפתח בכל טלפון. אתה שולח לי את הפרטים, ותוך 24 שעות יש לך לינק מוכן לשיתוף.",
   cta_main:"אני רוצה מדריך ב־49$",
   cta_demo:"לצפייה במדריכים לדוגמה",
-  hero_note:"תשלום אחד. שינויים כלולים בשבוע הראשון.",
+  hero_note:"תשלום אחד. עורכים בעצמכם מתי שרוצים במהלך השנה.",
   q1:"מה הסיסמה של הוויי־פיי?", q2:"מאיזו שעה אפשר להגיע?", q3:"איפה מחנים?", q4:"ומה עם הזבל?",
   copy:"העתקה", copied:"הועתק",
   m_welcome:"ברוכים הבאים ל", m_ci:"צ'ק־אין", m_ci_v:"15:00", m_co:"צ'ק־אאוט", m_co_v:"11:00", m_l1:"הבית", m_l2:"חוקי הבית", m_l3:"המלצות",
@@ -519,24 +513,24 @@ he:{
   how_h:"איך זה עובד",
   s1t:"מספרים לי על הנכס", s1d:"ממלאים כמה שדות קצרים, או פשוט מדביקים את הודעות הוואטסאפ שאתה כבר שולח לאורחים.",
   s2t:"אני דואג לכל השאר", s2d:"מסדר את המידע, מתרגם ומעצב בסגנון שבחרת. אתה לא צריך לעשות שום דבר נוסף.",
-  s3t:"מקבלים לינק", s3d:"תוך פחות מ־24 שעות. מדביקים בהודעת הפתיחה באיירביאנבי, וזהו.",
+  s3t:"מקבלים לינק", s3d:"תוך פחות מ־24 שעות, במייל. מדביקים בהודעת הפתיחה באיירביאנבי, וזהו.",
   pr_h:"מחיר אחד, בלי תשלום חודשי", pr_sub:"תשלום חד־פעמי",
   pl1:"באוויר באחריות לפחות שנה",
   pl2:"כמה סגנונות עיצוב לבחירה",
   pl3:"מוכן תוך פחות מ־24 שעות",
   pl4:"בחירה מתוך 20 שפות",
-  pl5:"בקשות לשינויים בשבוע הראשון",
-  pr_after:"אפשר לבקש שינויים במהלך השבוע הראשון מהרכישה.",
+  pl5:"עריכה עצמית מתי שרוצים, כל השנה",
+  pr_after:"מקבלים קישור פרטי לעריכת המדריך מתי שרוצים במהלך השנה.",
   ag_pre:"קראתי ואני מסכים/ה ל", ag_terms:"תנאי השימוש", ag_and:" ול", ag_priv:"מדיניות הפרטיות", ag_end:".", ag_need:"כדי להמשיך, יש לסמן את תיבת התנאים והפרטיות.",
-  f6q:"יש החזר כספי?", f6a:"אם מבטלים לפני שליחת הטופס, או אם לא אצליח למסור את המדריך, מקבלים הכל בחזרה. מאחר שכל מדריך מוכן במיוחד, אחרי המסירה אין החזר; בשביל זה יש שינויים חינם בשבוע הראשון.",
+  f6q:"יש החזר כספי?", f6a:"אם מבטלים לפני שליחת הטופס, או אם לא אצליח למסור את המדריך, מקבלים הכל בחזרה. מאחר שכל מדריך מוכן במיוחד, אחרי המסירה אין החזר; בשביל זה אפשר לערוך אותו בעצמכם כל השנה.",
   ft_terms:"תנאי שימוש", ft_priv:"פרטיות",
-  pay_note:"תשלום בפייפאל או בכרטיס אשראי. בסיום עוברים ישר לטופס פרטי הנכס.", pay_soon:"התשלום יהיה זמין בקרוב. כתבו לי: shasi.contact@gmail.com", pay_err:"התשלום לא הושלם. נסו שוב או כתבו לי.", pay_redirect:"התשלום התקבל! פותח את הטופס…",
+  pay_note:"תשלום בפייפאל או בכרטיס אשראי. בסיום עוברים ישר לטופס פרטי הנכס (והקישור מגיע גם במייל).", pay_soon:"התשלום יהיה זמין בקרוב. כתבו לי: shasi.contact@gmail.com", pay_err:"התשלום לא הושלם. נסו שוב או כתבו לי.", pay_redirect:"התשלום התקבל! פותח את הטופס…", pay_after_err:"התשלום התקבל (הזמנה {id}), אבל הטופס לא נפתח. בדקו את המייל או כתבו לי: shasi.contact@gmail.com.",
   ab_h:"קצת עליי",
   ab_p:"אני בונה אתרים ומקל על החיים של מארחים. כל מדריך אני מכין בעצמי, עם הפרטים שלך, כדי שלאורחים יהיה הכל בהישג יד ואתה תפסיק לענות על אותן שאלות שוב ושוב. יש שאלה לפני שמזמינים? כתוב לי.",
   ab_btn:"לכתוב בוואטסאפ",
   faq_h:"שאלות נפוצות",
   f1q:"צריך לדעת משהו טכני?", f1a:"לא. ממלאים טופס מהטלפון, ואני דואג לכל השאר.",
-  f2q:"אפשר לעשות שינויים אחר כך?", f2a:"כן, במהלך השבוע הראשון מהרכישה. כותבים לי ואני מעדכן.",
+  f2q:"אפשר לעשות שינויים אחר כך?", f2a:"כן. מקבלים קישור פרטי לעריכה עצמית מתי שרוצים במהלך השנה, והמדריך מתעדכן תוך דקות.",
   f3q:"האורחים צריכים להוריד אפליקציה?", f3a:"לא. זה דף אינטרנט רגיל, שנפתח בנגיעה מוואטסאפ, מאיירביאנבי או מהמייל.",
   f4q:"כמה זמן המדריך יהיה באוויר?", f4a:"אני מתחייב שהמדריך יהיה באוויר לפחות שנה, בלי תשלומים נוספים. אחר כך הוא עשוי להמשיך לעבוד, אבל ללא אחריות.",
   f5q:"ויש לי כמה נכסים?", f5a:"לכל נכס מדריך משלו. כתוב לי ונסגור מחיר לכמה נכסים.",
@@ -583,9 +577,10 @@ function loadPayPal(){
       }),
       onApprove:(data,actions)=>actions.order.capture().then(order=>{
         payMsg("pay_redirect");
-        const email=(order.payer && order.payer.email_address) || "";
-        if(MAIL_HOOK){ try{ fetch(MAIL_HOOK,{method:"POST",mode:"no-cors",keepalive:true,headers:{"Content-Type":"text/plain"},body:JSON.stringify({order:order.id,lang:current})}); }catch(e){} }
-        location.href = FORMS[current] + "?order=" + encodeURIComponent(order.id) + "&paypal_email=" + encodeURIComponent(email);
+        return fetch("/api/paid",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({orderID:order.id,lang:current})})
+          .then(r=>r.ok?r.json():Promise.reject(r.status))
+          .then(j=>{ location.href=j.editUrl; })
+          .catch(()=>{ const el=document.getElementById("pay-msg"); el.textContent=T[current].pay_after_err.replace("{id}",order.id); el.hidden=false; });
       }),
       onError:()=>payMsg("pay_err")
     }).render("#paypal-buttons");
