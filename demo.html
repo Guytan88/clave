@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="es" dir="ltr" data-theme="colonial">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de ejemplo · Clave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500&family=Heebo:wght@300;400;500;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Assistant:wght@300;400;600&family=Archivo:wght@400;500;800&family=Bitter:ital,wght@0,500;0,600;1,400&family=David+Libre:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Bellefair&family=Manrope:wght@300;400;500&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Varela+Round&display=swap" rel="stylesheet">
+<style>
+  /* ============ Theme tokens ============ */
+  :root,[data-theme="colonial"]{
+    --page:#D9D3CB; --paper:#FBFAF8; --card:#FBFAF8; --ink:#2A1E1C; --muted:#7A6E66;
+    --accent:#5E2328; --on-accent:#fff; --orn:#A6864F; --line:#E6DFD5;
+    --cover-bg:#5E2328; --cover-ink:#F3ECE3; --cover-soft:#D8C39A;
+    --contact-bg:#5E2328; --contact-ink:#F3ECE3;
+    --head:'Frank Ruhl Libre',Georgia,serif; --body:'Heebo',system-ui,sans-serif;
+    --head-w:400; --h1:46px; --r:0px; --italic:italic; --track:-.01em;
+  }
+  [data-theme="playa"]{
+    --page:#CFE3E8; --paper:#FFFFFF; --card:#FFFFFF; --ink:#0F3346; --muted:#5D7884;
+    --accent:#1C6E8C; --on-accent:#fff; --orn:#E9A86A; --line:#E2EEF1;
+    --cover-bg:#BFE1E6; --cover-ink:#0F3346; --cover-soft:#1C6E8C;
+    --contact-bg:#1C6E8C; --contact-ink:#fff;
+    --head:'Fraunces','Bellefair',Georgia,serif; --body:'Assistant',system-ui,sans-serif;
+    --head-w:400; --h1:48px; --r:18px; --italic:italic; --track:-.02em;
+  }
+  [data-theme="ciudad"]{
+    --page:#DADAD7; --paper:#F4F4F2; --card:#FFFFFF; --ink:#000; --muted:#5E5E5E;
+    --accent:#2F4BFF; --on-accent:#fff; --orn:#2F4BFF; --line:#D9D9D5;
+    --cover-bg:#F4F4F2; --cover-ink:#000; --cover-soft:#5E5E5E;
+    --contact-bg:#000; --contact-ink:#fff;
+    --head:'Archivo','Heebo',system-ui,sans-serif; --body:'Archivo','Heebo',system-ui,sans-serif;
+    --head-w:800; --h1:46px; --r:0px; --italic:normal; --track:-.035em;
+  }
+  [data-theme="cabana"]{
+    --page:#2E3B33; --paper:#F3EFE6; --card:#FBF9F4; --ink:#23302A; --muted:#6C7168;
+    --accent:#7A4A2C; --on-accent:#fff; --orn:#7A4A2C; --line:#DDD5C6;
+    --cover-bg:#24382C; --cover-ink:#EFE8D8; --cover-soft:#C7B48A;
+    --contact-bg:#24382C; --contact-ink:#EFE8D8;
+    --head:'Bitter','David Libre',Georgia,serif; --body:'Assistant',system-ui,sans-serif;
+    --head-w:600; --h1:42px; --r:6px; --italic:italic; --track:-.01em;
+  }
+  [data-theme="villa"]{
+    --page:#061314; --paper:#0F2627; --card:#12302F; --ink:#EDE6D6; --muted:#9FA8A2;
+    --accent:#C8A45C; --on-accent:#0F2627; --orn:#C8A45C; --line:#24403F;
+    --cover-bg:#0B1F20; --cover-ink:#EDE6D6; --cover-soft:#C8A45C;
+    --contact-bg:#0B1F20; --contact-ink:#EDE6D6;
+    --head:'Cormorant Garamond','Bellefair',Georgia,serif; --body:'Manrope','Heebo',system-ui,sans-serif;
+    --head-w:400; --h1:54px; --r:0px; --italic:italic; --track:.01em;
+  }
+  [data-theme="campo"]{
+    --page:#D8D2BC; --paper:#FAF8F1; --card:#FFFDF7; --ink:#2F2B1F; --muted:#76705C;
+    --accent:#5E6B2F; --on-accent:#fff; --orn:#B5862C; --line:#E3DDC9;
+    --cover-bg:#E9E3CC; --cover-ink:#2F2B1F; --cover-soft:#76705C;
+    --contact-bg:#5E6B2F; --contact-ink:#FAF8F1;
+    --head:'Libre Caslon Text','Frank Ruhl Libre',Georgia,serif; --body:'Assistant',system-ui,sans-serif;
+    --head-w:400; --h1:42px; --r:4px; --italic:italic; --track:-.01em;
+  }
+  [data-theme="lago"]{
+    --page:#C9D5DC; --paper:#F6F8F9; --card:#FFFFFF; --ink:#1B2B3A; --muted:#64727E;
+    --accent:#3D6E8F; --on-accent:#fff; --orn:#9DB4C3; --sign:#3D6E8F; --line:#DDE4E9;
+    --cover-bg:#DCE6EC; --cover-ink:#1B2B3A; --cover-soft:#64727E;
+    --contact-bg:#1B2B3A; --contact-ink:#F6F8F9;
+    --head:'Manrope','Assistant',system-ui,sans-serif; --body:'Manrope','Assistant',system-ui,sans-serif;
+    --head-w:300; --h1:46px; --r:2px; --italic:normal; --track:-.02em;
+  }
+  [data-theme="familiar"]{
+    --page:#FFE7A3; --paper:#FFFFFF; --card:#FFFFFF; --ink:#1C2541; --muted:#5B6380;
+    --accent:#2E8FC0; --on-accent:#fff; --orn:#FFC93C; --sign:#2E8FC0; --line:#EEF0F5;
+    --cover-bg:#FFC93C; --cover-ink:#1C2541; --cover-soft:#1C2541;
+    --contact-bg:#1C2541; --contact-ink:#fff;
+    --head:'Varela Round',system-ui,sans-serif; --body:'Varela Round','Heebo',system-ui,sans-serif;
+    --head-w:400; --h1:42px; --r:20px; --italic:normal; --track:-.01em;
+  }
+  html[lang="he"]{ --italic:normal; --track:0 }
+
+  /* ============ Layout ============ */
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--page);color:var(--ink);font-family:var(--body);font-weight:300;font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .3s}
+  [data-theme="familiar"] body,[data-theme="ciudad"] body{font-weight:400}
+  .app{max-width:520px;margin-inline:auto;background:var(--paper);min-height:100vh;box-shadow:0 0 60px rgba(0,0,0,.12)}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--orn);outline-offset:3px;border-radius:4px}
+
+  /* Demo style picker (not part of a real guide) */
+  .picker{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e3e3e3;font-family:'Heebo',system-ui,sans-serif;color:#222}
+  .picker-in{max-width:960px;margin-inline:auto;display:flex;align-items:center;gap:12px;padding:10px 14px}
+  .picker-label{font-size:13px;color:#666;white-space:nowrap}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:none;display:flex;align-items:center;gap:8px;border:1px solid #ddd;background:#fff;border-radius:999px;padding:5px 12px 5px 6px;font:400 14px 'Heebo',sans-serif;color:#222;cursor:pointer}
+  .chip[aria-pressed="true"]{border-color:#222;background:#222;color:#fff}
+  .sw{width:20px;height:20px;border-radius:50%;flex:none;border:1px solid rgba(0,0,0,.12)}
+
+  /* Cover */
+  .cover{background:var(--cover-bg);color:var(--cover-ink);padding:18px 24px 84px;text-align:center;display:flex;flex-direction:column}
+  .top{display:flex;justify-content:flex-end}
+  .lang{display:flex;gap:2px}
+  .lang button{border:0;background:none;color:var(--cover-soft);opacity:.75;font:400 13px var(--body);padding:6px 9px;cursor:pointer;border-bottom:1px solid transparent}
+  .lang button[aria-pressed="true"]{opacity:1;color:var(--cover-ink);border-bottom-color:var(--orn)}
+  .art{display:flex;justify-content:center;margin:22px 0 26px}
+  .art svg{width:100%;max-width:300px;height:auto;display:block}
+  .welcome-to{font-family:var(--head);font-style:var(--italic);font-weight:400;font-size:18px;color:var(--cover-soft);margin:0}
+  .cover h1{overflow-wrap:anywhere;font-family:var(--head);font-weight:var(--head-w);font-size:var(--h1);line-height:1.05;margin:4px 0 10px;letter-spacing:var(--track)}
+  .place{margin:0;font-size:14px;color:var(--cover-soft);letter-spacing:.03em}
+
+  /* Colonial arch */
+  .arch{width:200px;height:250px;border-radius:100px 100px 0 0;border:1px solid var(--cover-soft);padding:9px}
+  .arch-in{width:100%;height:100%;border-radius:91px 91px 0 0;background:#743138;overflow:hidden}
+  .arch-in svg{width:100%;height:100%;max-width:none}
+
+  /* Essentials */
+  .essentials{margin:-52px 18px 0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);position:relative;box-shadow:0 18px 40px -24px rgba(0,0,0,.35);overflow:hidden}
+  .times{display:grid;grid-template-columns:1fr 1fr}
+  .time{padding:20px 18px;text-align:center}
+  .time + .time{border-inline-start:1px solid var(--line)}
+  .time small,.wifi small{display:block;font-size:13px;color:var(--muted);margin-bottom:2px}
+  .time strong{font-family:var(--head);font-weight:var(--head-w);font-size:30px;line-height:1.1;letter-spacing:var(--track)}
+  .wifi{border-top:1px solid var(--line);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .wifi .net{font-size:14px;color:var(--muted)}
+  .wifi .pw{font-family:var(--head);font-size:22px;letter-spacing:.02em}
+  .copy{flex:none;background:none;border:1px solid var(--accent);color:var(--accent);border-radius:calc(var(--r) / 2);font:400 14px var(--body);padding:9px 16px;cursor:pointer;transition:background .2s,color .2s}
+  .copy.done{background:var(--accent);color:var(--on-accent)}
+
+  /* Letter */
+  .letter{padding:44px 30px 10px}
+  .letter p{font-family:var(--head);font-weight:400;font-style:var(--italic);font-size:20px;line-height:1.55;margin:0 0 16px}
+  .letter .sign{font-style:normal;font-size:17px;color:var(--sign,var(--orn))}
+
+  /* Contents */
+  .toc{margin:28px 30px 8px;padding-block:18px;border-block:1px solid var(--line)}
+  .toc p{margin:0 0 8px;font-size:13px;color:var(--muted)}
+  .toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 20px}
+  .toc a{font-family:var(--head);font-weight:var(--head-w);font-size:18px;text-decoration:none;border-bottom:1px solid transparent}
+  .toc a:hover{border-bottom-color:var(--orn)}
+
+  /* Sections */
+  section{padding:40px 30px 14px;scroll-margin-top:60px}
+  .rule{display:block;width:28px;height:1px;background:var(--orn);margin-bottom:18px}
+  h2{font-family:var(--head);font-weight:var(--head-w);font-size:32px;line-height:1.15;margin:0 0 12px;letter-spacing:var(--track)}
+  section > p{margin:0 0 14px}
+  .aside{font-size:15px;color:var(--muted)}
+
+  details{border-bottom:1px solid var(--line)}
+  details:first-of-type{border-top:1px solid var(--line)}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:15px 0;font-weight:400;font-size:17px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"";width:11px;height:11px;border-inline-end:1.5px solid var(--orn);border-bottom:1.5px solid var(--orn);transform:rotate(45deg) translateY(-3px);transition:transform .25s;flex:none}
+  details[open] summary::after{transform:rotate(-135deg)}
+  details p{margin:0 0 16px;color:var(--muted)}
+
+  ul.rules{list-style:none;margin:0;padding:0}
+  ul.rules li{padding:13px 0;border-bottom:1px solid var(--line)}
+  ul.rules li:first-child{border-top:1px solid var(--line)}
+
+  .cat{font-family:var(--head);font-style:var(--italic);font-size:17px;color:var(--sign,var(--orn));margin:24px 0 4px}
+  .spot{padding:12px 0;border-bottom:1px solid var(--line)}
+  .spot-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .spot h3{font-family:var(--head);font-weight:var(--head-w);font-size:19px;margin:0}
+  .spot .dist{font-size:13px;color:var(--muted);white-space:nowrap}
+  .spot p{margin:2px 0 6px;color:var(--muted);font-size:15.5px}
+  .spot a{font-size:14px;color:var(--accent);text-underline-offset:3px}
+
+  .check label{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}
+  .check label:first-child{border-top:1px solid var(--line)}
+  .check input{appearance:none;flex:none;width:18px;height:18px;border:1.5px solid var(--orn);border-radius:calc(var(--r) / 4);margin:4px 0 0;display:grid;place-items:center;cursor:pointer}
+  .check input:checked{background:var(--accent);border-color:var(--accent)}
+  .check input:checked::after{content:"";width:5px;height:9px;border:solid var(--on-accent);border-width:0 1.5px 1.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+  .check input:checked + span{color:var(--muted);text-decoration:line-through}
+
+  .contact{background:var(--contact-bg);color:var(--contact-ink);margin-top:44px;padding:44px 30px;text-align:center}
+  .contact h2{color:var(--contact-ink)}
+  .contact p{opacity:.78;margin:0 0 22px}
+  .wa{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--orn);border-radius:var(--r);color:var(--contact-ink);text-decoration:none;padding:13px 26px;font-weight:400}
+  .sos{margin:26px 0 0;font-size:14px;line-height:1.8;opacity:.65}
+  footer{text-align:center;padding:20px;font-size:12.5px;color:var(--muted);background:var(--paper)}
+  footer a{color:var(--muted);text-decoration:none}
+
+  /* ============ Theme-specific touches ============ */
+  [data-theme="ciudad"] .cover{text-align:start;padding-top:18px}
+  [data-theme="ciudad"] .art{order:9;margin:28px 0 0;justify-content:flex-start}
+  [data-theme="ciudad"] .art svg{max-width:none}
+  [data-theme="ciudad"] .welcome-to{margin-top:40px;font-size:15px}
+  [data-theme="ciudad"] .cover h1{line-height:.95;margin-top:8px}
+  [data-theme="ciudad"] .essentials{margin-top:-30px;box-shadow:none;border:1.5px solid #000}
+  [data-theme="ciudad"] .rule{height:4px;width:22px}
+  [data-theme="ciudad"] .letter p{font-size:19px;font-weight:500}
+
+  [data-theme="playa"] .rule{height:3px;border-radius:2px;width:30px}
+  [data-theme="playa"] .essentials{box-shadow:0 20px 40px -26px rgba(15,51,70,.5)}
+
+  [data-theme="villa"] .cover h1{font-weight:400}
+  [data-theme="villa"] .rule{width:44px}
+  [data-theme="villa"] .essentials{box-shadow:0 24px 50px -24px rgba(0,0,0,.8)}
+  [data-theme="villa"] body,[data-theme="villa"] .app{font-weight:300}
+
+  [data-theme="cabana"] .essentials{border:1.5px solid var(--ink);box-shadow:none}
+  [data-theme="cabana"] .rule{height:2px}
+
+  [data-theme="lago"] .cover h1{letter-spacing:-.03em}
+  [data-theme="lago"] .rule{width:60px}
+  [data-theme="lago"] .essentials{box-shadow:none}
+
+  [data-theme="familiar"] .essentials{border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
+  [data-theme="familiar"] .copy{background:var(--accent);color:#fff;border-color:var(--accent);border-radius:999px}
+  [data-theme="familiar"] .rule{height:8px;width:38px;border-radius:4px}
+  [data-theme="familiar"] .wa{border:2px solid var(--orn);border-radius:999px}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="picker" aria-label="Estilos de ejemplo">
+  <div class="picker-in">
+    <span class="picker-label" data-i18n="pick"></span>
+    <div class="chips" id="chips"></div>
+  </div>
+</div>
+
+<div class="app">
+  <header class="cover">
+    <div class="top">
+      <div class="lang" role="group" aria-label="Idioma">
+        <button data-lang="es" aria-pressed="true">Español</button>
+        <button data-lang="en" aria-pressed="false">English</button>
+        <button data-lang="he" aria-pressed="false">עברית</button>
+      </div>
+    </div>
+    <!-- En una guía real, la ilustración se puede reemplazar por una foto del alojamiento -->
+    <div class="art" id="art"></div>
+    <p class="welcome-to" data-i18n="welcome_to"></p>
+    <h1 id="pname"></h1>
+    <p class="place" id="pplace"></p>
+  </header>
+
+  <div class="essentials">
+    <div class="times">
+      <div class="time"><small data-i18n="ci_l"></small><strong id="ci"></strong></div>
+      <div class="time"><small data-i18n="co_l"></small><strong id="co"></strong></div>
+    </div>
+    <div class="wifi">
+      <div>
+        <small>Wifi</small>
+        <div class="net"><span data-i18n="net"></span>: <span id="wnet"></span></div>
+        <div class="pw" id="wpw"></div>
+      </div>
+      <button class="copy" id="copy" data-i18n="copy"></button>
+    </div>
+  </div>
+
+  <div class="letter">
+    <p data-i18n="note"></p>
+    <p class="sign" id="sign"></p>
+  </div>
+
+  <nav class="toc" aria-label="Índice">
+    <p data-i18n="toc"></p>
+    <ol>
+      <li><a href="#llegada" data-i18n="arr_h"></a></li>
+      <li><a href="#casa" data-i18n="house_h"></a></li>
+      <li><a href="#normas" data-i18n="rules_h"></a></li>
+      <li><a href="#recomendaciones" data-i18n="recs_h"></a></li>
+      <li><a href="#salida" data-i18n="out_h"></a></li>
+      <li><a href="#contacto" data-i18n="contact_h"></a></li>
+    </ol>
+  </nav>
+
+  <section id="llegada">
+    <span class="rule"></span>
+    <h2 data-i18n="arr_h"></h2>
+    <p id="arr_p"></p>
+    <p class="aside" data-i18n="park"></p>
+  </section>
+
+  <section id="casa">
+    <span class="rule"></span>
+    <h2 data-i18n="house_h"></h2>
+    <details><summary data-i18n="h1t"></summary><p data-i18n="h1d"></p></details>
+    <details><summary data-i18n="h2t"></summary><p data-i18n="h2d"></p></details>
+    <details><summary data-i18n="h3t"></summary><p data-i18n="h3d"></p></details>
+    <details><summary data-i18n="h4t"></summary><p data-i18n="h4d"></p></details>
+    <details><summary data-i18n="h5t"></summary><p data-i18n="h5d"></p></details>
+  </section>
+
+  <section id="normas">
+    <span class="rule"></span>
+    <h2 data-i18n="rules_h"></h2>
+    <ul class="rules">
+      <li data-i18n="r1"></li><li data-i18n="r2"></li><li data-i18n="r3"></li><li data-i18n="r4"></li>
+    </ul>
+  </section>
+
+  <section id="recomendaciones">
+    <span class="rule"></span>
+    <h2 data-i18n="recs_h"></h2>
+    <p class="aside" data-i18n="recs_p"></p>
+    <div id="spots"></div>
+  </section>
+
+  <section id="salida">
+    <span class="rule"></span>
+    <h2 data-i18n="out_h"></h2>
+    <p id="out_p"></p>
+    <div class="check">
+      <label><input type="checkbox"><span data-i18n="o1"></span></label>
+      <label><input type="checkbox"><span data-i18n="o2"></span></label>
+      <label><input type="checkbox"><span data-i18n="o3"></span></label>
+      <label><input type="checkbox"><span data-i18n="o4"></span></label>
+    </div>
+  </section>
+
+  <div class="contact" id="contacto">
+    <h2 data-i18n="contact_h"></h2>
+    <p data-i18n="contact_p"></p>
+    <a class="wa" href="https://wa.me/" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1 .1-1.2l-.5-.2z"/></svg>
+      <span id="wa"></span>
+    </a>
+    <p class="sos"><span data-i18n="sos1"></span><br><span id="sos2"></span></p>
+  </div>
+
+  <footer><a href="index.html" data-i18n="foot"></a></footer>
+</div>
+
+<script>
+/* ============ Generic text (same for every property) ============ */
+const T = {
+es:{
+  pick:"Estilo de ejemplo:",
+  welcome_to:"Bienvenidos a", ci_l:"Check-in", co_l:"Check-out",
+  net:"Red", copy:"Copiar clave", copied:"Copiada",
+  note:"Gracias por elegir nuestro alojamiento. En esta guía está todo lo que necesitas para tu estancia; si algo falta, escríbeme.",
+  sign:"Con cariño,",
+  toc:"En esta guía",
+  arr_h:"Tu llegada",
+  arr_p:"El check-in es a partir de las {ci}. El día de tu llegada te enviaré por mensaje las instrucciones de acceso. Si llegas antes, puedes dejar tus maletas: avísame y lo coordinamos.",
+  park:"Hay estacionamiento disponible; te lo indico junto con las instrucciones de acceso.",
+  house_h:"El alojamiento",
+  h1t:"Agua caliente", h1d:"El calentador tarda unos 10 minutos. El interruptor está junto a la puerta del baño.",
+  h2t:"Agua para beber", h2d:"Usa el garrafón de la cocina. El agua del grifo no es potable.",
+  h3t:"Aire acondicionado", h3d:"El control está en el buró. Por favor apágalo cuando salgas.",
+  h4t:"Cocina", h4d:"Hay café, aceite, sal y especias. Úsalos con confianza.",
+  h5t:"Lavadora", h5d:"El detergente está en el mueble de abajo. El ciclo rápido dura 40 minutos.",
+  rules_h:"Normas de la casa",
+  r1:"Silencio a partir de las 22:00, por respeto a los vecinos.",
+  r2:"No se fuma dentro. Puedes hacerlo en la terraza.",
+  r3:"Solo los huéspedes de la reserva. Sin fiestas ni eventos.",
+  r4:"Basura orgánica en el bote verde; lo demás, en el gris.",
+  recs_h:"Recomendaciones", recs_p:"Lugares a los que yo mismo voy.",
+  map:"Ver en el mapa",
+  out_h:"Antes de irte", out_p:"El check-out es hasta las {co}. Gracias por cuidar el lugar.",
+  o1:"Deja las llaves sobre la mesa.", o2:"Las toallas usadas, en la regadera.", o3:"Saca la basura al bote de la entrada.", o4:"Apaga el aire, el calentador y las luces.",
+  contact_h:"¿Necesitas algo?", contact_p:"Escríbeme a cualquier hora. Suelo responder en pocos minutos.", wa:"Escribirle a {host}",
+  sos1:"Emergencias: 911",
+  foot:"Guía hecha con Clave",
+  units:{min:"min",h:"h"}, modes:{walk:"a pie",car:"en auto",boat:"en lancha",taxi:"en taxi"}
+},
+en:{
+  pick:"Example style:",
+  welcome_to:"Welcome to", ci_l:"Check-in", co_l:"Check-out",
+  net:"Network", copy:"Copy password", copied:"Copied",
+  note:"Thank you for choosing our place. Everything you need for your stay is in this guide; if anything is missing, write to me.",
+  sign:"Warmly,",
+  toc:"In this guide",
+  arr_h:"Your arrival",
+  arr_p:"Check-in is from {ci}. On the day you arrive, I'll message you the access instructions. Arriving early? You're welcome to drop off your bags. Just let me know.",
+  park:"Parking is available; I'll share the details along with the access instructions.",
+  house_h:"The place",
+  h1t:"Hot water", h1d:"The heater takes about 10 minutes. The switch is next to the bathroom door.",
+  h2t:"Drinking water", h2d:"Use the large jug in the kitchen. Tap water isn't safe to drink.",
+  h3t:"Air conditioning", h3d:"The remote is on the nightstand. Please switch it off when you go out.",
+  h4t:"Kitchen", h4d:"There's coffee, oil, salt and spices. Help yourself.",
+  h5t:"Washing machine", h5d:"Detergent is in the lower cabinet. The quick cycle takes 40 minutes.",
+  rules_h:"House rules",
+  r1:"Quiet hours from 10:00 pm, out of respect for the neighbors.",
+  r2:"No smoking indoors. The terrace is fine.",
+  r3:"Registered guests only. No parties or events.",
+  r4:"Food waste in the green bin; everything else in the grey one.",
+  recs_h:"Recommendations", recs_p:"Places I go to myself.",
+  map:"View on map",
+  out_h:"Before you leave", out_p:"Check-out is by {co}. Thank you for looking after the place.",
+  o1:"Leave the keys on the table.", o2:"Used towels in the shower.", o3:"Take the trash to the bin by the entrance.", o4:"Switch off the air conditioning, water heater and lights.",
+  contact_h:"Need anything?", contact_p:"Message me anytime. I usually reply within minutes.", wa:"Message {host}",
+  sos1:"Emergencies: 911",
+  foot:"Guide made with Clave",
+  units:{min:"min",h:"h"}, modes:{walk:"walk",car:"by car",boat:"by boat",taxi:"by taxi"}
+},
+he:{
+  pick:"סגנון לדוגמה:",
+  welcome_to:"ברוכים הבאים ל", ci_l:"צ'ק־אין", co_l:"צ'ק־אאוט",
+  net:"רשת", copy:"העתקת סיסמה", copied:"הועתקה",
+  note:"תודה שבחרתם במקום שלנו. במדריך יש את כל מה שצריך לשהייה; אם משהו חסר, כתבו לי.",
+  sign:"בחום,",
+  toc:"במדריך",
+  arr_h:"ההגעה שלכם",
+  arr_p:"הצ'ק־אין החל מ־{ci}. ביום ההגעה אשלח לכם בהודעה את הוראות הכניסה. מגיעים מוקדם? אפשר להשאיר מזוודות, רק תעדכנו אותי.",
+  park:"יש חניה; אשלח את הפרטים יחד עם הוראות הכניסה.",
+  house_h:"הנכס",
+  h1t:"מים חמים", h1d:"הדוד צריך כ־10 דקות. המתג ליד דלת המקלחת.",
+  h2t:"מי שתייה", h2d:"מהבקבוק הגדול במטבח. מי הברז אינם ראויים לשתייה.",
+  h3t:"מזגן", h3d:"השלט על השידה. נא לכבות כשיוצאים.",
+  h4t:"מטבח", h4d:"יש קפה, שמן, מלח ותבלינים. תרגישו חופשי.",
+  h5t:"מכונת כביסה", h5d:"האבקה בארון התחתון. תוכנית מהירה: 40 דקות.",
+  rules_h:"חוקי הבית",
+  r1:"שקט החל מ־22:00, מתוך כבוד לשכנים.",
+  r2:"לא מעשנים בפנים. במרפסת אפשר.",
+  r3:"רק האורחים שבהזמנה. בלי מסיבות ואירועים.",
+  r4:"פסולת אורגנית בפח הירוק, כל השאר באפור.",
+  recs_h:"המלצות", recs_p:"מקומות שאני בעצמי הולך אליהם.",
+  map:"לצפייה במפה",
+  out_h:"לפני שיוצאים", out_p:"הצ'ק־אאוט עד {co}. תודה ששמרתם על המקום.",
+  o1:"השאירו את המפתחות על השולחן.", o2:"מגבות משומשות במקלחת.", o3:"הוציאו את הזבל לפח בכניסה.", o4:"כבו את המזגן, הדוד והאורות.",
+  contact_h:"צריכים משהו?", contact_p:"כתבו לי בכל שעה. בדרך כלל אני עונה תוך דקות.", wa:"לכתוב ל{host}",
+  sos1:"חירום: 911",
+  foot:"המדריך נבנה עם Clave",
+  units:{min:"דק'",h:"שעה"}, modes:{walk:"הליכה",car:"נסיעה",boat:"בסירה",taxi:"במונית"}
+}};
+
+/* ============ Illustrations ============ */
+function urbanArt(){
+  const b=[[0,60,70],[66,44,104],[116,72,58],[194,40,116],[240,80,84]];
+  let s='<svg viewBox="0 0 320 120" aria-hidden="true">';
+  b.forEach(([x,w,h],i)=>{
+    s+=`<rect x="${x}" y="${120-h}" width="${w}" height="${h}" fill="#000"/>`;
+    for(let yy=120-h+10; yy<112; yy+=14) for(let xx=x+8; xx<x+w-8; xx+=12){
+      const lit=(i===3&&yy===120-h+38&&xx===x+8);
+      s+=`<rect x="${xx}" y="${yy}" width="5" height="7" fill="${lit?'#2F4BFF':'#F4F4F2'}" opacity="${lit?1:.85}"/>`;
+    }
+  });
+  return s+'</svg>';
+}
+function cabinArt(){
+  let s='<svg viewBox="0 0 300 150" aria-hidden="true"><circle cx="232" cy="36" r="13" fill="#EFE8D8"/><circle cx="238" cy="32" r="11" fill="#24382C"/>';
+  s+='<polygon points="0,150 60,66 110,112 172,40 236,108 300,74 300,150" fill="#355543"/>';
+  [[18,64],[44,84],[72,58],[98,92],[128,70],[156,96],[186,62],[214,88],[244,68],[272,90]].forEach(([x,h])=>{
+    s+=`<polygon points="${x-14},150 ${x},${150-h} ${x+14},150" fill="#18291F"/><polygon points="${x-10},${150-h*0.45} ${x},${150-h} ${x+10},${150-h*0.45}" fill="#1E3326"/>`;
+  });
+  return s+'<path d="M0 149H300" stroke="#C7B48A" stroke-width="1"/></svg>';
+}
+const ART={
+  colonial:`<div class="arch"><div class="arch-in"><svg viewBox="0 0 180 230" aria-hidden="true" preserveAspectRatio="xMidYMax slice"><g fill="none" stroke="#D8C39A" stroke-width="1" opacity=".7"><path d="M90 230 V120"/><path d="M90 175 C70 160 55 150 38 128"/><path d="M90 150 C110 138 124 126 142 104"/><path d="M90 130 C80 110 76 96 74 78"/></g><g fill="#C9B6E4" opacity=".85"><circle cx="38" cy="124" r="5"/><circle cx="31" cy="118" r="3.5"/><circle cx="45" cy="117" r="3.5"/><circle cx="34" cy="131" r="3"/><circle cx="142" cy="100" r="5"/><circle cx="150" cy="94" r="3.5"/><circle cx="136" cy="92" r="3.5"/><circle cx="148" cy="106" r="3"/><circle cx="74" cy="74" r="5"/><circle cx="67" cy="68" r="3.5"/><circle cx="81" cy="67" r="3.5"/><circle cx="76" cy="62" r="3"/><circle cx="104" cy="58" r="3"/><circle cx="118" cy="140" r="2.5"/><circle cx="56" cy="96" r="2.5"/></g><path d="M0 230 H180" stroke="#D8C39A"/></svg></div></div>`,
+  playa:`<svg viewBox="0 0 300 140" aria-hidden="true"><path d="M58 38 q6 -6 12 0 q6 -6 12 0" stroke="#0F3346" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M92 26 q4 -4 8 0 q4 -4 8 0" stroke="#0F3346" stroke-width="1.4" fill="none" stroke-linecap="round"/><circle cx="168" cy="80" r="36" fill="#F2B880"/><rect x="0" y="80" width="300" height="60" fill="#BFE1E6"/><path d="M0 80H300" stroke="#1C6E8C" stroke-width="1.5"/><path d="M0 96 Q25 88 50 96 T100 96 T150 96 T200 96 T250 96 T300 96" stroke="#1C6E8C" stroke-width="2" fill="none"/><path d="M0 112 Q25 104 50 112 T100 112 T150 112 T200 112 T250 112 T300 112" stroke="#1C6E8C" stroke-width="2" fill="none" opacity=".55"/><path d="M0 128 Q25 120 50 128 T100 128 T150 128 T200 128 T250 128 T300 128" stroke="#1C6E8C" stroke-width="2" fill="none" opacity=".3"/></svg>`,
+  ciudad:urbanArt(),
+  cabana:cabinArt(),
+  villa:`<svg viewBox="0 0 320 160" aria-hidden="true"><circle cx="186" cy="76" r="26" fill="none" stroke="#C8A45C" stroke-width="1.2"/><path d="M0 100H320" stroke="#C8A45C" stroke-width="1"/><rect x="96" y="108" width="200" height="40" fill="#163C3D"/><g stroke="#C8A45C" stroke-width="1" fill="none" opacity=".7"><path d="M110 120 q10 -4 20 0 t20 0"/><path d="M190 132 q10 -4 20 0 t20 0"/><path d="M240 118 q10 -4 20 0 t20 0"/></g><path d="M50 160 C54 120 60 86 76 56" stroke="#C8A45C" stroke-width="3" fill="none"/><g stroke="#C8A45C" stroke-width="1.8" fill="none" stroke-linecap="round"><path d="M76 56 C60 44 40 46 26 58"/><path d="M76 56 C66 36 48 28 34 30"/><path d="M76 56 C80 34 94 22 110 22"/><path d="M76 56 C96 46 114 50 124 64"/><path d="M76 56 C88 62 96 74 98 88"/><path d="M76 56 C62 62 54 74 52 88"/></g></svg>`,
+  campo:`<svg viewBox="0 0 300 150" aria-hidden="true"><circle cx="222" cy="46" r="18" fill="#B5862C"/><path d="M0 98 Q80 58 160 90 T300 78 V150 H0Z" fill="#C9C29E"/><path d="M0 120 Q90 92 180 116 T300 106 V150 H0Z" fill="#5E6B2F"/><g stroke="#FAF8F1" stroke-width="1.2" opacity=".45" fill="none"><path d="M10 138 Q90 116 170 134 T300 124"/><path d="M0 146 Q90 126 180 142 T300 134"/></g><path d="M66 104 V86" stroke="#2F2B1F" stroke-width="2"/><circle cx="66" cy="80" r="11" fill="#7C8550"/><circle cx="58" cy="84" r="7" fill="#7C8550"/><circle cx="75" cy="84" r="7" fill="#7C8550"/></svg>`,
+  lago:`<svg viewBox="0 0 300 150" aria-hidden="true"><g fill="none" stroke="#3D6E8F" stroke-width="1.3" stroke-linejoin="round"><polyline points="10,80 70,40 110,62 160,24 220,68 270,46 296,62"/><polyline points="10,80 70,120 110,98 160,136 220,92 270,114 296,98" opacity=".28"/></g><path d="M0 80H300" stroke="#1B2B3A" stroke-width="1"/><g stroke="#3D6E8F" stroke-width="1" opacity=".5"><path d="M40 92H120"/><path d="M150 102H250"/><path d="M80 114H190"/></g></svg>`,
+  familiar:`<svg viewBox="0 0 300 150" aria-hidden="true"><g stroke="#fff" stroke-width="4" stroke-linecap="round"><path d="M250 8V18"/><path d="M250 66V76"/><path d="M216 42H226"/><path d="M274 42H284"/><path d="M226 18L233 25"/><path d="M267 59L274 66"/><path d="M274 18L267 25"/><path d="M233 59L226 66"/></g><circle cx="250" cy="42" r="16" fill="#fff"/><g fill="#fff"><circle cx="46" cy="40" r="14"/><circle cx="64" cy="34" r="17"/><circle cx="82" cy="42" r="12"/><rect x="34" y="40" width="58" height="14" rx="7"/></g><path d="M0 142H300" stroke="#1C2541" stroke-width="3" stroke-linecap="round"/><rect x="104" y="76" width="96" height="66" rx="6" fill="#fff" stroke="#1C2541" stroke-width="3"/><path d="M94 82 L152 40 L210 82 Z" fill="#2E8FC0" stroke="#1C2541" stroke-width="3" stroke-linejoin="round"/><rect x="140" y="104" width="24" height="38" rx="4" fill="#FF7A8A" stroke="#1C2541" stroke-width="3"/><circle cx="122" cy="100" r="9" fill="#BFE6FA" stroke="#1C2541" stroke-width="3"/><circle cx="182" cy="100" r="9" fill="#BFE6FA" stroke="#1C2541" stroke-width="3"/></svg>`
+};
+
+/* ============ Example properties ============ */
+const C = { // categories
+  eat:{es:"Para comer",en:"To eat",he:"לאכול"}, see:{es:"Para conocer",en:"To see",he:"לראות"},
+  beach:{es:"Playa",en:"Beach",he:"חוף"}, sunset:{es:"Atardecer",en:"Sunset",he:"שקיעה"},
+  walk:{es:"Para pasear",en:"For a stroll",he:"לטייל"}, hike:{es:"Para caminar",en:"For a hike",he:"מסלול הליכה"},
+  dine:{es:"Para cenar",en:"For dinner",he:"לארוחת ערב"}, snorkel:{es:"Snorkel",en:"Snorkeling",he:"שנורקלינג"},
+  wine:{es:"Vino",en:"Wine",he:"יין"}, visit:{es:"Para visitar",en:"To visit",he:"לבקר"},
+  sunrise:{es:"Amanecer",en:"Sunrise",he:"זריחה"}, kids:{es:"Con niños",en:"With kids",he:"עם ילדים"}
+};
+const P = {
+  colonial:{label:{es:"Colonial",en:"Colonial",he:"קולוניאלי"}, sw:"#5E2328",
+    name:"Casa Jacaranda", place:"Oaxaca de Juárez, México", host:{es:"Lucía",he:"לוסיה"}, net:"Jacaranda_5G", pw:"colibri2024", ci:"15:00", co:"11:00", sos2:{es:"Cruz Roja: 065",en:"Red Cross: 065",he:"הצלב האדום: 065"},
+    spots:[
+      {c:"eat",n:"Mercado 20 de Noviembre",d:[8,"min","walk"],t:{es:"Tlayudas y carne asada en el pasillo de humo. Ve con hambre.",en:"Tlayudas and grilled meat in the smoke aisle. Go hungry.",he:"טלאיודות ובשר על האש במעבר העשן. בואו רעבים."},q:"Mercado 20 de Noviembre Oaxaca"},
+      {c:"see",n:"Templo de Santo Domingo",d:[12,"min","walk"],t:{es:"Entra al atardecer, cuando la piedra se vuelve dorada.",en:"Go at sunset, when the stone turns golden.",he:"היכנסו בשקיעה, כשהאבן נצבעת בזהב."},q:"Templo de Santo Domingo Oaxaca"},
+      {c:"see",n:"Jardín Etnobotánico",d:[12,"min","walk"],t:{es:"Solo con visita guiada; reserva un día antes.",en:"Guided tours only; book a day ahead.",he:"רק בסיור מודרך; כדאי להזמין יום מראש."},q:"Jardin Etnobotanico Oaxaca"}]},
+  playa:{label:{es:"Playa",en:"Beach",he:"חוף"}, sw:"#1C6E8C",
+    name:"Casa Marea", place:"Puerto Escondido, Oaxaca", host:{es:"Mateo",he:"מתאו"}, net:"CasaMarea", pw:"olasaltas22", ci:"14:00", co:"11:00", sos2:{es:"Protección Civil: 911",en:"Civil Protection: 911",he:"הגנה אזרחית: 911"},
+    spots:[
+      {c:"beach",n:"Playa Carrizalillo",d:[10,"min","car"],t:{es:"Se baja por escaleras; agua tranquila, ideal para nadar.",en:"Reached by stairs; calm water that's great for swimming.",he:"יורדים במדרגות; מים רגועים, מושלם לשחייה."},q:"Playa Carrizalillo Puerto Escondido"},
+      {c:"sunset",n:"Punta Zicatela",d:[15,"min","car"],t:{es:"Mira a los surfistas desde la punta al caer el sol.",en:"Watch the surfers from the point as the sun goes down.",he:"צפו בגולשים מקצה החוף בזמן השקיעה."},q:"Punta Zicatela Puerto Escondido"},
+      {c:"eat",n:"Mercado Benito Juárez",d:[8,"min","car"],t:{es:"Pescado fresco, jugos y desayunos baratos.",en:"Fresh fish, juices and cheap breakfasts.",he:"דגים טריים, מיצים וארוחות בוקר זולות."},q:"Mercado Benito Juarez Puerto Escondido"}]},
+  ciudad:{label:{es:"Ciudad",en:"City",he:"עירוני"}, sw:"#2F4BFF",
+    name:"Departamento Roma", place:"Roma Norte, Ciudad de México", host:{es:"Valeria",he:"ולריה"}, net:"DeptoRoma_5G", pw:"orizaba214", ci:"15:00", co:"12:00", sos2:{es:"Locatel: 55 5658 1111",en:"Locatel: 55 5658 1111",he:"לוקאטל: 55 5658 1111"},
+    spots:[
+      {c:"eat",n:"Mercado Roma",d:[6,"min","walk"],t:{es:"Muchos puestos para probar de todo en una sola visita.",en:"Lots of stalls to try a bit of everything in one go.",he:"המון דוכנים לטעום מהכל בביקור אחד."},q:"Mercado Roma Colima CDMX"},
+      {c:"walk",n:"Parque México",d:[12,"min","walk"],t:{es:"Perfecto para correr temprano o leer a la sombra.",en:"Perfect for an early run or reading in the shade.",he:"מושלם לריצת בוקר או לקריאה בצל."},q:"Parque Mexico Condesa"},
+      {c:"see",n:"Museo Nacional de Antropología",d:[20,"min","taxi"],t:{es:"Reserva medio día; vale cada minuto.",en:"Set aside half a day; it's worth every minute.",he:"תקדישו חצי יום; זה שווה כל דקה."},q:"Museo Nacional de Antropologia"}]},
+  cabana:{label:{es:"Cabaña",en:"Cabin",he:"בקתה"}, sw:"#24382C",
+    name:"Cabaña El Pinar", place:"Valle de Bravo, Estado de México", host:{es:"Andrés",he:"אנדרס"}, net:"ElPinar", pw:"chimenea18", ci:"16:00", co:"12:00", sos2:{es:"Bomberos: 911",en:"Fire department: 911",he:"כבאות: 911"},
+    spots:[
+      {c:"sunset",n:"Mirador La Peña",d:[15,"min","car"],t:{es:"La mejor vista del lago cuando baja el sol.",en:"The best view of the lake as the sun goes down.",he:"התצפית הכי טובה על האגם בשקיעה."},q:"Mirador La Peña Valle de Bravo"},
+      {c:"hike",n:"Cascada Velo de Novia",d:[20,"min","car"],t:{es:"Lleva tenis; el sendero es corto pero húmedo.",en:"Bring sneakers; the trail is short but damp.",he:"כדאי נעלי ספורט; השביל קצר אבל רטוב."},q:"Cascada Velo de Novia Valle de Bravo"},
+      {c:"eat",n:"Centro de Valle",d:[10,"min","car"],t:{es:"Pan, nieves y restaurantes alrededor de la plaza.",en:"Bakeries, ice cream and restaurants around the square.",he:"מאפיות, גלידה ומסעדות סביב הכיכר."},q:"Centro Valle de Bravo"}]},
+  villa:{label:{es:"Villa de lujo",en:"Luxury villa",he:"וילת יוקרה"}, sw:"#0F2627",
+    name:"Villa Lumbre", place:"Cabo San Lucas, Baja California Sur", host:{es:"Sofía",he:"סופיה"}, net:"VillaLumbre", pw:"pacifico07", ci:"16:00", co:"11:00", sos2:{es:"Concierge 24 h: escríbenos",en:"24/7 concierge: message us",he:"קונסיירז' 24/7: כתבו לנו"},
+    spots:[
+      {c:"see",n:"El Arco",d:[30,"min","boat"],t:{es:"Toma la lancha desde la marina temprano, con el mar en calma.",en:"Take a boat from the marina early, while the sea is calm.",he:"צאו בסירה מהמרינה מוקדם, כשהים רגוע."},q:"El Arco Cabo San Lucas"},
+      {c:"snorkel",n:"Bahía Santa María",d:[20,"min","car"],t:{es:"La mejor bahía para snorkel; llega antes de las 10.",en:"The best bay for snorkeling; arrive before 10 am.",he:"המפרץ הכי טוב לשנורקלינג; כדאי להגיע לפני 10."},q:"Bahia Santa Maria Los Cabos"},
+      {c:"dine",n:"Marina Cabo San Lucas",d:[15,"min","car"],t:{es:"Restaurantes frente al agua para una cena tranquila.",en:"Waterfront restaurants for a relaxed dinner.",he:"מסעדות על המים לארוחת ערב רגועה."},q:"Marina Cabo San Lucas"}]},
+  campo:{label:{es:"Campo",en:"Countryside",he:"כפרי"}, sw:"#5E6B2F",
+    name:"Finca Los Olivos", place:"Valle de Guadalupe, Baja California", host:{es:"Diego",he:"דייגו"}, net:"FincaOlivos", pw:"vendimia24", ci:"15:00", co:"11:00", sos2:{es:"Cruz Roja: 065",en:"Red Cross: 065",he:"הצלב האדום: 065"},
+    spots:[
+      {c:"wine",n:"Museo de la Vid y el Vino",d:[10,"min","car"],t:{es:"Buen punto de partida para entender el valle.",en:"A good starting point to understand the valley.",he:"נקודת פתיחה טובה להכיר את העמק."},q:"Museo de la Vid y el Vino Valle de Guadalupe"},
+      {c:"eat",n:"Mercado Negro de Ensenada",d:[35,"min","car"],t:{es:"Mariscos frescos y tostadas frente al puerto.",en:"Fresh seafood and tostadas by the harbor.",he:"פירות ים טריים וטוסטדות ליד הנמל."},q:"Mercado Negro Ensenada"},
+      {c:"see",n:"La Bufadora",d:[1,"h","car"],t:{es:"Géiser marino; ve por la tarde, cuando hay más oleaje.",en:"A sea geyser; go in the afternoon, when the swell is bigger.",he:"גייזר ימי; לכו אחר הצהריים, כשהגלים גבוהים יותר."},q:"La Bufadora Ensenada"}]},
+  lago:{label:{es:"Lago",en:"Lake",he:"אגם"}, sw:"#3D6E8F",
+    name:"Casa Bruma", place:"Lago de Atitlán, Guatemala", host:{es:"Ana",he:"אנה"}, net:"CasaBruma", pw:"volcanes03", ci:"14:00", co:"10:00", sos2:{es:"Bomberos: 122",en:"Fire department: 122",he:"כבאות: 122"},
+    spots:[
+      {c:"visit",n:"San Juan La Laguna",d:[25,"min","boat"],t:{es:"Pueblo de artistas, textiles y café de altura.",en:"A village of artists, textiles and highland coffee.",he:"כפר של אמנים, טקסטיל וקפה הררי."},q:"San Juan La Laguna"},
+      {c:"sunrise",n:"Nariz del Indio",d:[30,"min","car"],t:{es:"Sube antes del amanecer, siempre con guía local.",en:"Hike up before sunrise, always with a local guide.",he:"עולים לפני הזריחה, תמיד עם מדריך מקומי."},q:"Indian Nose Atitlan"},
+      {c:"eat",n:"Calle Santander, Panajachel",d:[20,"min","boat"],t:{es:"Cafés, comida local y mercado de artesanías.",en:"Cafés, local food and a craft market.",he:"בתי קפה, אוכל מקומי ושוק אומנים."},q:"Calle Santander Panajachel"}]},
+  familiar:{label:{es:"Familiar",en:"Family",he:"משפחתי"}, sw:"#FFC93C",
+    name:"Casa Gaviota", place:"Mazatlán, Sinaloa", host:{es:"Carmen",he:"כרמן"}, net:"CasaGaviota", pw:"castillos9", ci:"15:00", co:"11:00", sos2:{es:"Cruz Roja: 065",en:"Red Cross: 065",he:"הצלב האדום: 065"},
+    spots:[
+      {c:"walk",n:"Malecón de Mazatlán",d:[5,"min","walk"],t:{es:"Ideal para caminar o andar en bici al atardecer.",en:"Great for a walk or bike ride at sunset.",he:"מצוין להליכה או לרכיבה באופניים בשקיעה."},q:"Malecon Mazatlan"},
+      {c:"kids",n:"Gran Acuario Mazatlán",d:[10,"min","car"],t:{es:"Planea unas dos horas; a los niños les encanta.",en:"Plan about two hours; kids love it.",he:"תכננו כשעתיים; הילדים מתים על זה."},q:"Gran Acuario Mazatlan"},
+      {c:"dine",n:"Plazuela Machado",d:[15,"min","car"],t:{es:"Cena al aire libre entre edificios antiguos.",en:"Open-air dinner among old buildings.",he:"ארוחת ערב בחוץ בין בניינים עתיקים."},q:"Plazuela Machado Mazatlan"}]}
+};
+const ORDER = ["colonial","playa","ciudad","cabana","villa","campo","lago","familiar"];
+
+/* ============ Rendering ============ */
+let lang = "es", theme = "colonial";
+const $ = id => document.getElementById(id);
+const fmtTime = t => { if(lang!=="en") return t; let [h,m]=t.split(":").map(Number); const ap=h>=12?"pm":"am"; h=h%12||12; return `${h}:${String(m).padStart(2,"0")} ${ap}`; };
+const hostName = p => lang==="he" ? p.host.he : p.host.es;
+const fmtDist = ([n,u,m]) => `${n} ${T[lang].units[u]} ${T[lang].modes[m]}`;
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function render(){
+  const d = T[lang], p = P[theme];
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang==="he" ? "rtl" : "ltr";
+  document.documentElement.dataset.theme = theme;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{ const k=el.dataset.i18n; if(typeof d[k]==="string") el.textContent=d[k]; });
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang===lang));
+
+  $("art").innerHTML = ART[theme];
+  $("pname").textContent = p.name;
+  $("pplace").textContent = p.place;
+  document.title = `${p.name} · ${d.toc}`;
+  $("ci").textContent = fmtTime(p.ci);
+  $("co").textContent = fmtTime(p.co);
+  $("wnet").textContent = p.net;
+  $("wpw").textContent = p.pw;
+  $("sign").textContent = `${d.sign} ${hostName(p)}`;
+  $("arr_p").textContent = d.arr_p.replace("{ci}", fmtTime(p.ci));
+  $("out_p").textContent = d.out_p.replace("{co}", fmtTime(p.co));
+  $("wa").textContent = d.wa.replace("{host}", hostName(p));
+  $("sos2").textContent = p.sos2[lang];
+
+  let html = "", lastCat = null;
+  p.spots.forEach(s=>{
+    if(s.c!==lastCat){ html += `<p class="cat">${esc(C[s.c][lang])}</p>`; lastCat = s.c; }
+    html += `<div class="spot"><div class="spot-head"><h3>${esc(s.n)}</h3><span class="dist">${esc(fmtDist(s.d))}</span></div><p>${esc(s.t[lang])}</p></div>`;
+  });
+  $("spots").innerHTML = html;
+
+  $("chips").innerHTML = ORDER.map(k=>`<button class="chip" data-theme-pick="${k}" aria-pressed="${k===theme}"><span class="sw" style="background:${P[k].sw}"></span>${esc(P[k].label[lang])}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{
+    theme = c.dataset.themePick;
+    try{ history.replaceState(null,"","#"+theme); }catch(e){}
+    render();
+    window.scrollTo({top:0});
+  }));
+  const active = $("chips").querySelector('[aria-pressed="true"]');
+  if(active) active.scrollIntoView({block:"nearest",inline:"center"});
+  try{ localStorage.setItem("clave-demo-lang", lang); }catch(e){}
+}
+
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>{ lang=b.dataset.lang; render(); }));
+$("copy").addEventListener("click", async ()=>{
+  const btn=$("copy");
+  try{ await navigator.clipboard.writeText(P[theme].pw); }catch(e){}
+  btn.textContent = T[lang].copied; btn.classList.add("done");
+  setTimeout(()=>{ btn.textContent = T[lang].copy; btn.classList.remove("done"); },1600);
+});
+
+try{ const s=localStorage.getItem("clave-demo-lang"); if(s && T[s]) lang=s; }catch(e){}
+const h = location.hash.slice(1); if(P[h]) theme = h;
+window.addEventListener("hashchange",()=>{ const k=location.hash.slice(1); if(P[k] && k!==theme){ theme=k; render(); } });
+function setLang(l){ lang=l; render(); }     // used by tests
+function setTheme(t){ theme=t; render(); }
+render();
+</script>
+</body>
+</html>

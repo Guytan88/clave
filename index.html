@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clave · Guías digitales para alojamientos</title>
+<meta name="description" content="La guía de tu alojamiento en un solo enlace: wifi, llegada, reglas y recomendaciones. Lista en 24 horas por US$49.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Rubik:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@300;400&family=Heebo:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  /* ======= CONFIG: cambia estos enlaces antes de publicar =======
+     PAYPAL_CLIENT_ID → Client ID de tu app en developer.paypal.com (es público)
+     FORMS            → enlaces publicados de Tally por idioma
+  ================================================================ */
+  :root{
+    --bg:#EDEFEA;
+    --surface:#FFFFFF;
+    --ink:#1D2B24;
+    --muted:#56625B;
+    --green:#2E5E4E;
+    --green-deep:#22463A;
+    --marigold:#F2B632;
+    --line:#CFD5CC;
+    --head:'Bricolage Grotesque', 'Rubik', system-ui, sans-serif;
+    --body:'Rubik', system-ui, sans-serif;
+  }
+  html[lang="he"]{ --head:'Rubik', system-ui, sans-serif; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  img{max-width:100%}
+  .wrap{max-width:1120px;margin-inline:auto;padding-inline:20px}
+  :focus-visible{outline:3px solid var(--marigold);outline-offset:3px;border-radius:6px}
+
+  /* Header */
+  header{padding-block:18px}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:800;font-size:24px;text-decoration:none;letter-spacing:-.01em}
+  .brand svg{flex:none}
+  .bar-right{display:flex;align-items:center;gap:10px}
+  .lang{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px}
+  .lang button{border:0;background:none;font:500 14px var(--body);color:var(--muted);padding:6px 11px;border-radius:999px;cursor:pointer}
+  .lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 16px var(--body);text-decoration:none;border-radius:12px;padding:14px 22px;border:2px solid transparent;cursor:pointer;transition:transform .15s ease}
+  .btn:active{transform:translateY(1px)}
+  .btn-main{background:var(--marigold);color:var(--ink)}
+  .btn-main:hover{background:#E9A91C}
+  .btn-ghost{border-color:var(--ink);color:var(--ink);background:transparent}
+  .btn-ghost:hover{background:var(--ink);color:#fff}
+  .btn-sm{padding:9px 16px;font-size:15px;border-radius:10px}
+  @media (max-width:560px){ .bar .btn-sm{display:none} }
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-block:40px 80px}
+  .hero h1{font-family:var(--head);font-weight:800;font-size:clamp(36px,5.2vw,62px);line-height:1.04;letter-spacing:-.025em;margin:0 0 22px;text-wrap:balance}
+  html[lang="he"] .hero h1{letter-spacing:0;line-height:1.12}
+  .hero p.lead{font-size:19px;color:var(--muted);max-width:52ch;margin:0 0 30px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+  .note{margin-top:16px;font-size:15px;color:var(--muted)}
+
+  /* Phone + bubbles: the memorable thing */
+  .stage{position:relative;min-height:600px;display:flex;justify-content:center;align-items:center}
+  .phone{position:relative;z-index:2;width:290px;height:590px;background:#15201B;border-radius:44px;padding:12px;box-shadow:0 30px 60px -20px rgba(29,43,36,.45)}
+  .screen{width:100%;height:100%;border-radius:34px;overflow:hidden}
+  .m{background:#FBFAF8;color:#2A1E1C;font-family:'Heebo',system-ui,sans-serif;font-weight:300;display:flex;flex-direction:column}
+  .m-cover{background:#5E2328;color:#F3ECE3;text-align:center;padding:40px 16px 46px;position:relative}
+  .m-cover::before{content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:80px;height:20px;background:#15201B;border-radius:12px}
+  .m-arch{width:78px;height:96px;margin:0 auto 12px;border:1px solid #D8C39A;border-radius:39px 39px 0 0;padding:4px}
+  .m-arch-in{width:100%;height:100%;border-radius:35px 35px 0 0;background:#743138;overflow:hidden}
+  .m-arch-in svg{width:100%;height:100%;display:block}
+  .m-welcome{font-family:'Frank Ruhl Libre',Georgia,serif;font-style:italic;font-size:12px;color:#D8C39A}
+  html[lang="he"] .m-welcome{font-style:normal}
+  .m-title{font-family:'Frank Ruhl Libre',Georgia,serif;font-size:25px;line-height:1.1;margin:2px 0 4px}
+  .m-place{font-size:10.5px;letter-spacing:.04em;opacity:.7}
+  .m-card{margin:-26px 12px 0;background:#FBFAF8;border:1px solid #E6DFD5;position:relative;box-shadow:0 12px 24px -16px rgba(42,30,28,.4)}
+  .m-times{display:grid;grid-template-columns:1fr 1fr;text-align:center}
+  .m-times > div{padding:10px 6px}
+  .m-times > div + div{border-inline-start:1px solid #E6DFD5}
+  .m small{display:block;font-size:10px;color:#7A6E66}
+  .m-times strong{font-family:'Frank Ruhl Libre',Georgia,serif;font-weight:400;font-size:21px;line-height:1.15}
+  .m-wifi{border-top:1px solid #E6DFD5;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .m-wifi span{font-family:'Frank Ruhl Libre',Georgia,serif;font-size:16px}
+  .m .copy{background:none;border:1px solid #5E2328;color:#5E2328;font:400 11.5px 'Heebo',sans-serif;padding:6px 10px;border-radius:0;cursor:pointer}
+  .m .copy.done{background:#5E2328;color:#fff}
+  .m-list{padding:16px 14px 0}
+  .m-list > div{display:flex;justify-content:space-between;align-items:center;padding:11px 2px;border-bottom:1px solid #E6DFD5;font-family:'Frank Ruhl Libre',Georgia,serif;font-size:15px}
+  .m-list > div:first-child{border-top:1px solid #E6DFD5}
+  .m-list i{width:7px;height:7px;border-inline-end:1px solid #A6864F;border-bottom:1px solid #A6864F;transform:rotate(45deg) translateY(-2px)}
+  .stage{gap:18px}
+  .chat{display:flex;flex-direction:column;gap:22px;align-items:flex-start;width:220px;flex:none}
+  .bubble{position:relative;background:var(--surface);border-radius:18px;padding:11px 16px;font-size:15px;box-shadow:0 8px 20px -10px rgba(29,43,36,.35);opacity:0;animation:pop .5s ease forwards}
+  .bubble::after{content:"";position:absolute;bottom:-6px;inset-inline-start:18px;width:14px;height:14px;background:var(--surface);transform:rotate(45deg);border-radius:2px}
+  .b1{rotate:-3deg;animation-delay:.3s}
+  .b2{rotate:2deg;margin-inline-start:22px;animation-delay:.7s}
+  .b3{rotate:-2deg;animation-delay:1.1s}
+  .b4{rotate:3deg;margin-inline-start:34px;animation-delay:1.5s}
+  @keyframes pop{from{opacity:0;translate:0 10px}to{opacity:1;translate:0 0}}
+  @media (prefers-reduced-motion:reduce){.bubble{animation:none;opacity:1}}
+
+  /* Sections */
+  section{padding-block:72px}
+  h2{font-family:var(--head);font-weight:800;font-size:clamp(28px,3.6vw,42px);line-height:1.1;letter-spacing:-.02em;margin:0 0 36px;max-width:22ch;text-wrap:balance}
+  html[lang="he"] h2{letter-spacing:0}
+  .white{background:var(--surface)}
+
+  .includes{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 40px}
+  .inc h3{font-size:19px;font-weight:600;margin:0 0 6px;display:flex;align-items:center;gap:10px}
+  .inc h3::before{content:"";width:12px;height:12px;background:var(--marigold);border-radius:3px;flex:none}
+  .inc p{margin:0;color:var(--muted);max-width:34ch}
+
+  .cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+  .cmp-col{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px 24px}
+  .cmp-col h3{font-family:var(--head);font-size:21px;margin:0 0 18px;line-height:1.2}
+  .cmp-col dl{margin:0;display:grid;gap:14px}
+  .cmp-col dt{font-size:13px;color:var(--muted);margin:0}
+  .cmp-col dd{margin:2px 0 0;font-weight:500}
+  .cmp-col.us{background:var(--green-deep);border-color:var(--green-deep);color:#fff}
+  .cmp-col.us dt{color:rgba(255,255,255,.7)}
+  .cmp-col.us .big{color:var(--marigold);font-family:var(--head);font-size:26px;font-weight:800;line-height:1.1}
+  .cmp-lead{color:var(--muted);margin:-20px 0 32px;max-width:60ch}
+  @media (max-width:900px){ .cmp{grid-template-columns:1fr} }
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;counter-reset:s;list-style:none;padding:0;margin:0}
+  .steps li{counter-increment:s;border-top:3px solid var(--ink);padding-top:18px}
+  .steps li::before{content:counter(s);display:block;font-family:var(--head);font-weight:800;font-size:56px;line-height:1;color:var(--green);margin-bottom:12px}
+  .steps h3{font-size:20px;margin:0 0 6px}
+  .steps p{margin:0;color:var(--muted)}
+
+  .price{background:var(--green-deep);color:#fff;border-radius:28px;padding:48px;display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center}
+  .price h2{color:#fff;margin-bottom:10px}
+  .amount{font-family:var(--head);font-weight:800;font-size:clamp(64px,9vw,104px);line-height:1;color:var(--marigold);letter-spacing:-.03em}
+  .amount-sub{opacity:.85;margin-top:6px}
+  .price ul{list-style:none;padding:0;margin:0 0 26px;display:grid;gap:12px}
+  .price li{display:flex;gap:12px;align-items:flex-start}
+  .price li svg{flex:none;margin-top:4px}
+  .after{font-size:15px;opacity:.8;margin-top:16px}
+  .paybox{background:#fff;border-radius:16px;padding:18px 18px 10px;max-width:420px}
+  .pay-note{font-size:14px;color:var(--muted);margin:2px 0 12px}
+  .pay-msg{font-size:14px;color:var(--ink);margin:0 0 8px}
+  .agree{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink);margin:0 0 12px;cursor:pointer;line-height:1.45}
+  .agree input{width:18px;height:18px;margin:1px 0 0;flex:none;accent-color:var(--green)}
+  .agree a{color:var(--green);font-weight:600}
+  .agree.warn{color:#9b2c1f}
+  .legal-links{margin-top:6px;display:flex;gap:16px;flex-wrap:wrap}
+  .legal-links a{color:var(--muted)}
+
+  .about > div{max-width:720px}
+  .avatar{width:120px;height:120px;border-radius:50%;background:var(--marigold);display:grid;place-items:center;font-family:var(--head);font-weight:800;font-size:44px;color:var(--ink);overflow:hidden}
+  .avatar img{width:100%;height:100%;object-fit:cover}
+  .about h2{margin-bottom:10px}
+  .about p{margin:0 0 20px;color:var(--muted);max-width:56ch}
+
+  .faq > *{max-width:760px}
+  details{border-bottom:1px solid var(--line);padding-block:18px}
+  summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:24px;line-height:1;color:var(--green);transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{margin:10px 0 0;color:var(--muted);max-width:60ch}
+
+  .final{text-align:center}
+  .final h2{margin-inline:auto}
+  footer{padding-block:32px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;padding-top:16px}
+    .includes{grid-template-columns:1fr 1fr}
+    .price{grid-template-columns:1fr;padding:36px 28px}
+  }
+  @media (max-width:640px){
+    body{font-size:16px}
+    section{padding-block:56px}
+    .includes,.steps{grid-template-columns:1fr;gap:28px}
+    .phone{width:270px;height:560px}
+    .bubble{font-size:14px}
+    .stage{flex-direction:column;min-height:0}
+    .chat{width:100%;flex-direction:row;flex-wrap:wrap;gap:14px 10px;justify-content:center}
+    .b2,.b4{margin-inline-start:0}
+    .about{grid-template-columns:1fr}
+    .cta-row .btn{flex:1 1 100%}
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="bar">
+    <a class="brand" href="#">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="1" y="1" width="28" height="28" rx="8" fill="#2E5E4E"/><circle cx="12" cy="15" r="5" fill="none" stroke="#F2B632" stroke-width="3"/><path d="M17 15h8M22 15v4" stroke="#F2B632" stroke-width="3" stroke-linecap="round"/></svg>
+      Clave
+    </a>
+    <div class="bar-right">
+      <div class="lang" role="group" aria-label="Idioma">
+        <button data-lang="es" aria-pressed="true">ES</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+        <button data-lang="he" aria-pressed="false">עב</button>
+      </div>
+      <a class="btn btn-main btn-sm js-order" href="#" data-i18n="nav_cta">Pedir mi guía</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <h1 data-i18n="hero_h">Tus huéspedes preguntan siempre lo mismo. Respóndeles con un solo enlace.</h1>
+      <p class="lead" data-i18n="hero_p"></p>
+      <div class="cta-row">
+        <a class="btn btn-main js-order" href="#" data-i18n="cta_main">Quiero mi guía por US$49</a>
+        <a class="btn btn-ghost" href="demo.html" data-i18n="cta_demo">Ver una guía de ejemplo</a>
+      </div>
+      <p class="note" data-i18n="hero_note"></p>
+    </div>
+
+    <div class="stage" aria-hidden="false">
+      <div class="chat">
+        <div class="bubble b1" data-i18n="q1"></div>
+        <div class="bubble b2" data-i18n="q2"></div>
+        <div class="bubble b3" data-i18n="q3"></div>
+        <div class="bubble b4" data-i18n="q4"></div>
+      </div>
+      <div class="phone" role="img" aria-label="Ejemplo de guía en un celular">
+        <div class="screen m">
+          <div class="m-cover">
+            <div class="m-arch"><div class="m-arch-in">
+              <svg viewBox="0 0 70 86" aria-hidden="true" preserveAspectRatio="xMidYMax slice">
+                <g fill="none" stroke="#D8C39A" stroke-width=".8" opacity=".75"><path d="M35 86V46"/><path d="M35 66C27 60 21 56 14 47"/><path d="M35 56C43 51 48 46 55 38"/><path d="M35 48C31 40 29 34 29 28"/></g>
+                <g fill="#C9B6E4"><circle cx="14" cy="45" r="2.6"/><circle cx="10.5" cy="42" r="1.8"/><circle cx="17.5" cy="41.5" r="1.8"/><circle cx="55" cy="36" r="2.6"/><circle cx="59" cy="33" r="1.8"/><circle cx="52" cy="32" r="1.8"/><circle cx="29" cy="26" r="2.6"/><circle cx="25.5" cy="23" r="1.8"/><circle cx="32.5" cy="22.5" r="1.8"/><circle cx="42" cy="20" r="1.4"/></g>
+              </svg>
+            </div></div>
+            <div class="m-welcome" data-i18n="m_welcome">Bienvenidos a</div>
+            <div class="m-title">Casa Jacaranda</div>
+            <div class="m-place">Oaxaca, México</div>
+          </div>
+          <div class="m-card">
+            <div class="m-times">
+              <div><small data-i18n="m_ci">Check-in</small><strong data-i18n="m_ci_v">15:00</strong></div>
+              <div><small data-i18n="m_co">Check-out</small><strong data-i18n="m_co_v">11:00</strong></div>
+            </div>
+            <div class="m-wifi">
+              <div><small>Wifi</small><span>colibri2024</span></div>
+              <button class="copy" data-copy="colibri2024" data-i18n="copy">Copiar</button>
+            </div>
+          </div>
+          <div class="m-list">
+            <div><span data-i18n="m_l1">La casa</span><i></i></div>
+            <div><span data-i18n="m_l2">Normas de la casa</span><i></i></div>
+            <div><span data-i18n="m_l3">Recomendaciones</span><i></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="white">
+    <div class="wrap">
+      <h2 data-i18n="inc_h"></h2>
+      <div class="includes">
+        <div class="inc"><h3 data-i18n="i1t"></h3><p data-i18n="i1d"></p></div>
+        <div class="inc"><h3 data-i18n="i2t"></h3><p data-i18n="i2d"></p></div>
+        <div class="inc"><h3 data-i18n="i3t"></h3><p data-i18n="i3d"></p></div>
+        <div class="inc"><h3 data-i18n="i4t"></h3><p data-i18n="i4d"></p></div>
+        <div class="inc"><h3 data-i18n="i5t"></h3><p data-i18n="i5d"></p></div>
+        <div class="inc"><h3 data-i18n="i6t"></h3><p data-i18n="i6d"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="comparar">
+    <div class="wrap">
+      <h2 data-i18n="cmp_h"></h2>
+      <p class="cmp-lead" data-i18n="cmp_p"></p>
+      <div class="cmp">
+        <div class="cmp-col">
+          <h3 data-i18n="k1_h"></h3>
+          <dl>
+            <div><dt data-i18n="l_price"></dt><dd data-i18n="k1_price"></dd></div>
+            <div><dt data-i18n="l_time"></dt><dd data-i18n="k1_time"></dd></div>
+            <div><dt data-i18n="l_guest"></dt><dd data-i18n="k1_guest"></dd></div>
+            <div><dt data-i18n="l_lang"></dt><dd data-i18n="k1_lang"></dd></div>
+          </dl>
+        </div>
+        <div class="cmp-col">
+          <h3 data-i18n="k2_h"></h3>
+          <dl>
+            <div><dt data-i18n="l_price"></dt><dd data-i18n="k2_price"></dd></div>
+            <div><dt data-i18n="l_time"></dt><dd data-i18n="k2_time"></dd></div>
+            <div><dt data-i18n="l_guest"></dt><dd data-i18n="k2_guest"></dd></div>
+            <div><dt data-i18n="l_lang"></dt><dd data-i18n="k2_lang"></dd></div>
+          </dl>
+        </div>
+        <div class="cmp-col us">
+          <h3>Clave</h3>
+          <dl>
+            <div><dt data-i18n="l_price"></dt><dd class="big" data-i18n="k3_price"></dd></div>
+            <div><dt data-i18n="l_time"></dt><dd data-i18n="k3_time"></dd></div>
+            <div><dt data-i18n="l_guest"></dt><dd data-i18n="k3_guest"></dd></div>
+            <div><dt data-i18n="l_lang"></dt><dd data-i18n="k3_lang"></dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 data-i18n="how_h"></h2>
+      <ol class="steps">
+        <li><h3 data-i18n="s1t"></h3><p data-i18n="s1d"></p></li>
+        <li><h3 data-i18n="s2t"></h3><p data-i18n="s2d"></p></li>
+        <li><h3 data-i18n="s3t"></h3><p data-i18n="s3d"></p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="precio" style="padding-top:0">
+    <div class="wrap">
+      <div class="price">
+        <div>
+          <h2 data-i18n="pr_h"></h2>
+          <div class="amount">US$49</div>
+          <div class="amount-sub" data-i18n="pr_sub"></div>
+        </div>
+        <div>
+          <ul>
+            <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9.5l4 4 8-9" fill="none" stroke="#F2B632" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pl1"></span></li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9.5l4 4 8-9" fill="none" stroke="#F2B632" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pl2"></span></li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9.5l4 4 8-9" fill="none" stroke="#F2B632" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pl3"></span></li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9.5l4 4 8-9" fill="none" stroke="#F2B632" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pl4"></span></li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9.5l4 4 8-9" fill="none" stroke="#F2B632" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pl5"></span></li>
+          </ul>
+          <div class="paybox">
+            <p class="pay-note" data-i18n="pay_note"></p>
+            <label class="agree" id="agree-box"><input type="checkbox" id="agree"><span><span data-i18n="ag_pre"></span><a href="legal.html#terms" target="_blank" rel="noopener" data-i18n="ag_terms"></a><span data-i18n="ag_and"></span><a href="legal.html#privacy" target="_blank" rel="noopener" data-i18n="ag_priv"></a><span data-i18n="ag_end"></span></span></label>
+            <p class="pay-msg" id="pay-msg" hidden></p>
+            <div id="paypal-buttons"></div>
+          </div>
+          <p class="after" data-i18n="pr_after"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="white">
+    <div class="wrap about">
+      <div>
+        <h2 data-i18n="ab_h"></h2>
+        <p data-i18n="ab_p"></p>
+        <a class="btn btn-ghost" href="mailto:shasi.contact@gmail.com"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z M3 6l9 7 9-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>shasi.contact@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap faq">
+      <h2 data-i18n="faq_h"></h2>
+      <details><summary data-i18n="f1q"></summary><p data-i18n="f1a"></p></details>
+      <details><summary data-i18n="f2q"></summary><p data-i18n="f2a"></p></details>
+      <details><summary data-i18n="f3q"></summary><p data-i18n="f3a"></p></details>
+      <details><summary data-i18n="f4q"></summary><p data-i18n="f4a"></p></details>
+      <details><summary data-i18n="f5q"></summary><p data-i18n="f5a"></p></details>
+      <details><summary data-i18n="f6q"></summary><p data-i18n="f6a"></p></details>
+    </div>
+  </section>
+
+  <section class="white final">
+    <div class="wrap">
+      <h2 data-i18n="fin_h"></h2>
+      <div class="cta-row" style="justify-content:center">
+        <a class="btn btn-main js-order" href="#" data-i18n="cta_main"></a>
+        <a class="btn btn-ghost" href="demo.html" data-i18n="cta_demo"></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div data-i18n="foot"></div>
+    <div class="legal-links"><a href="legal.html#terms" data-i18n="ft_terms"></a><a href="legal.html#privacy" data-i18n="ft_priv"></a></div>
+  </div>
+</footer>
+
+<script>
+const PAYPAL_CLIENT_ID = "BAAO04SYyzsBApecwdKgSrHLHLBVbrwcb0ytgreA_xikIBc2iGXvk4aWPUem7tqsbyJFwE0tJSMCZOInSw"; // ← developer.paypal.com → Apps & Credentials → Live
+const PRICE = "49.00";
+const FORMS = {                                      // formularios de Tally por idioma
+  es: "https://tally.so/r/QoKXOg",
+  en: "https://tally.so/r/0VQlaZ",
+  he: "https://tally.so/r/RWGgkl"
+};
+
+const T = {
+es:{
+  nav_cta:"Pedir mi guía",
+  hero_h:"Tus huéspedes preguntan siempre lo mismo. Respóndeles con un solo enlace.",
+  hero_p:"Armo la guía de tu alojamiento (wifi, llegada, reglas de la casa, recomendaciones) en una página que se abre en cualquier celular. Tú me mandas los datos; en 24 horas tienes tu enlace listo para compartir.",
+  cta_main:"Quiero mi guía por US$49",
+  cta_demo:"Ver guías de ejemplo",
+  hero_note:"Pago único. Cambios incluidos durante la primera semana.",
+  q1:"¿Cuál es la clave del wifi?", q2:"¿A qué hora puedo llegar?", q3:"¿Dónde dejo el coche?", q4:"¿Y la basura?",
+  copy:"Copiar", copied:"Copiado",
+  m_welcome:"Bienvenidos a", m_ci:"Check-in", m_ci_v:"15:00", m_co:"Check-out", m_co_v:"11:00", m_l1:"La casa", m_l2:"Normas de la casa", m_l3:"Recomendaciones",
+  inc_h:"Todo lo que hoy explicas por WhatsApp, en un solo lugar",
+  i1t:"Wifi con botón para copiar", i1d:"La clave se copia con un toque. Nadie la escribe mal.",
+  i2t:"Instrucciones de la casa", i2d:"Agua caliente, aire acondicionado, cocina y lavadora, explicados una sola vez.",
+  i3t:"Reglas de la casa", i3d:"Ruido, mascotas, basura y visitas. Claras desde antes de llegar.",
+  i4t:"Tus recomendaciones", i4d:"Tus lugares favoritos, cada uno con una frase de por qué vale la pena.",
+  i5t:"En el idioma del huésped", i5d:"Elige entre 20 idiomas. Tus huéspedes cambian con un toque.",
+  i6t:"Salida sin dudas", i6d:"Qué hacer con las llaves, las toallas y la basura al irse.",
+  cmp_h:"Mensajes, apps o una guía hecha para ti",
+  cmp_p:"Las apps de guías cobran cada año y tú tienes que armarlo todo. Aquí pagas una vez y yo me encargo.",
+  l_price:"Precio", l_time:"Tu trabajo", l_guest:"Para el huésped", l_lang:"Idiomas",
+  k1_h:"Mensajes de WhatsApp", k1_price:"Gratis", k1_time:"Responder lo mismo en cada reserva", k1_guest:"Información repartida en muchos mensajes", k1_lang:"Solo los que tú escribas",
+  k2_h:"Apps de guías por suscripción", k2_price:"Desde unos US$100 al año", k2_time:"Armar la guía tú mismo en su plataforma", k2_guest:"Todo en un lugar", k2_lang:"Según el plan",
+  k3_price:"US$49, un solo pago", k3_time:"Un formulario de 5 minutos", k3_guest:"Todo en un enlace, con el wifi a un toque", k3_lang:"20 idiomas a elegir",
+  how_h:"Cómo funciona",
+  s1t:"Me cuentas de tu alojamiento", s1d:"Llenas unos campos cortos o simplemente pegas los mensajes de WhatsApp que ya les mandas a tus huéspedes.",
+  s2t:"Yo me encargo del resto", s2d:"Ordeno la información, la traduzco y la pongo en el diseño que elijas. Tú no haces nada más.",
+  s3t:"Recibes tu enlace", s3d:"En menos de 24 horas. Lo pegas en tu mensaje de bienvenida de Airbnb y listo.",
+  pr_h:"Un precio, sin mensualidades", pr_sub:"Pago único",
+  pl1:"En línea garantizado durante al menos un año",
+  pl2:"Varios estilos de diseño a elegir",
+  pl3:"Lista en menos de 24 horas",
+  pl4:"Elige entre 20 idiomas",
+  pl5:"Cambios a pedido durante la primera semana",
+  pr_after:"Puedes pedir cambios durante la primera semana después de la compra.",
+  ag_pre:"He leído y acepto los ", ag_terms:"Términos", ag_and:" y la ", ag_priv:"Política de privacidad", ag_end:".", ag_need:"Para continuar, marca la casilla de Términos y privacidad.",
+  f6q:"¿Hay reembolsos?", f6a:"Si cancelas antes de enviar el formulario, o si no puedo entregar tu guía, te devuelvo todo. Como cada guía se hace a la medida, una vez entregada no es reembolsable; para eso están los cambios gratis de la primera semana.",
+  ft_terms:"Términos", ft_priv:"Privacidad",
+  pay_note:"Paga con PayPal o con tarjeta. Al terminar pasas directo al formulario de tu alojamiento.", pay_soon:"El pago estará disponible muy pronto. Escríbeme a shasi.contact@gmail.com.", pay_err:"No se pudo completar el pago. Intenta de nuevo o escríbeme.", pay_redirect:"¡Pago recibido! Abriendo el formulario…",
+  ab_h:"Sobre mí",
+  ab_p:"Construyo sitios web y le hago la vida más fácil a los anfitriones. Armo cada guía personalmente, con tus datos, para que tus huéspedes tengan todo a mano y tú dejes de contestar lo mismo una y otra vez. ¿Tienes dudas antes de pedir? Escríbeme.",
+  ab_btn:"Escribir por WhatsApp",
+  faq_h:"Preguntas frecuentes",
+  f1q:"¿Necesito saber de tecnología?", f1a:"No. Solo llenas un formulario desde el celular. Yo me encargo del resto.",
+  f2q:"¿Puedo hacer cambios después?", f2a:"Sí, durante la primera semana después de la compra. Escríbeme y los hago.",
+  f3q:"¿Mis huéspedes tienen que descargar algo?", f3a:"No. Es una página web normal. Se abre con un toque desde WhatsApp, Airbnb o el correo.",
+  f4q:"¿Cuánto tiempo estará en línea?", f4a:"Garantizo que tu guía esté en línea al menos un año, sin pagos adicionales. Después puede seguir funcionando, pero ya sin garantía.",
+  f5q:"¿Y si tengo varios alojamientos?", f5a:"Cada alojamiento tiene su propia guía. Escríbeme y te hago un precio por varias.",
+  fin_h:"Ten tu guía lista antes de tu próxima reserva",
+  foot:"Clave. Guías digitales para alojamientos. shasi.contact@gmail.com"
+},
+en:{
+  nav_cta:"Order my guide",
+  hero_h:"Your guests keep asking the same things. Answer them all with one link.",
+  hero_p:"I build your rental's guide (wifi, check-in, house rules, local tips) as a page that opens on any phone. You send me the details; within 24 hours you have a link ready to share.",
+  cta_main:"Get my guide for US$49",
+  cta_demo:"See example guides",
+  hero_note:"One payment. Changes included during the first week.",
+  q1:"What's the wifi password?", q2:"What time can we check in?", q3:"Where do we park?", q4:"What about the trash?",
+  copy:"Copy", copied:"Copied",
+  m_welcome:"Welcome to", m_ci:"Check-in", m_ci_v:"3:00 pm", m_co:"Check-out", m_co_v:"11:00 am", m_l1:"The house", m_l2:"House rules", m_l3:"Recommendations",
+  inc_h:"Everything you now explain over WhatsApp, in one place",
+  i1t:"Wifi with a copy button", i1d:"The password copies in one tap. No more typos.",
+  i2t:"House instructions", i2d:"Hot water, air conditioning, kitchen and laundry, explained once.",
+  i3t:"House rules", i3d:"Noise, pets, trash and visitors. Clear before guests arrive.",
+  i4t:"Your local tips", i4d:"Your favorite spots, each with a line on why it's worth it.",
+  i5t:"In your guest's language", i5d:"Choose from 20 languages. Guests switch with one tap.",
+  i6t:"A clear checkout", i6d:"What to do with keys, towels and trash when leaving.",
+  cmp_h:"Messages, apps, or a guide made for you",
+  cmp_p:"Guidebook apps charge every year, and you still build everything yourself. Here you pay once and I do the work.",
+  l_price:"Price", l_time:"Your work", l_guest:"For your guests", l_lang:"Languages",
+  k1_h:"WhatsApp messages", k1_price:"Free", k1_time:"Answering the same questions for every booking", k1_guest:"Information scattered across many messages", k1_lang:"Only the ones you write",
+  k2_h:"Subscription guidebook apps", k2_price:"From about US$100 a year", k2_time:"Building the guide yourself on their platform", k2_guest:"Everything in one place", k2_lang:"Depends on the plan",
+  k3_price:"US$49, one payment", k3_time:"A 5-minute form", k3_guest:"Everything in one link, with the wifi one tap away", k3_lang:"20 languages to choose from",
+  how_h:"How it works",
+  s1t:"Tell me about your place", s1d:"Fill in a few short fields, or just paste the WhatsApp messages you already send your guests.",
+  s2t:"I take care of the rest", s2d:"I organize it, translate it and put it in the design you choose. Nothing else for you to do.",
+  s3t:"Get your link", s3d:"In under 24 hours. Paste it into your Airbnb welcome message and you're done.",
+  pr_h:"One price, no monthly fees", pr_sub:"One-time payment",
+  pl1:"Online guaranteed for at least one year",
+  pl2:"Several design styles to choose from",
+  pl3:"Ready in under 24 hours",
+  pl4:"Choose from 20 languages",
+  pl5:"Change requests during the first week",
+  pr_after:"You can request changes during the first week after purchase.",
+  ag_pre:"I have read and agree to the ", ag_terms:"Terms", ag_and:" and ", ag_priv:"Privacy Policy", ag_end:".", ag_need:"To continue, tick the Terms and privacy box.",
+  f6q:"Are there refunds?", f6a:"If you cancel before submitting the form, or if I can't deliver your guide, you get everything back. Since each guide is custom-made, it isn't refundable once delivered; that's what the free first-week changes are for.",
+  ft_terms:"Terms", ft_priv:"Privacy",
+  pay_note:"Pay with PayPal or a card. When you're done, you go straight to your property form.", pay_soon:"Payment will be available very soon. Write to shasi.contact@gmail.com.", pay_err:"The payment didn't go through. Please try again or write to me.", pay_redirect:"Payment received! Opening the form…",
+  ab_h:"A bit about me",
+  ab_p:"I build websites and make life easier for hosts. I put together every guide personally, with your details, so your guests have everything at hand and you stop answering the same questions over and over. Questions before ordering? Write to me.",
+  ab_btn:"Message on WhatsApp",
+  faq_h:"Questions",
+  f1q:"Do I need any tech skills?", f1a:"No. You just fill in a form from your phone. I handle the rest.",
+  f2q:"Can I make changes later?", f2a:"Yes, during the first week after purchase. Just message me and I'll make them.",
+  f3q:"Do guests need to download anything?", f3a:"No. It's a regular web page. It opens with one tap from WhatsApp, Airbnb or email.",
+  f4q:"How long will it stay online?", f4a:"I guarantee your guide stays online for at least one year, with no extra payments. After that it may keep working, but without a guarantee.",
+  f5q:"What if I have several listings?", f5a:"Each listing gets its own guide. Message me for a multi-listing price.",
+  fin_h:"Have your guide ready before your next booking",
+  foot:"Clave. Digital guides for vacation rentals. shasi.contact@gmail.com"
+},
+he:{
+  nav_cta:"להזמנת מדריך",
+  hero_h:"האורחים שלך שואלים שוב ושוב את אותן שאלות. תענה להם בלינק אחד.",
+  hero_p:"אני בונה את מדריך הנכס שלך (וויי־פיי, הגעה, חוקי הבית והמלצות) בדף אחד שנפתח בכל טלפון. אתה שולח לי את הפרטים, ותוך 24 שעות יש לך לינק מוכן לשיתוף.",
+  cta_main:"אני רוצה מדריך ב־49$",
+  cta_demo:"לצפייה במדריכים לדוגמה",
+  hero_note:"תשלום אחד. שינויים כלולים בשבוע הראשון.",
+  q1:"מה הסיסמה של הוויי־פיי?", q2:"מאיזו שעה אפשר להגיע?", q3:"איפה מחנים?", q4:"ומה עם הזבל?",
+  copy:"העתקה", copied:"הועתק",
+  m_welcome:"ברוכים הבאים ל", m_ci:"צ'ק־אין", m_ci_v:"15:00", m_co:"צ'ק־אאוט", m_co_v:"11:00", m_l1:"הבית", m_l2:"חוקי הבית", m_l3:"המלצות",
+  inc_h:"כל מה שאתה מסביר היום בוואטסאפ, במקום אחד",
+  i1t:"וויי־פיי עם כפתור העתקה", i1d:"הסיסמה מועתקת בנגיעה. אף אחד לא טועה בהקלדה.",
+  i2t:"הוראות לבית", i2d:"מים חמים, מזגן, מטבח וכביסה, מוסברים פעם אחת.",
+  i3t:"חוקי הבית", i3d:"רעש, חיות, זבל ואורחים. ברור עוד לפני ההגעה.",
+  i4t:"ההמלצות שלך", i4d:"המקומות האהובים עליך, כל אחד עם משפט למה שווה ללכת.",
+  i5t:"בשפה של האורח", i5d:"בחירה מתוך 20 שפות. האורחים מחליפים בנגיעה.",
+  i6t:"יציאה בלי שאלות", i6d:"מה עושים עם המפתחות, המגבות והזבל ביציאה.",
+  cmp_h:"הודעות, אפליקציות, או מדריך שבונים בשבילך",
+  cmp_p:"אפליקציות המדריכים גובות כל שנה, ואת הכל אתה עדיין בונה לבד. כאן משלמים פעם אחת, ואני עושה את העבודה.",
+  l_price:"מחיר", l_time:"העבודה שלך", l_guest:"בשביל האורחים", l_lang:"שפות",
+  k1_h:"הודעות וואטסאפ", k1_price:"חינם", k1_time:"לענות על אותן שאלות בכל הזמנה", k1_guest:"מידע מפוזר בהרבה הודעות", k1_lang:"רק מה שאתה כותב",
+  k2_h:"אפליקציות מדריכים במנוי", k2_price:"החל מכ־100$ לשנה", k2_time:"לבנות את המדריך בעצמך בפלטפורמה שלהם", k2_guest:"הכל במקום אחד", k2_lang:"תלוי בחבילה",
+  k3_price:"49$, תשלום אחד", k3_time:"טופס של 5 דקות", k3_guest:"הכל בלינק אחד, עם הוויי־פיי בנגיעה", k3_lang:"20 שפות לבחירה",
+  how_h:"איך זה עובד",
+  s1t:"מספרים לי על הנכס", s1d:"ממלאים כמה שדות קצרים, או פשוט מדביקים את הודעות הוואטסאפ שאתה כבר שולח לאורחים.",
+  s2t:"אני דואג לכל השאר", s2d:"מסדר את המידע, מתרגם ומעצב בסגנון שבחרת. אתה לא צריך לעשות שום דבר נוסף.",
+  s3t:"מקבלים לינק", s3d:"תוך פחות מ־24 שעות. מדביקים בהודעת הפתיחה באיירביאנבי, וזהו.",
+  pr_h:"מחיר אחד, בלי תשלום חודשי", pr_sub:"תשלום חד־פעמי",
+  pl1:"באוויר באחריות לפחות שנה",
+  pl2:"כמה סגנונות עיצוב לבחירה",
+  pl3:"מוכן תוך פחות מ־24 שעות",
+  pl4:"בחירה מתוך 20 שפות",
+  pl5:"בקשות לשינויים בשבוע הראשון",
+  pr_after:"אפשר לבקש שינויים במהלך השבוע הראשון מהרכישה.",
+  ag_pre:"קראתי ואני מסכים/ה ל", ag_terms:"תנאי השימוש", ag_and:" ול", ag_priv:"מדיניות הפרטיות", ag_end:".", ag_need:"כדי להמשיך, יש לסמן את תיבת התנאים והפרטיות.",
+  f6q:"יש החזר כספי?", f6a:"אם מבטלים לפני שליחת הטופס, או אם לא אצליח למסור את המדריך, מקבלים הכל בחזרה. מאחר שכל מדריך מוכן במיוחד, אחרי המסירה אין החזר; בשביל זה יש שינויים חינם בשבוע הראשון.",
+  ft_terms:"תנאי שימוש", ft_priv:"פרטיות",
+  pay_note:"תשלום בפייפאל או בכרטיס אשראי. בסיום עוברים ישר לטופס פרטי הנכס.", pay_soon:"התשלום יהיה זמין בקרוב. כתבו לי: shasi.contact@gmail.com", pay_err:"התשלום לא הושלם. נסו שוב או כתבו לי.", pay_redirect:"התשלום התקבל! פותח את הטופס…",
+  ab_h:"קצת עליי",
+  ab_p:"אני בונה אתרים ומקל על החיים של מארחים. כל מדריך אני מכין בעצמי, עם הפרטים שלך, כדי שלאורחים יהיה הכל בהישג יד ואתה תפסיק לענות על אותן שאלות שוב ושוב. יש שאלה לפני שמזמינים? כתוב לי.",
+  ab_btn:"לכתוב בוואטסאפ",
+  faq_h:"שאלות נפוצות",
+  f1q:"צריך לדעת משהו טכני?", f1a:"לא. ממלאים טופס מהטלפון, ואני דואג לכל השאר.",
+  f2q:"אפשר לעשות שינויים אחר כך?", f2a:"כן, במהלך השבוע הראשון מהרכישה. כותבים לי ואני מעדכן.",
+  f3q:"האורחים צריכים להוריד אפליקציה?", f3a:"לא. זה דף אינטרנט רגיל, שנפתח בנגיעה מוואטסאפ, מאיירביאנבי או מהמייל.",
+  f4q:"כמה זמן המדריך יהיה באוויר?", f4a:"אני מתחייב שהמדריך יהיה באוויר לפחות שנה, בלי תשלומים נוספים. אחר כך הוא עשוי להמשיך לעבוד, אבל ללא אחריות.",
+  f5q:"ויש לי כמה נכסים?", f5a:"לכל נכס מדריך משלו. כתוב לי ונסגור מחיר לכמה נכסים.",
+  fin_h:"שיהיה לך מדריך מוכן לפני ההזמנה הבאה",
+  foot:"Clave. מדריכים דיגיטליים לנכסי אירוח. shasi.contact@gmail.com"
+}};
+
+let current = "es";
+function setLang(l){
+  current = l;
+  const d = T[l];
+  document.documentElement.lang = l;
+  document.documentElement.dir = l === "he" ? "rtl" : "ltr";
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k = el.dataset.i18n;
+    if (d[k] !== undefined) el.textContent = d[k];
+  });
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang === l));
+  try { localStorage.setItem("clave-lang", l); } catch(e){}
+}
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+
+document.querySelectorAll(".js-order").forEach(a=>a.href = "#precio");
+
+/* ===== PayPal: pago y luego directo al formulario ===== */
+function payMsg(key){ const el=document.getElementById("pay-msg"); el.textContent=T[current][key]; el.hidden=false; }
+function loadPayPal(){
+  if(!PAYPAL_CLIENT_ID || PAYPAL_CLIENT_ID.startsWith("YOUR_")){ payMsg("pay_soon"); return; }
+  const sc=document.createElement("script");
+  sc.src="https://www.paypal.com/sdk/js?client-id="+encodeURIComponent(PAYPAL_CLIENT_ID)+"&currency=USD&intent=capture&components=buttons&enable-funding=card&disable-funding=venmo";
+  sc.onload=()=>{
+    paypal.Buttons({
+      style:{ layout:"vertical", shape:"rect", label:"pay" },
+      onInit:(data,actions)=>{
+        const cb=document.getElementById("agree");
+        const sync=()=>{ if(cb.checked){ actions.enable(); document.getElementById("agree-box").classList.remove("warn"); document.getElementById("pay-msg").hidden=true; } else actions.disable(); };
+        sync(); cb.addEventListener("change", sync);
+      },
+      onClick:()=>{
+        if(!document.getElementById("agree").checked){ document.getElementById("agree-box").classList.add("warn"); payMsg("ag_need"); }
+      },
+      createOrder:(data,actions)=>actions.order.create({
+        purchase_units:[{ amount:{ value:PRICE, currency_code:"USD" }, description:"Clave: guía digital / digital guide" }]
+      }),
+      onApprove:(data,actions)=>actions.order.capture().then(order=>{
+        payMsg("pay_redirect");
+        const email=(order.payer && order.payer.email_address) || "";
+        location.href = FORMS[current] + "?order=" + encodeURIComponent(order.id) + "&paypal_email=" + encodeURIComponent(email);
+      }),
+      onError:()=>payMsg("pay_err")
+    }).render("#paypal-buttons");
+  };
+  sc.onerror=()=>payMsg("pay_err");
+  document.head.appendChild(sc);
+}
+
+document.querySelectorAll(".copy").forEach(btn=>btn.addEventListener("click", async ()=>{
+  try { await navigator.clipboard.writeText(btn.dataset.copy); } catch(e){}
+  btn.textContent = T[current].copied; btn.classList.add("done");
+  setTimeout(()=>{ btn.textContent = T[current].copy; btn.classList.remove("done"); }, 1600);
+}));
+
+let saved = null;
+try { saved = localStorage.getItem("clave-lang"); } catch(e){}
+setLang(saved && T[saved] ? saved : "es");
+loadPayPal();
+</script>
+</body>
+</html>

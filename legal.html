@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clave · Términos y privacidad</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EDEFEA; --surface:#FFFFFF; --ink:#1D2B24; --muted:#56625B;
+    --green:#2E5E4E; --marigold:#F2B632; --line:#CFD5CC;
+    --head:'Bricolage Grotesque','Rubik',system-ui,sans-serif;
+    --body:'Rubik',system-ui,sans-serif;
+  }
+  html[lang="he"]{ --head:'Rubik',system-ui,sans-serif; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:var(--green)}
+  .wrap{max-width:780px;margin-inline:auto;padding-inline:20px}
+  :focus-visible{outline:3px solid var(--marigold);outline-offset:3px;border-radius:6px}
+  header{padding-block:18px}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{font-family:var(--head);font-weight:800;font-size:22px;text-decoration:none;color:var(--ink)}
+  .lang{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px}
+  .lang button{border:0;background:none;font:500 14px var(--body);color:var(--muted);padding:6px 11px;border-radius:999px;cursor:pointer}
+  .lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+  .toc{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 28px}
+  .toc a{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 14px;text-decoration:none;color:var(--ink);font-weight:500;font-size:15px}
+  article{background:var(--surface);border-radius:20px;padding:36px 32px;margin-bottom:24px}
+  h1{font-family:var(--head);font-weight:800;font-size:clamp(28px,5vw,40px);line-height:1.1;margin:18px 0 6px;letter-spacing:-.02em}
+  html[lang="he"] h1{letter-spacing:0}
+  h2{font-family:var(--head);font-weight:800;font-size:26px;margin:0 0 4px;letter-spacing:-.01em}
+  html[lang="he"] h2{letter-spacing:0}
+  h3{font-size:17px;font-weight:600;margin:26px 0 6px}
+  p{margin:0 0 10px;color:#2f3c35}
+  .upd{color:var(--muted);font-size:14px;margin-bottom:18px}
+  footer{padding-block:28px;color:var(--muted);font-size:14px}
+  @media (max-width:560px){ article{padding:26px 20px} }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="index.html">Clave</a>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button data-lang="es">ES</button><button data-lang="en">EN</button><button data-lang="he">עב</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1 id="title"></h1>
+  <nav class="toc"><a href="#terms" id="toc-t"></a><a href="#privacy" id="toc-p"></a></nav>
+  <article id="terms"></article>
+  <article id="privacy"></article>
+</main>
+
+<footer><div class="wrap"><a href="index.html" id="back"></a> · shasi.contact@gmail.com</div></footer>
+
+<script>
+const EMAIL = "shasi.contact@gmail.com";
+const L = {
+es:{
+  title:"Términos y privacidad", back:"Volver al inicio", upd:"Última actualización: 23 de octubre de 2026",
+  terms:{ h:"Términos de servicio", s:[
+    ["1. Quién presta el servicio","Clave es un servicio operado por un trabajador independiente registrado en Israel. Para cualquier consulta puedes escribir a "+EMAIL+". Al pagar el servicio aceptas estos términos."],
+    ["2. Qué compras","Un pago único de US$49 por una guía digital para un (1) alojamiento: una página web que preparo a partir de la información que me envías en el formulario, publicada en un enlace para compartir con tus huéspedes. El servicio está pensado para anfitriones que lo usan como parte de su actividad de alojamiento."],
+    ["3. Entrega","Después del pago completas el formulario. Normalmente entrego el enlace en menos de 24 horas desde que recibo el formulario completo. Si hay un retraso, te aviso por correo. Si falta información, te escribo y el plazo corre desde que la recibo."],
+    ["4. Tu información","Tú eres responsable de que la información que envías sea correcta, esté actualizada y de que tengas derecho a usarla. No incluyas códigos de acceso, contraseñas privadas ni datos personales de huéspedes: la guía es una página pública que puede ver cualquier persona con el enlace. Yo organizo, traduzco y presento tu información, pero no verifico su exactitud. Puedo rechazar o quitar contenido ilegal, ofensivo o que infrinja derechos de terceros."],
+    ["5. Cambios","Durante los primeros 7 días desde la compra puedes pedir cambios por correo y los hago sin costo. Después de ese plazo, los cambios no están incluidos."],
+    ["6. Cancelaciones y reembolsos","Si cancelas antes de enviar el formulario, te devuelvo el pago completo. Si por cualquier motivo no puedo entregar la guía, te devuelvo el pago completo. Como la guía se hace a la medida con tu información, una vez entregada no es reembolsable, salvo en los casos en que la ley aplicable exija lo contrario. Si algo no está bien, escríbeme primero: casi todo se resuelve con un cambio. Te pido contactarme antes de abrir una disputa en PayPal."],
+    ["7. Pagos","Los pagos se procesan a través de PayPal. Yo no recibo ni guardo los datos de tu tarjeta. El precio está en dólares estadounidenses; tu banco puede cobrar comisiones de conversión."],
+    ["8. Tiempo en línea","Garantizo que la guía estará en línea durante al menos 12 meses desde la entrega. Pueden ocurrir interrupciones breves por mantenimiento o fallas de proveedores de alojamiento web; en ese caso la restablezco lo antes posible. Después de 12 meses la guía puede seguir funcionando, pero sin garantía."],
+    ["9. Propiedad","El texto que me enviaste sigue siendo tuyo. El diseño, las ilustraciones y el código de la guía son de Clave; recibes una licencia para usar la guía con tus huéspedes. Puedo mostrar tu guía como ejemplo solo si me das permiso."],
+    ["10. Límite de responsabilidad","El servicio se ofrece \"tal cual\". No soy responsable del contenido que proporcionas, de las acciones de tus huéspedes, de reseñas, reservas perdidas ni de daños indirectos. En cualquier caso, mi responsabilidad total se limita al monto que pagaste por el servicio. Nada en estos términos limita derechos que la ley no permita limitar."],
+    ["11. Sin relación con plataformas","Clave no está afiliado ni respaldado por Airbnb, Booking ni ninguna otra plataforma. Sus nombres son marcas de sus respectivos dueños."],
+    ["12. Ley aplicable","Estos términos se rigen por las leyes del Estado de Israel, y los tribunales competentes de Israel tienen jurisdicción, sin perjuicio de los derechos que te otorgue la ley obligatoria de tu país. Puedo actualizar estos términos; la versión vigente al momento de tu compra es la que aplica a tu pedido."]
+  ]},
+  privacy:{ h:"Política de privacidad", s:[
+    ["Qué datos recibo","De PayPal: tu nombre, correo y número de pedido (nunca los datos de tu tarjeta). Del formulario: tu nombre, correo, número de WhatsApp y la información del alojamiento que decides compartir."],
+    ["Para qué los uso","Solo para preparar, publicar y mantener tu guía, comunicarme contigo sobre tu pedido y cumplir obligaciones contables y legales. No vendo tus datos ni los uso para publicidad."],
+    ["Qué se publica","La guía es una página pública. Lo que pongas en ella, incluido el número de WhatsApp para el botón de contacto, lo podrá ver cualquier persona que tenga el enlace."],
+    ["Con quién se comparten","Uso proveedores para operar el servicio: PayPal (pagos), Tally (formulario), un proveedor de alojamiento web (para publicar la guía), Google (correo) y herramientas de redacción y traducción, incluida inteligencia artificial. Cada uno trata los datos según sus propias políticas. Algunos pueden estar fuera de tu país."],
+    ["Cookies","Esta página solo guarda en tu navegador el idioma que elegiste. Al pagar, PayPal puede usar sus propias cookies. Las fuentes se cargan desde Google Fonts. Las guías no tienen analítica ni seguimiento de huéspedes."],
+    ["Cuánto tiempo los guardo","Mientras tu guía esté en línea y después, solo lo necesario para registros contables y legales."],
+    ["Tus derechos","Puedes pedirme ver, corregir o borrar tus datos escribiendo a "+EMAIL+". Borrar los datos implica dar de baja la guía."],
+    ["Seguridad","Tomo medidas razonables para proteger tus datos, pero ningún sistema en internet es 100% seguro."],
+    ["Edad","El servicio es solo para mayores de 18 años."]
+  ]}
+},
+en:{
+  title:"Terms & privacy", back:"Back to home", upd:"Last updated: October 23, 2026",
+  terms:{ h:"Terms of service", s:[
+    ["1. Who provides the service","Clave is a service run by a sole proprietor registered in Israel. You can reach me at "+EMAIL+". By paying for the service you accept these terms."],
+    ["2. What you are buying","A one-time payment of US$49 for a digital guide for one (1) property: a web page I prepare from the information you send in the form, published at a link you can share with your guests. The service is meant for hosts using it as part of their hosting activity."],
+    ["3. Delivery","After paying, you fill in the form. I usually deliver the link in under 24 hours from receiving the complete form. If there's a delay, I'll let you know by email. If information is missing, I'll write to you and the time runs from when I receive it."],
+    ["4. Your information","You are responsible for the information you send being accurate, up to date, and yours to use. Don't include access codes, private passwords or personal data about guests: the guide is a public page anyone with the link can see. I organize, translate and present your information, but I don't verify its accuracy. I may refuse or remove content that is illegal, offensive or infringes others' rights."],
+    ["5. Changes","For the first 7 days after purchase you can request changes by email, free of charge. After that, changes are not included."],
+    ["6. Cancellations and refunds","If you cancel before submitting the form, you get a full refund. If for any reason I can't deliver the guide, you get a full refund. Because the guide is custom-made from your information, it is not refundable once delivered, except where applicable law requires otherwise. If something isn't right, please write to me first: almost everything can be fixed with a change. Please contact me before opening a PayPal dispute."],
+    ["7. Payments","Payments are processed by PayPal. I never receive or store your card details. Prices are in US dollars; your bank may charge conversion fees."],
+    ["8. Time online","I guarantee the guide will be online for at least 12 months from delivery. Brief interruptions may happen due to maintenance or hosting provider outages; if so, I'll restore it as soon as possible. After 12 months the guide may keep working, but without a guarantee."],
+    ["9. Ownership","The text you sent remains yours. The guide's design, illustrations and code belong to Clave; you receive a license to use the guide with your guests. I'll show your guide as an example only with your permission."],
+    ["10. Limitation of liability","The service is provided \"as is\". I am not responsible for the content you provide, your guests' actions, reviews, lost bookings or indirect damages. In any case, my total liability is limited to the amount you paid for the service. Nothing in these terms limits rights that the law does not allow to be limited."],
+    ["11. No platform affiliation","Clave is not affiliated with or endorsed by Airbnb, Booking or any other platform. Their names are trademarks of their respective owners."],
+    ["12. Governing law","These terms are governed by the laws of the State of Israel, and the competent courts of Israel have jurisdiction, without prejudice to any rights granted by the mandatory law of your country. I may update these terms; the version in force when you purchased applies to your order."]
+  ]},
+  privacy:{ h:"Privacy policy", s:[
+    ["What I receive","From PayPal: your name, email and order number (never your card details). From the form: your name, email, WhatsApp number and the property information you choose to share."],
+    ["What I use it for","Only to prepare, publish and maintain your guide, contact you about your order, and meet accounting and legal obligations. I don't sell your data or use it for advertising."],
+    ["What gets published","The guide is a public page. Anything in it, including the WhatsApp number for the contact button, can be seen by anyone with the link."],
+    ["Who it's shared with","I use providers to run the service: PayPal (payments), Tally (form), a web hosting provider (to publish the guide), Google (email) and writing and translation tools, including AI. Each handles data under its own policies. Some may be outside your country."],
+    ["Cookies","This site only stores your chosen language in your browser. When you pay, PayPal may use its own cookies. Fonts load from Google Fonts. Guides have no analytics or guest tracking."],
+    ["How long I keep it","While your guide is online and afterwards only as needed for accounting and legal records."],
+    ["Your rights","You can ask me to access, correct or delete your data by writing to "+EMAIL+". Deleting your data means taking the guide offline."],
+    ["Security","I take reasonable measures to protect your data, but no system on the internet is 100% secure."],
+    ["Age","The service is for people 18 and older."]
+  ]}
+},
+he:{
+  title:"תנאי שימוש ופרטיות", back:"חזרה לדף הבית", upd:"עדכון אחרון: 23 באוקטובר 2026",
+  terms:{ h:"תנאי שימוש", s:[
+    ["1. מי נותן את השירות","Clave הוא שירות שמופעל על ידי עוסק רשום בישראל. אפשר לפנות אליי בכתובת "+EMAIL+". תשלום על השירות מהווה הסכמה לתנאים האלה."],
+    ["2. מה קונים","תשלום חד־פעמי של 49 דולר עבור מדריך דיגיטלי לנכס אחד: דף אינטרנט שאני מכין לפי המידע ששלחת בטופס, ומפורסם בלינק שאפשר לשתף עם האורחים. השירות מיועד למארחים שמשתמשים בו במסגרת פעילות האירוח שלהם."],
+    ["3. מסירה","אחרי התשלום ממלאים את הטופס. בדרך כלל אני מוסר את הלינק תוך פחות מ־24 שעות מקבלת טופס מלא. אם יש עיכוב, אעדכן במייל. אם חסר מידע, אפנה אליך והזמן נספר מהרגע שקיבלתי אותו."],
+    ["4. המידע שלך","האחריות לכך שהמידע ששלחת נכון, מעודכן ושיש לך זכות להשתמש בו היא שלך. אין לכלול קודי כניסה, סיסמאות פרטיות או מידע אישי על אורחים: המדריך הוא דף ציבורי שכל מי שיש לו את הלינק יכול לראות. אני מסדר, מתרגם ומציג את המידע שלך, אבל לא בודק את נכונותו. אני רשאי לסרב לתוכן או להסיר תוכן בלתי חוקי, פוגעני או כזה שמפר זכויות של אחרים."],
+    ["5. שינויים","במהלך 7 הימים הראשונים מהרכישה אפשר לבקש שינויים במייל, ללא עלות. אחרי התקופה הזו שינויים לא כלולים."],
+    ["6. ביטולים והחזרים","ביטול לפני שליחת הטופס: החזר מלא. אם מכל סיבה שהיא לא אוכל למסור את המדריך: החזר מלא. מאחר שהמדריך מוכן במיוחד לפי המידע שלך, אחרי המסירה אין החזר כספי, למעט במקרים שבהם הדין החל מחייב אחרת. אם משהו לא בסדר, כתוב לי קודם: כמעט הכל נפתר בשינוי. אבקש לפנות אליי לפני פתיחת מחלוקת בפייפאל."],
+    ["7. תשלום","התשלום מתבצע דרך פייפאל. אני לא מקבל ולא שומר את פרטי הכרטיס. המחיר בדולר אמריקאי; הבנק שלך עשוי לגבות עמלת המרה."],
+    ["8. זמן באוויר","אני מתחייב שהמדריך יהיה באוויר לפחות 12 חודשים מהמסירה. ייתכנו הפסקות קצרות בגלל תחזוקה או תקלות אצל ספקי אחסון; במקרה כזה אחזיר אותו לפעולה בהקדם. אחרי 12 חודשים המדריך עשוי להמשיך לעבוד, אבל ללא אחריות."],
+    ["9. בעלות","הטקסט ששלחת נשאר שלך. העיצוב, האיורים והקוד של המדריך שייכים ל־Clave; אתה מקבל רישיון להשתמש במדריך מול האורחים שלך. אציג את המדריך שלך כדוגמה רק באישורך."],
+    ["10. הגבלת אחריות","השירות ניתן כמות שהוא (AS IS). אינני אחראי לתוכן שסיפקת, למעשי האורחים, לביקורות, להזמנות שאבדו או לנזקים עקיפים. בכל מקרה, האחריות הכוללת שלי מוגבלת לסכום ששילמת על השירות. אין בתנאים האלה כדי להגביל זכויות שהחוק אינו מאפשר להגביל."],
+    ["11. אין קשר לפלטפורמות","Clave אינו קשור ל־Airbnb, ל־Booking או לפלטפורמה אחרת, ואינו מאושר על ידן. השמות שלהן הם סימני מסחר של בעליהם."],
+    ["12. דין וסמכות שיפוט","על התנאים האלה חלים דיני מדינת ישראל, וסמכות השיפוט נתונה לבתי המשפט המוסמכים בישראל, בלי לפגוע בזכויות שמקנה לך דין מחייב במדינתך. אני רשאי לעדכן את התנאים; על כל הזמנה חלה הגרסה שהייתה בתוקף בזמן הרכישה."]
+  ]},
+  privacy:{ h:"מדיניות פרטיות", s:[
+    ["איזה מידע אני מקבל","מפייפאל: שם, מייל ומספר הזמנה (אף פעם לא פרטי כרטיס). מהטופס: שם, מייל, מספר וואטסאפ ומידע על הנכס שבחרת לשתף."],
+    ["למה אני משתמש בו","רק כדי להכין, לפרסם ולתחזק את המדריך שלך, ליצור איתך קשר לגבי ההזמנה ולעמוד בחובות חשבונאיות וחוקיות. אני לא מוכר את המידע ולא משתמש בו לפרסום."],
+    ["מה מתפרסם","המדריך הוא דף ציבורי. כל מה שמופיע בו, כולל מספר הוואטסאפ בכפתור יצירת הקשר, גלוי לכל מי שיש לו את הלינק."],
+    ["עם מי המידע משותף","אני נעזר בספקים כדי להפעיל את השירות: פייפאל (תשלומים), Tally (טופס), ספק אחסון אתרים (לפרסום המדריך), גוגל (מייל) וכלי כתיבה ותרגום, כולל בינה מלאכותית. כל ספק מטפל במידע לפי המדיניות שלו. חלקם עשויים להיות מחוץ למדינתך."],
+    ["עוגיות","האתר שומר בדפדפן רק את השפה שבחרת. בזמן התשלום פייפאל עשויה להשתמש בעוגיות משלה. הגופנים נטענים מ־Google Fonts. במדריכים אין אנליטיקה או מעקב אחרי אורחים."],
+    ["כמה זמן המידע נשמר","כל עוד המדריך באוויר, ואחר כך רק כמה שנדרש לרישומים חשבונאיים וחוקיים."],
+    ["הזכויות שלך","אפשר לבקש לעיין במידע, לתקן או למחוק אותו בכתיבה ל־"+EMAIL+". מחיקת המידע פירושה הורדת המדריך מהאוויר."],
+    ["אבטחה","אני נוקט אמצעים סבירים להגנה על המידע, אבל אף מערכת באינטרנט אינה מאובטחת ב־100%."],
+    ["גיל","השירות מיועד לבני 18 ומעלה."]
+  ]}
+}};
+
+function esc(s){ return s.replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function block(d, upd){
+  return "<h2>"+esc(d.h)+"</h2><p class='upd'>"+esc(upd)+"</p>" +
+    d.s.map(([h,p])=>"<h3>"+esc(h)+"</h3><p>"+esc(p)+"</p>").join("");
+}
+function setLang(l){
+  const d = L[l];
+  document.documentElement.lang = l;
+  document.documentElement.dir = l === "he" ? "rtl" : "ltr";
+  document.title = "Clave · " + d.title;
+  document.getElementById("title").textContent = d.title;
+  document.getElementById("toc-t").textContent = d.terms.h;
+  document.getElementById("toc-p").textContent = d.privacy.h;
+  document.getElementById("back").textContent = d.back;
+  document.getElementById("terms").innerHTML = block(d.terms, d.upd);
+  document.getElementById("privacy").innerHTML = block(d.privacy, d.upd);
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang === l));
+  try { localStorage.setItem("clave-lang", l); } catch(e){}
+}
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+let saved = new URLSearchParams(location.search).get("lang");
+if(!L[saved]){ try { saved = localStorage.getItem("clave-lang"); } catch(e){} }
+setLang(L[saved] ? saved : "es");
+if(location.hash){ const t=document.querySelector(location.hash); if(t) t.scrollIntoView(); }
+</script>
+</body>
+</html>
