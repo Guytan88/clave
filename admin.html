@@ -118,9 +118,19 @@ $("copy").onclick = async () => {
 
 $("save").onclick = async () => {
   const m = $("saveMsg"); m.className = "msg"; m.textContent = "שומר…";
-  const r = await fetch("/api/admin", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: ID, s: S, json: $("json").value }) });
-  const d = await r.json().catch(() => ({}));
-  if (!r.ok) { m.className = "msg err"; m.textContent = d.error || "השמירה נכשלה"; return; }
+  $("save").disabled = true;
+  let r, d = {};
+  try {
+    const ctl = new AbortController(); const to = setTimeout(() => ctl.abort(), 30000);
+    r = await fetch("/api/admin", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: ID, s: S, json: $("json").value }), signal: ctl.signal });
+    clearTimeout(to);
+    d = await r.json().catch(() => ({}));
+  } catch (e) {
+    $("save").disabled = false;
+    m.className = "msg err"; m.textContent = "אין תשובה מהשרת. בדוק את החיבור ונסה שוב (רענון הדף לא מוחק את מה שהדבקת אם תעתיק אותו קודם)."; return;
+  }
+  $("save").disabled = false;
+  if (!r.ok) { m.className = "msg err"; m.textContent = d.error || ("השמירה נכשלה (" + r.status + ")"); return; }
   m.innerHTML = '<span class="ok">נשמר ✓</span> ' + (d.approved ? "העדכון כבר באוויר." : "עכשיו תצוגה מקדימה ואישור.");
   draw(d);
 };
