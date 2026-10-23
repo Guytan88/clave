@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/g/:slug", "destination": "/guide.html" }
+    { "source": "/g/:slug", "destination": "/guide" }
   ],
   "functions": {
     "api/submit.js": { "maxDuration": 300 }

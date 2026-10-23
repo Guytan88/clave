@@ -2,6 +2,11 @@
 import { loadGuide, tokenOk, siteUrl, links } from "./_lib/core.js";
 
 export default async function handler(req, res) {
+  try { return await run(req, res); }
+  catch (e) { console.error(e); return res.status(500).json({ error: "server" }); }
+}
+
+async function run(req, res) {
   const { id, k } = req.query;
   const g = await loadGuide(String(id || ""));
   if (!tokenOk(g, k)) return res.status(404).json({ error: "not_found" });

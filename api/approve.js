@@ -3,6 +3,11 @@ import { loadGuide, saveGuide, checkSig, siteUrl, links, html, esc } from "./_li
 import { mailReady } from "./_lib/mail.js";
 
 export default async function handler(req, res) {
+  try { return await run(req, res); }
+  catch (e) { console.error(e); return res.status(500).json({ error: "server" }); }
+}
+
+async function run(req, res) {
   const id = String(req.query.id || "");
   const g = await loadGuide(id);
   if (!g || !checkSig("approve:" + id, req.query.s)) return html(res, 404, "לא נמצא", "<h2>הקישור לא תקין</h2>");
