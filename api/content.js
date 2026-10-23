@@ -37,7 +37,8 @@ export default async function handler(req, res) {
     const n = {
       ...g.content,
       theme: THEMES.includes(c.theme) ? c.theme : g.content.theme,
-      name: str(c.name, 80) || g.content.name, place: str(c.place, 120), host: str(c.host, 60) || g.content.host,
+      // Property name and city are fixed after approval: one payment = one property.
+      name: g.content.name, place: g.content.place, host: str(c.host, 60) || g.content.host,
       whatsapp: str(c.whatsapp, 30).replace(/\D/g, "") || g.content.whatsapp,
       ci: time(c.ci), co: time(c.co), L,
     };

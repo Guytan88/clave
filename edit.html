@@ -216,6 +216,7 @@ es:{
   st_err:"Algo salió mal", st_err_p:"Ya me llegó un aviso. Puedes intentar guardar de nuevo, o esperar a que te escriba.",
   st_pending:"Recibí tus cambios. Aparecerán en tu guía en menos de 24 horas.",
   le_h1:"Editar mi guía", le_lead:"Cambia lo que quieras y guarda: tu guía se actualiza al instante.",
+  le_fixed:"El nombre y la ciudad del alojamiento quedan fijos (cada guía es para un alojamiento). ¿Necesitas cambiarlos? Escríbeme.",
   le_gen:"Datos generales", le_style:"Estilo de diseño", le_texts:"Textos de la guía", le_texts_h:"Cada idioma se edita por separado: si cambias algo, cámbialo también en los otros idiomas.",
   le_note:"Mensaje de bienvenida", le_arrival:"Tu llegada", le_house:"El alojamiento", le_rules:"Normas de la casa", le_spots:"Recomendaciones", le_checkout:"Antes de irte", le_sos:"Emergencias",
   ph_title:"Título", ph_text:"Texto", ph_cat:"Categoría (ej. Para comer)", ph_name:"Nombre del lugar", ph_dist:"Distancia (opcional)",
@@ -248,6 +249,7 @@ en:{
   st_err:"Something went wrong", st_err_p:"I've been notified. You can try saving again, or wait for my email.",
   st_pending:"I've received your changes. They'll appear in your guide within 24 hours.",
   le_h1:"Edit my guide", le_lead:"Change anything you like and save: your guide updates instantly.",
+  le_fixed:"The property name and city are fixed (each guide is for one property). Need to change them? Write to me.",
   le_gen:"General details", le_style:"Design style", le_texts:"Guide texts", le_texts_h:"Each language is edited separately: if you change something, change it in the other languages too.",
   le_note:"Welcome message", le_arrival:"Your arrival", le_house:"The place", le_rules:"House rules", le_spots:"Recommendations", le_checkout:"Before you leave", le_sos:"Emergencies",
   ph_title:"Title", ph_text:"Text", ph_cat:"Category (e.g. To eat)", ph_name:"Place name", ph_dist:"Distance (optional)",
@@ -280,6 +282,7 @@ he:{
   st_err:"משהו השתבש", st_err_p:"כבר קיבלתי התראה. אפשר לנסות לשמור שוב, או לחכות למייל ממני.",
   st_pending:"השינויים התקבלו. הם יופיעו במדריך תוך פחות מ־24 שעות.",
   le_h1:"עריכת המדריך", le_lead:"שנו מה שרוצים ושמרו: המדריך מתעדכן מיד.",
+  le_fixed:"שם הנכס והעיר קבועים (כל מדריך הוא לנכס אחד). צריך לשנות? כתבו לי.",
   le_gen:"פרטים כלליים", le_style:"סגנון עיצוב", le_texts:"טקסטים של המדריך", le_texts_h:"כל שפה נערכת בנפרד: אם משנים משהו, כדאי לשנות גם בשפות האחרות.",
   le_note:"הודעת ברוכים הבאים", le_arrival:"ההגעה", le_house:"הנכס", le_rules:"חוקי הבית", le_spots:"המלצות", le_checkout:"לפני שיוצאים", le_sos:"חירום",
   ph_title:"כותרת", ph_text:"טקסט", ph_cat:"קטגוריה (למשל: לאכול)", ph_name:"שם המקום", ph_dist:"מרחק (רשות)",
@@ -450,7 +453,9 @@ function drawLive() {
   const L = $("live"); L.innerHTML = "";
   const gen = document.createElement("section"); gen.className = "card";
   gen.innerHTML = `<h2>${esc(t("le_gen"))}</h2>`;
-  gen.append(inp(t("f_name"), E.name, (v) => E.name = v), inp(t("f_place"), E.place, (v) => E.place = v));
+  const fixed = document.createElement("p"); fixed.className = "hint";
+  fixed.innerHTML = `<b>${esc(E.name)}</b> · ${esc(E.place)}<br>${esc(t("le_fixed"))}`;
+  gen.append(fixed);
   const r1 = document.createElement("div"); r1.className = "row";
   r1.append(inp(t("f_host"), E.host, (v) => E.host = v), inp(t("f_wa"), "+" + E.whatsapp, (v) => E.whatsapp = v, { type: "tel", dir: "ltr" }));
   const r2 = document.createElement("div"); r2.className = "row";
