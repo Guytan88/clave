@@ -37,11 +37,11 @@ const T = {
       p("Ahora cuéntame de tu alojamiento: llena unos campos cortos o simplemente pega los mensajes de WhatsApp que ya les mandas a tus huéspedes. Toma unos 5 minutos.") +
       btn(o.edit, "Completar los datos de mi alojamiento") + p("¿Preguntas? Responde a este correo."),
     ready_s: "Tu guía está lista",
-    ready: (o) => p("¡Tu guía ya está en línea!") + btn(o.guide, "Ver mi guía") +
-      p(`Enlace para tus huéspedes:<br><a href="${o.guide}">${esc(o.guide)}</a>`) +
-      p("<b>Cómo usarla:</b> en Airbnb, ve a Mensajes → Mensajes programados y pega el enlace en tu mensaje de bienvenida. Las instrucciones de acceso (códigos, llaves) envíalas aparte, como siempre.") +
-      p(`<b>Para editarla</b> (solo tú, no compartas este enlace):<br><a href="${o.edit}">${esc(o.edit)}</a>`) +
-      p("Puedes editarla cuando quieras durante el año. Está garantizada en línea por al menos 12 meses.") + p("¡Felices reservas!"),
+    ready: (o) => p("¡Tu guía ya está en línea! Aquí tienes tus dos enlaces:") +
+      p("<b>1. Enlace para tus huéspedes</b><br>Pégalo en Airbnb → Mensajes → Mensajes programados, en tu mensaje de bienvenida.") + btn(o.guide, "Ver mi guía") +
+      p(`<a href="${o.guide}">${esc(o.guide)}</a>`) +
+      p("<b>2. Enlace para editar (solo para ti, no lo compartas)</b><br>Cambia textos, horarios, wifi o el estilo cuando quieras; se actualiza al instante.") + btn(o.edit, "Editar mi guía", "#1D2B24", "#fff") +
+      p("Las instrucciones de acceso (códigos, llaves) envíalas aparte, como siempre. Tu guía está garantizada en línea por al menos 12 meses.") + p("¡Felices reservas!"),
   },
   en: {
     paid_s: "Payment received · Fill in your guide details",
@@ -49,11 +49,11 @@ const T = {
       p("Now tell me about your place: fill in a few short fields or simply paste the WhatsApp messages you already send your guests. It takes about 5 minutes.") +
       btn(o.edit, "Fill in my property details") + p("Questions? Just reply to this email."),
     ready_s: "Your guide is ready",
-    ready: (o) => p("Your guide is live!") + btn(o.guide, "View my guide") +
-      p(`Link for your guests:<br><a href="${o.guide}">${esc(o.guide)}</a>`) +
-      p("<b>How to use it:</b> in Airbnb, go to Messages → Scheduled messages and paste the link into your welcome message. Send access instructions (codes, keys) separately, as usual.") +
-      p(`<b>To edit it</b> (just you, don't share this link):<br><a href="${o.edit}">${esc(o.edit)}</a>`) +
-      p("You can edit it anytime during the year. It's guaranteed online for at least 12 months.") + p("Happy hosting!"),
+    ready: (o) => p("Your guide is live! Here are your two links:") +
+      p("<b>1. Link for your guests</b><br>Paste it in Airbnb → Messages → Scheduled messages, in your welcome message.") + btn(o.guide, "View my guide") +
+      p(`<a href="${o.guide}">${esc(o.guide)}</a>`) +
+      p("<b>2. Link to edit (just for you, don't share it)</b><br>Change texts, times, wifi or the style anytime; it updates instantly.") + btn(o.edit, "Edit my guide", "#1D2B24", "#fff") +
+      p("Send access instructions (codes, keys) separately, as usual. Your guide is guaranteed online for at least 12 months.") + p("Happy hosting!"),
   },
   he: {
     paid_s: "התשלום התקבל · מלאו את פרטי המדריך",
@@ -61,11 +61,11 @@ const T = {
       p("עכשיו ספרו לי על הנכס: ממלאים כמה שדות קצרים, או פשוט מדביקים את הודעות הוואטסאפ שאתם כבר שולחים לאורחים. לוקח בערך 5 דקות.") +
       btn(o.edit, "למילוי פרטי הנכס") + p("שאלות? פשוט עונים למייל."),
     ready_s: "המדריך שלך מוכן",
-    ready: (o) => p("המדריך שלך באוויר!") + btn(o.guide, "לצפייה במדריך") +
-      p(`הלינק לאורחים:<br><a href="${o.guide}">${esc(o.guide)}</a>`) +
-      p("<b>איך משתמשים:</b> באיירביאנבי נכנסים להודעות ← הודעות מתוזמנות ומדביקים את הלינק בהודעת הפתיחה. את הוראות הכניסה (קודים, מפתחות) שולחים בנפרד, כרגיל.") +
-      p(`<b>לעריכה</b> (רק לך, לא לשתף):<br><a href="${o.edit}">${esc(o.edit)}</a>`) +
-      p("אפשר לערוך מתי שרוצים במהלך השנה. המדריך באוויר באחריות לפחות 12 חודשים.") + p("בהצלחה!"),
+    ready: (o) => p("המדריך שלך באוויר! הנה שני הקישורים שלך:") +
+      p("<b>1. קישור לאורחים</b><br>מדביקים באיירביאנבי ← הודעות ← הודעות מתוזמנות, בהודעת הפתיחה.") + btn(o.guide, "לצפייה במדריך") +
+      p(`<a href="${o.guide}">${esc(o.guide)}</a>`) +
+      p("<b>2. קישור לעריכה (רק לך, לא לשתף)</b><br>משנים טקסטים, שעות, וויי־פיי או סגנון מתי שרוצים; המדריך מתעדכן מיד.") + btn(o.edit, "לעריכת המדריך", "#1D2B24", "#fff") +
+      p("את הוראות הכניסה (קודים, מפתחות) שולחים בנפרד, כרגיל. המדריך באוויר באחריות לפחות 12 חודשים.") + p("בהצלחה!"),
   },
 };
 const t = (lang) => T[lang] || T.en;

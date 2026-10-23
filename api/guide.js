@@ -13,6 +13,6 @@ async function run(req, res) {
   const l = links(siteUrl(req), g);
   res.json({
     status: g.status, approved: g.approved, lang: g.lang, email: g.email, payer: g.payer,
-    input: g.input || null, pendingUpdate: !!g.pendingUpdate, guideUrl: g.approved ? l.guide : null, edits: g.edits || 0, error: g.status === "error",
+    input: g.input || null, pendingUpdate: !!g.pendingUpdate, content: g.approved ? g.content : null, guideUrl: g.approved ? l.guide : null, edits: g.edits || 0, error: g.status === "error",
   });
 }

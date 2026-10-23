@@ -71,6 +71,19 @@
   .spin{width:20px;height:20px;border:3px solid rgba(255,255,255,.35);border-top-color:var(--marigold);border-radius:50%;animation:s 1s linear infinite;display:inline-block;vertical-align:-4px;margin-inline-end:8px}
   @keyframes s{to{transform:rotate(360deg)}}
   .center{text-align:center;padding:60px 0;color:var(--muted)}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px}
+  .tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font:500 14px var(--body);cursor:pointer;color:var(--ink)}
+  .tabs button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+  .grp{margin:0 0 20px}
+  .grp > b{display:block;font-weight:600;font-size:15px;margin-bottom:8px}
+  .item{display:grid;gap:6px;border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:8px;background:#fff;position:relative}
+  .item textarea{min-height:64px}
+  .item input,.item textarea{background:var(--soft)}
+  .item .x{position:absolute;top:6px;inset-inline-end:6px;border:0;background:none;color:var(--muted);font-size:20px;line-height:1;cursor:pointer;padding:4px 8px}
+  .item.has-x{padding-inline-end:40px}
+  .add{border:1.5px dashed var(--line);background:none;border-radius:10px;padding:8px 14px;font:500 14px var(--body);color:var(--green);cursor:pointer}
+  .sticky{position:sticky;bottom:0;background:linear-gradient(transparent,var(--bg) 30%);padding:18px 0 14px;margin-top:6px}
+  .ok{color:var(--green);font-weight:600;font-size:15px;margin:8px 0 0}
   footer{padding:24px 0 40px;color:var(--muted);font-size:14px;text-align:center}
   @media (max-width:600px){ .themes,.langs{grid-template-columns:repeat(2,1fr)} .row{grid-template-columns:1fr} .card{padding:20px 16px} }
 </style>
@@ -93,6 +106,8 @@
     <div class="status" id="status" hidden></div>
     <h1 id="h1"></h1>
     <p class="lead" id="lead"></p>
+
+    <div id="live" hidden></div>
 
     <form id="form" novalidate>
       <section class="card">
@@ -200,6 +215,11 @@ es:{
   st_pub:"Tu guía está en línea", st_pub_p:"Comparte este enlace con tus huéspedes:", st_pub_upd:"Se está actualizando con tus cambios…",
   st_err:"Algo salió mal", st_err_p:"Ya me llegó un aviso. Puedes intentar guardar de nuevo, o esperar a que te escriba.",
   st_pending:"Recibí tus cambios. Aparecerán en tu guía en menos de 24 horas.",
+  le_h1:"Editar mi guía", le_lead:"Cambia lo que quieras y guarda: tu guía se actualiza al instante.",
+  le_gen:"Datos generales", le_style:"Estilo de diseño", le_texts:"Textos de la guía", le_texts_h:"Cada idioma se edita por separado: si cambias algo, cámbialo también en los otros idiomas.",
+  le_note:"Mensaje de bienvenida", le_arrival:"Tu llegada", le_house:"El alojamiento", le_rules:"Normas de la casa", le_spots:"Recomendaciones", le_checkout:"Antes de irte", le_sos:"Emergencias",
+  ph_title:"Título", ph_text:"Texto", ph_cat:"Categoría (ej. Para comer)", ph_name:"Nombre del lugar", ph_dist:"Distancia (opcional)",
+  add:"+ Agregar", save:"Guardar cambios", saving:"Guardando…", saved:"Guardado ✓ Tu guía ya está actualizada.", open_guide:"Ver mi guía →",
   copy:"Copiar", copied:"Copiado", open:"Abrir", notfound:"No encontramos esta guía. Revisa el enlace de tu correo.", legal:"Términos y privacidad"
 },
 en:{
@@ -227,6 +247,11 @@ en:{
   st_pub:"Your guide is live", st_pub_p:"Share this link with your guests:", st_pub_upd:"Updating with your changes…",
   st_err:"Something went wrong", st_err_p:"I've been notified. You can try saving again, or wait for my email.",
   st_pending:"I've received your changes. They'll appear in your guide within 24 hours.",
+  le_h1:"Edit my guide", le_lead:"Change anything you like and save: your guide updates instantly.",
+  le_gen:"General details", le_style:"Design style", le_texts:"Guide texts", le_texts_h:"Each language is edited separately: if you change something, change it in the other languages too.",
+  le_note:"Welcome message", le_arrival:"Your arrival", le_house:"The place", le_rules:"House rules", le_spots:"Recommendations", le_checkout:"Before you leave", le_sos:"Emergencies",
+  ph_title:"Title", ph_text:"Text", ph_cat:"Category (e.g. To eat)", ph_name:"Place name", ph_dist:"Distance (optional)",
+  add:"+ Add", save:"Save changes", saving:"Saving…", saved:"Saved ✓ Your guide is updated.", open_guide:"View my guide →",
   copy:"Copy", copied:"Copied", open:"Open", notfound:"We couldn't find this guide. Check the link in your email.", legal:"Terms & privacy"
 },
 he:{
@@ -254,6 +279,11 @@ he:{
   st_pub:"המדריך באוויר", st_pub_p:"שתפו את הלינק הזה עם האורחים:", st_pub_upd:"מתעדכן עם השינויים שלכם…",
   st_err:"משהו השתבש", st_err_p:"כבר קיבלתי התראה. אפשר לנסות לשמור שוב, או לחכות למייל ממני.",
   st_pending:"השינויים התקבלו. הם יופיעו במדריך תוך פחות מ־24 שעות.",
+  le_h1:"עריכת המדריך", le_lead:"שנו מה שרוצים ושמרו: המדריך מתעדכן מיד.",
+  le_gen:"פרטים כלליים", le_style:"סגנון עיצוב", le_texts:"טקסטים של המדריך", le_texts_h:"כל שפה נערכת בנפרד: אם משנים משהו, כדאי לשנות גם בשפות האחרות.",
+  le_note:"הודעת ברוכים הבאים", le_arrival:"ההגעה", le_house:"הנכס", le_rules:"חוקי הבית", le_spots:"המלצות", le_checkout:"לפני שיוצאים", le_sos:"חירום",
+  ph_title:"כותרת", ph_text:"טקסט", ph_cat:"קטגוריה (למשל: לאכול)", ph_name:"שם המקום", ph_dist:"מרחק (רשות)",
+  add:"+ הוספה", save:"שמירת שינויים", saving:"שומר…", saved:"נשמר ✓ המדריך כבר מעודכן.", open_guide:"לצפייה במדריך ←",
   copy:"העתקה", copied:"הועתק", open:"פתיחה", notfound:"לא מצאנו את המדריך. בדקו את הלינק במייל.", legal:"תנאי שימוש ופרטיות"
 }};
 
@@ -273,11 +303,12 @@ function setUi(l) {
   document.querySelectorAll("[data-ui]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.ui === ui));
   document.querySelectorAll("[data-t]").forEach((el) => { el.textContent = t(el.dataset.t); });
   $("notfound").textContent = t("notfound");
-  drawThemes(); drawLangs(); drawStatus(); drawHead();
+  drawThemes(); drawLangs(); drawStatus(); drawHead(); if (liveMode()) drawLive();
   try { localStorage.setItem("clave-lang", ui); } catch (e) {}
 }
 
 function drawHead() {
+  if (liveMode()) { $("h1").textContent = t("le_h1"); $("lead").textContent = t("le_lead"); return; }
   const edit = rec && rec.input;
   $("h1").textContent = t(edit ? "h1_edit" : "h1_new");
   $("lead").textContent = t(edit ? "lead_edit" : "lead_new");
@@ -374,6 +405,102 @@ form.addEventListener("submit", async (e) => {
   } catch (x) { err.textContent = t("e_gen"); err.hidden = false; b.disabled = false; drawHead(); }
 });
 
+/* ---------------- Live editor (after the guide is published) ---------------- */
+let E = null, tab = null;
+function liveMode() { return !!(rec && rec.approved && rec.content); }
+const attr = (s) => esc(s).replace(/'/g, "&#39;");
+
+function inp(label, val, on, opts = {}) {
+  const w = document.createElement("label"); w.className = "f";
+  w.innerHTML = `<span>${esc(label)}</span>`;
+  const el = document.createElement(opts.area ? "textarea" : "input");
+  if (!opts.area) el.type = opts.type || "text";
+  if (opts.dir) el.dir = opts.dir;
+  el.value = val ?? ""; el.oninput = () => on(el.value);
+  w.append(el); return w;
+}
+
+function listEd(title, arr, fields) {
+  const g = document.createElement("div"); g.className = "grp";
+  g.innerHTML = `<b>${esc(title)}</b>`;
+  const box = document.createElement("div"); g.append(box);
+  const draw = () => {
+    box.innerHTML = "";
+    arr.forEach((it, i) => {
+      const row = document.createElement("div"); row.className = "item has-x";
+      if (!fields) {
+        const ta = document.createElement("textarea"); ta.value = it; ta.oninput = () => arr[i] = ta.value; row.append(ta);
+      } else fields.forEach(([k, ph, area]) => {
+        const el = document.createElement(area ? "textarea" : "input");
+        if (!area) el.type = "text";
+        el.placeholder = t(ph); el.value = it[k] ?? ""; el.oninput = () => it[k] = el.value; row.append(el);
+      });
+      const x = document.createElement("button"); x.type = "button"; x.className = "x"; x.textContent = "×"; x.ariaLabel = "remove";
+      x.onclick = () => { arr.splice(i, 1); draw(); }; row.append(x);
+      box.append(row);
+    });
+    const add = document.createElement("button"); add.type = "button"; add.className = "add"; add.textContent = t("add");
+    add.onclick = () => { arr.push(fields ? Object.fromEntries(fields.map(([k]) => [k, ""])) : ""); draw(); box.lastElementChild.previousElementSibling?.querySelector("input,textarea")?.focus(); };
+    box.append(add);
+  };
+  draw(); return g;
+}
+
+function drawLive() {
+  const L = $("live"); L.innerHTML = "";
+  const gen = document.createElement("section"); gen.className = "card";
+  gen.innerHTML = `<h2>${esc(t("le_gen"))}</h2>`;
+  gen.append(inp(t("f_name"), E.name, (v) => E.name = v), inp(t("f_place"), E.place, (v) => E.place = v));
+  const r1 = document.createElement("div"); r1.className = "row";
+  r1.append(inp(t("f_host"), E.host, (v) => E.host = v), inp(t("f_wa"), "+" + E.whatsapp, (v) => E.whatsapp = v, { type: "tel", dir: "ltr" }));
+  const r2 = document.createElement("div"); r2.className = "row";
+  r2.append(inp(t("f_ci"), E.ci, (v) => E.ci = v, { type: "time" }), inp(t("f_co"), E.co, (v) => E.co = v, { type: "time" }));
+  const w = E.wifi || { net: "", pw: "" };
+  const r3 = document.createElement("div"); r3.className = "row";
+  r3.append(inp(t("f_wn"), w.net, (v) => { E.wifi = { ...(E.wifi || { pw: "" }), net: v }; }, { dir: "ltr" }),
+            inp(t("f_wp"), w.pw, (v) => { E.wifi = { ...(E.wifi || { net: "" }), pw: v }; }, { dir: "ltr" }));
+  gen.append(r1, r2, r3);
+
+  const st = document.createElement("section"); st.className = "card";
+  st.innerHTML = `<h2>${esc(t("le_style"))}</h2><div class="themes">${THEMES.map((k) => `<label class="theme"><input type="radio" name="le_theme" value="${k}" ${k === E.theme ? "checked" : ""}><span class="sw" style="background:${SW[k]}"></span>${esc(TL[ui][k])}</label>`).join("")}</div>`;
+  st.querySelectorAll("input").forEach((i) => i.onchange = () => E.theme = i.value);
+
+  const tx = document.createElement("section"); tx.className = "card";
+  tx.innerHTML = `<h2>${esc(t("le_texts"))}</h2><p class="hint">${esc(t("le_texts_h"))}</p>`;
+  if (E.languages.length > 1) {
+    const tabs = document.createElement("div"); tabs.className = "tabs";
+    E.languages.forEach((c) => { const b = document.createElement("button"); b.type = "button"; b.textContent = LANG[c].name; b.setAttribute("aria-pressed", c === tab); b.onclick = () => { tab = c; drawLive(); }; tabs.append(b); });
+    tx.append(tabs);
+  }
+  const D = E.L[tab], rtl = LANG[tab]?.rtl;
+  const body = document.createElement("div"); body.dir = rtl ? "rtl" : "ltr"; body.lang = tab;
+  body.append(
+    inp(t("le_note"), D.note, (v) => D.note = v, { area: true }),
+    listEd(t("le_arrival"), D.arrival),
+    listEd(t("le_house"), D.house, [["t", "ph_title"], ["d", "ph_text", true]]),
+    listEd(t("le_rules"), D.rules),
+    listEd(t("le_spots"), D.spots, [["cat", "ph_cat"], ["name", "ph_name"], ["text", "ph_text", true], ["dist", "ph_dist"]]),
+    listEd(t("le_checkout"), D.checkout),
+    listEd(t("le_sos"), D.emergency));
+  tx.append(body);
+
+  const bar = document.createElement("div"); bar.className = "sticky";
+  bar.innerHTML = `<button class="btn btn-main" type="button" id="le_save">${esc(t("save"))}</button><p class="ok" id="le_ok" hidden></p><p class="err" id="le_err" hidden></p>`;
+  L.append(gen, st, tx, bar);
+  $("le_save").onclick = saveLive;
+}
+
+async function saveLive() {
+  const b = $("le_save"), ok = $("le_ok"), er = $("le_err");
+  ok.hidden = er.hidden = true; b.disabled = true; b.textContent = t("saving");
+  try {
+    const r = await fetch("/api/content", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: ID, k: K, content: E }) });
+    if (!r.ok) throw 0;
+    ok.innerHTML = `${esc(t("saved"))} <a href="${attr(rec.guideUrl)}" target="_blank" rel="noopener">${esc(t("open_guide"))}</a>`; ok.hidden = false;
+  } catch (x) { er.textContent = t("e_gen"); er.hidden = false; }
+  b.disabled = false; b.textContent = t("save");
+}
+
 document.querySelectorAll("[data-ui]").forEach((b) => b.onclick = () => setUi(b.dataset.ui));
 
 (async () => {
@@ -383,6 +510,7 @@ document.querySelectorAll("[data-ui]").forEach((b) => b.onclick = () => setUi(b.
   $("loading").hidden = true;
   if (!r0) { setUi(saved || "es"); $("notfound").hidden = false; return; }
   if (rec.input) fill(rec.input); else setMode("paste");
+  if (liveMode()) { E = JSON.parse(JSON.stringify(rec.content)); tab = E.languages[0]; form.hidden = true; $("live").hidden = false; }
   setUi(q.get("ui") || saved || rec.lang || "es");
   $("page").hidden = false;
 })();
