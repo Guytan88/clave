@@ -20,45 +20,48 @@ export function siteUrl(req) {
   return `${proto}://${host}`;
 }
 
-/* ---------------- Storage ---------------- */
-const KV_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-const KV_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+/* ---------------- Storage: Supabase (Postgres) table "clave" (key text, value jsonb) ---------------- */
+const SB_URL = (process.env.SUPABASE_URL || "").replace(/\/$/, "");
+const SB_KEY = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
 const DEV_FILE = path.join(process.cwd(), ".dev-data", "db.json");
 
-function devDb() {
-  try { return JSON.parse(fs.readFileSync(DEV_FILE, "utf8")); } catch { return {}; }
+function sbHeaders(extra = {}) {
+  const h = { apikey: SB_KEY, "Content-Type": "application/json", ...extra };
+  if (SB_KEY?.startsWith("eyJ")) h.Authorization = `Bearer ${SB_KEY}`; // legacy service_role JWT
+  return h;
 }
-function devSave(db) {
-  fs.mkdirSync(path.dirname(DEV_FILE), { recursive: true });
-  fs.writeFileSync(DEV_FILE, JSON.stringify(db, null, 1));
+async function sbGet(key) {
+  const r = await fetch(`${SB_URL}/rest/v1/clave?key=eq.${encodeURIComponent(key)}&select=value`, { headers: sbHeaders() });
+  if (!r.ok) throw new Error(`supabase get ${r.status}: ${(await r.text()).slice(0, 200)}`);
+  const rows = await r.json();
+  return rows.length ? rows[0].value : null;
+}
+async function sbPut(key, value, onlyIfNew) {
+  const r = await fetch(`${SB_URL}/rest/v1/clave`, {
+    method: "POST",
+    headers: sbHeaders({ Prefer: onlyIfNew ? "return=minimal" : "resolution=merge-duplicates,return=minimal" }),
+    body: JSON.stringify({ key, value, updated_at: new Date().toISOString() }),
+  });
+  if (onlyIfNew && r.status === 409) return false;
+  if (!r.ok) throw new Error(`supabase put ${r.status}: ${(await r.text()).slice(0, 200)}`);
+  return true;
 }
 
-async function kv(...args) {
-  if (!KV_URL) {
-    if (!DEV) throw new Error("Storage is not configured (KV_REST_API_URL missing)");
-    const db = devDb();
-    const [op, key, val, flag] = args;
-    if (op === "GET") return db[key] ?? null;
-    if (op === "SET") {
-      if (flag === "NX" && key in db) return null;
-      db[key] = val; devSave(db); return "OK";
-    }
-    throw new Error("dev kv: unsupported " + op);
-  }
-  const r = await fetch(KV_URL, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${KV_TOKEN}`, "Content-Type": "application/json" },
-    body: JSON.stringify(args),
-  });
-  const j = await r.json();
-  if (j.error) throw new Error("kv: " + j.error);
-  return j.result;
+function devDb() { try { return JSON.parse(fs.readFileSync(DEV_FILE, "utf8")); } catch { return {}; } }
+function devSave(d) { fs.mkdirSync(path.dirname(DEV_FILE), { recursive: true }); fs.writeFileSync(DEV_FILE, JSON.stringify(d, null, 1)); }
+function store() {
+  if (SB_URL && SB_KEY) return { get: sbGet, put: sbPut };
+  if (!DEV) throw new Error("Storage is not configured (SUPABASE_URL / SUPABASE_SECRET_KEY missing)");
+  return {
+    get: async (k) => devDb()[k] ?? null,
+    put: async (k, v, onlyIfNew) => { const d = devDb(); if (onlyIfNew && k in d) return false; d[k] = v; devSave(d); return true; },
+  };
 }
 export const db = {
-  get: (k) => kv("GET", k),
-  setNX: async (k, v) => (await kv("SET", k, v, "NX")) === "OK",
-  getJSON: async (k) => { const v = await kv("GET", k); return v ? JSON.parse(v) : null; },
-  setJSON: (k, v) => kv("SET", k, JSON.stringify(v)),
+  get: (k) => store().get(k),
+  setNX: (k, v) => store().put(k, v, true),
+  getJSON: (k) => store().get(k),
+  setJSON: (k, v) => store().put(k, v, false),
 };
 export const guideKey = (id) => `g:${id}`;
 export async function loadGuide(id) { return /^[a-z0-9]{6,20}$/.test(id || "") ? db.getJSON(guideKey(id)) : null; }
