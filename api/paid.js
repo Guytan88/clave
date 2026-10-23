@@ -39,11 +39,12 @@ export default async function handler(req, res) {
     }
     await saveGuide(g);
     const l = links(base, g);
+    let mail = "skipped";
     if (g.email) {
-      try { await mailPaid(uiLang, g.email, { order, amount: g.amount, edit: l.edit }); }
-      catch (e) { console.error("mailPaid failed", e); }
+      try { await mailPaid(uiLang, g.email, { order, amount: g.amount, edit: l.edit }); mail = "sent"; }
+      catch (e) { console.error("mailPaid failed", e); mail = "failed: " + String(e.message || e).slice(0, 200); }
     }
-    return res.json({ editUrl: l.edit });
+    return res.json(test ? { editUrl: l.edit, mail } : { editUrl: l.edit });
   } catch (e) {
     console.error(e);
     return res.status(500).json({ error: "server" });
