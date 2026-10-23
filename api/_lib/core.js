@@ -138,5 +138,6 @@ export function links(base, g) {
     guide: g.slug ? `${base}/g/${g.slug}` : null,
     preview: g.slug ? `${base}/g/${g.slug}?p=${sign("preview:" + g.id)}` : null,
     approve: `${base}/api/approve?id=${g.id}&s=${sign("approve:" + g.id)}`,
+    admin: `${base}/admin?id=${g.id}&s=${sign("admin:" + g.id)}`,
   };
 }

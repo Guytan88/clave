@@ -1,6 +1,7 @@
 // POST {id, k, input} : host submits/edits the form → generate content with AI in the background.
-import { db, cfg, body, loadGuide, saveGuide, tokenOk, later, siteUrl, links, randId, slugify } from "./_lib/core.js";
-import { buildContent } from "./_lib/ai.js";
+import { cfg, body, loadGuide, saveGuide, tokenOk, later, siteUrl, links } from "./_lib/core.js";
+import { buildContent, autoAI } from "./_lib/ai.js";
+import { ensureSlug, assemble } from "./_lib/guide.js";
 import { mailAdmin } from "./_lib/mail.js";
 import { LANG, THEMES } from "../langs.js";
 
@@ -40,9 +41,19 @@ export default async function handler(req, res) {
   const { i, missing } = clean(input || {});
   if (missing.length) return res.status(400).json({ error: "missing", fields: missing });
 
-  g.input = i; g.status = "processing"; g.edits = (g.edits || 0) + 1; delete g.error;
+  g.input = i; g.edits = (g.edits || 0) + 1; delete g.error;
+  const base = siteUrl(req);
+  if (!autoAI()) {
+    // Manual mode: the admin builds the content by hand (admin page) and approves it.
+    await ensureSlug(g);
+    if (g.approved) g.pendingUpdate = true; else g.status = "review";
+    await saveGuide(g);
+    await mailAdmin(g.approved ? "manual_update" : "manual", g, links(base, g)).catch((e) => console.error("admin mail", e));
+    return res.json({ ok: true, status: g.status });
+  }
+  g.status = "processing";
   await saveGuide(g);
-  later(generate(g.id, siteUrl(req)));
+  later(generate(g.id, base));
   res.json({ ok: true, status: "processing" });
 }
 
@@ -52,18 +63,8 @@ async function generate(id, base) {
   try {
     const L = await buildContent(i);
     g = await loadGuide(id);                       // re-read: keep anything that changed meanwhile
-    if (!g.slug) {
-      const root = slugify(i.name);
-      for (let n = 0; n < 5 && !g.slug; n++) {
-        const s = `${root}-${randId(4)}`;
-        if (await db.setNX(`s:${s}`, g.id)) g.slug = s;
-      }
-    }
-    g.content = {
-      theme: i.theme, languages: i.languages, name: i.name, place: i.place, host: i.host,
-      whatsapp: i.whatsapp.replace(/\D/g, ""), ci: i.ci, co: i.co,
-      wifi: i.wifi_net || i.wifi_pw ? { net: i.wifi_net, pw: i.wifi_pw } : null, L,
-    };
+    await ensureSlug(g);
+    g.content = assemble(i, L);
     g.status = g.approved ? "published" : "review";
     await saveGuide(g);
     await mailAdmin(g.approved ? "edited" : "review", g, links(base, g)).catch((e) => console.error("admin mail", e));

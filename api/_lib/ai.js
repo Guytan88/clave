@@ -129,3 +129,62 @@ function devContent(input) {
   }
   return L;
 }
+
+/* ---------------- Manual mode: a prompt to paste into Claude, and validation of its JSON answer ---------------- */
+export const autoAI = () => !!process.env.ANTHROPIC_API_KEY && process.env.AI_MODE !== "manual";
+
+export function manualPrompt(input) {
+  const langs = input.languages.map((c) => `"${c}" (${LANG[c].en})`).join(", ");
+  const shape = `{
+  "<language code>": {
+    "ui": { ${UI_KEYS.map((k) => `"${k}": "…"`).join(", ")} },
+    "note": "…",
+    "arrival": ["paragraph", "…"],
+    "house": [{ "t": "short title", "d": "1-2 sentences" }],
+    "rules": ["one line", "…"],
+    "spots": [{ "cat": "category", "name": "place name", "text": "one line", "dist": "only if the host gave it" }],
+    "checkout": ["one line", "…"],
+    "emergency": ["Ambulance: 911"]
+  }
+}`;
+  return `${RULES}
+
+${UI_HINT}
+
+Write the guide in these languages: ${langs}. Write it naturally in the first language, then translate the same content into the others (same items, same order). Do not translate names of places, businesses or people, phone numbers or times. Keep the literal {host} placeholder in ui.message_host.
+
+Answer with ONLY one valid JSON object (no markdown, no explanation), with one key per language code, in this shape:
+${shape}
+
+Here are the host's answers:
+
+${describeInput(input)}`;
+}
+
+export function parseManual(text, languages) {
+  let s = String(text || "").trim().replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/, "");
+  const a = s.indexOf("{"), b = s.lastIndexOf("}");
+  if (a < 0 || b < a) throw new Error("לא נמצא JSON בטקסט");
+  let j;
+  try { j = JSON.parse(s.slice(a, b + 1)); } catch (e) { throw new Error("ה-JSON לא תקין: " + e.message); }
+  const L = {};
+  for (const code of languages) {
+    const o = j[code];
+    if (!o || typeof o !== "object") throw new Error(`חסרה השפה ${code}`);
+    if (!o.ui || typeof o.ui !== "object") throw new Error(`חסר "ui" בשפה ${code}`);
+    const missingUi = UI_KEYS.filter((k) => typeof o.ui[k] !== "string");
+    if (missingUi.length) throw new Error(`בשפה ${code} חסרות תוויות: ${missingUi.join(", ")}`);
+    const arr = (v) => (Array.isArray(v) ? v : []);
+    L[code] = {
+      ui: Object.fromEntries(UI_KEYS.map((k) => [k, String(o.ui[k])])),
+      note: String(o.note || ""),
+      arrival: arr(o.arrival).map(String),
+      house: arr(o.house).filter((h) => h && h.t).map((h) => ({ t: String(h.t), d: String(h.d || "") })),
+      rules: arr(o.rules).map(String),
+      spots: arr(o.spots).filter((x) => x && x.name).map((x) => ({ cat: String(x.cat || ""), name: String(x.name), text: String(x.text || ""), ...(x.dist ? { dist: String(x.dist) } : {}) })),
+      checkout: arr(o.checkout).map(String),
+      emergency: arr(o.emergency).map(String),
+    };
+  }
+  return L;
+}

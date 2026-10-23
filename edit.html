@@ -199,6 +199,7 @@ es:{
   st_review:"¡Recibido!", st_review_p:"Voy a revisar tu guía y te llegará por correo en menos de 24 horas, con el enlace para tus huéspedes. Si quieres cambiar algo mientras tanto, puedes editar abajo.",
   st_pub:"Tu guía está en línea", st_pub_p:"Comparte este enlace con tus huéspedes:", st_pub_upd:"Se está actualizando con tus cambios…",
   st_err:"Algo salió mal", st_err_p:"Ya me llegó un aviso. Puedes intentar guardar de nuevo, o esperar a que te escriba.",
+  st_pending:"Recibí tus cambios. Aparecerán en tu guía en menos de 24 horas.",
   copy:"Copiar", copied:"Copiado", open:"Abrir", notfound:"No encontramos esta guía. Revisa el enlace de tu correo.", legal:"Términos y privacidad"
 },
 en:{
@@ -225,6 +226,7 @@ en:{
   st_review:"Received!", st_review_p:"I'll review your guide and email it to you within 24 hours, with the link for your guests. Want to change something meanwhile? You can edit below.",
   st_pub:"Your guide is live", st_pub_p:"Share this link with your guests:", st_pub_upd:"Updating with your changes…",
   st_err:"Something went wrong", st_err_p:"I've been notified. You can try saving again, or wait for my email.",
+  st_pending:"I've received your changes. They'll appear in your guide within 24 hours.",
   copy:"Copy", copied:"Copied", open:"Open", notfound:"We couldn't find this guide. Check the link in your email.", legal:"Terms & privacy"
 },
 he:{
@@ -251,6 +253,7 @@ he:{
   st_review:"התקבל!", st_review_p:"אבדוק את המדריך והוא יגיע אליכם במייל תוך פחות מ־24 שעות, עם הלינק לאורחים. רוצים לשנות משהו בינתיים? אפשר לערוך למטה.",
   st_pub:"המדריך באוויר", st_pub_p:"שתפו את הלינק הזה עם האורחים:", st_pub_upd:"מתעדכן עם השינויים שלכם…",
   st_err:"משהו השתבש", st_err_p:"כבר קיבלתי התראה. אפשר לנסות לשמור שוב, או לחכות למייל ממני.",
+  st_pending:"השינויים התקבלו. הם יופיעו במדריך תוך פחות מ־24 שעות.",
   copy:"העתקה", copied:"הועתק", open:"פתיחה", notfound:"לא מצאנו את המדריך. בדקו את הלינק במייל.", legal:"תנאי שימוש ופרטיות"
 }};
 
@@ -320,7 +323,7 @@ function drawStatus() {
       : `<h2><span class="spin"></span>${esc(t("st_proc"))}</h2><p>${esc(t("st_proc_p"))}</p>`;
     poll = setInterval(refresh, 5000);
   } else if (rec.status === "review") h = `<h2>${esc(t("st_review"))}</h2><p>${esc(t("st_review_p"))}</p>`;
-  else if (rec.status === "published") h = `<h2>${esc(t("st_pub"))}</h2><p>${esc(t("st_pub_p"))}</p>${link}`;
+  else if (rec.status === "published") h = `<h2>${esc(t("st_pub"))}</h2><p>${esc(t("st_pub_p"))}</p>${link}` + (rec.pendingUpdate ? `<p style="margin:12px 0 0">${esc(t("st_pending"))}</p>` : "");
   else if (rec.status === "error") h = `<h2>${esc(t("st_err"))}</h2><p>${esc(t("st_err_p"))}</p>${link}`;
   s.innerHTML = h; s.hidden = !h;
   const cp = $("cp");
