@@ -569,7 +569,11 @@ $("copy").addEventListener("click", async ()=>{
   setTimeout(()=>{ btn.textContent = T[lang].copy; btn.classList.remove("done"); },1600);
 });
 
-try{ const s=localStorage.getItem("clave-demo-lang"); if(s && T[s]) lang=s; }catch(e){}
+function detectLang(){ const ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]).map(l=>String(l).toLowerCase());
+  for(const l of ls){ if(l.startsWith("he")||l.startsWith("iw")) return "he"; if(l.startsWith("es")||l.startsWith("pt")||l.startsWith("ca")||l.startsWith("gl")) return "es"; if(l.startsWith("en")) return "en"; }
+  return ls.length && ls[0] ? "en" : "es"; }
+lang = detectLang();
+try{ const s=localStorage.getItem("clave-demo-lang")||localStorage.getItem("clave-lang"); if(s && T[s]) lang=s; }catch(e){}
 const h = location.hash.slice(1); if(P[h]) theme = h;
 window.addEventListener("hashchange",()=>{ const k=location.hash.slice(1); if(P[k] && k!==theme){ theme=k; render(); } });
 function setLang(l){ lang=l; render(); }     // used by tests

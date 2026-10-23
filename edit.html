@@ -211,7 +211,7 @@ es:{
   missing:"Faltan datos: ", m_theme:"estilo", m_languages:"idiomas", m_name:"nombre del alojamiento", m_place:"ciudad", m_host:"tu nombre", m_whatsapp:"WhatsApp", m_content:"información para huéspedes",
   e_busy:"Tu guía todavía se está generando. Espera un minuto e inténtalo de nuevo.", e_many:"Llegaste al límite de ediciones. Escríbeme y lo resolvemos.", e_gen:"No se pudo guardar. Inténtalo de nuevo o escríbeme.",
   st_proc:"Preparando tu guía…", st_proc_p:"Estoy ordenando y traduciendo tu información. Tarda uno o dos minutos; puedes cerrar esta página.",
-  st_review:"¡Recibido!", st_review_p:"Voy a revisar tu guía y te llegará por correo en menos de 24 horas, con el enlace para tus huéspedes. Si quieres cambiar algo mientras tanto, puedes editar abajo.",
+  st_review:"¡Recibido!", st_review_p:"Voy a revisar tu guía y te llegará por correo en menos de 24 horas, con el enlace para tus huéspedes. Cuando esté lista, en ese correo también recibirás un enlace para editarla tú mismo cuando quieras.",
   st_pub:"Tu guía está en línea", st_pub_p:"Comparte este enlace con tus huéspedes:", st_pub_upd:"Se está actualizando con tus cambios…",
   st_err:"Algo salió mal", st_err_p:"Ya me llegó un aviso. Puedes intentar guardar de nuevo, o esperar a que te escriba.",
   st_pending:"Recibí tus cambios. Aparecerán en tu guía en menos de 24 horas.",
@@ -244,7 +244,7 @@ en:{
   missing:"Missing: ", m_theme:"style", m_languages:"languages", m_name:"property name", m_place:"city", m_host:"your name", m_whatsapp:"WhatsApp", m_content:"information for guests",
   e_busy:"Your guide is still being generated. Wait a minute and try again.", e_many:"You've reached the edit limit. Write to me and we'll sort it out.", e_gen:"Couldn't save. Try again or write to me.",
   st_proc:"Preparing your guide…", st_proc_p:"I'm organizing and translating your information. It takes a minute or two; you can close this page.",
-  st_review:"Received!", st_review_p:"I'll review your guide and email it to you within 24 hours, with the link for your guests. Want to change something meanwhile? You can edit below.",
+  st_review:"Received!", st_review_p:"I'll review your guide and email it to you within 24 hours, with the link for your guests. When it's ready, that email will also include a link to edit it yourself anytime.",
   st_pub:"Your guide is live", st_pub_p:"Share this link with your guests:", st_pub_upd:"Updating with your changes…",
   st_err:"Something went wrong", st_err_p:"I've been notified. You can try saving again, or wait for my email.",
   st_pending:"I've received your changes. They'll appear in your guide within 24 hours.",
@@ -277,7 +277,7 @@ he:{
   missing:"חסר: ", m_theme:"סגנון", m_languages:"שפות", m_name:"שם הנכס", m_place:"עיר", m_host:"השם שלך", m_whatsapp:"וואטסאפ", m_content:"מידע לאורחים",
   e_busy:"המדריך עדיין נוצר. חכו דקה ונסו שוב.", e_many:"הגעתם למגבלת העריכות. כתבו לי ונסדר.", e_gen:"השמירה נכשלה. נסו שוב או כתבו לי.",
   st_proc:"מכין את המדריך…", st_proc_p:"מסדר ומתרגם את המידע. לוקח דקה־שתיים; אפשר לסגור את הדף.",
-  st_review:"התקבל!", st_review_p:"אבדוק את המדריך והוא יגיע אליכם במייל תוך פחות מ־24 שעות, עם הלינק לאורחים. רוצים לשנות משהו בינתיים? אפשר לערוך למטה.",
+  st_review:"התקבל!", st_review_p:"אבדוק את המדריך והוא יגיע אליכם במייל תוך פחות מ־24 שעות, עם הלינק לאורחים. כשהוא יהיה מוכן, באותו מייל יגיע גם קישור לעריכה עצמית מתי שרוצים.",
   st_pub:"המדריך באוויר", st_pub_p:"שתפו את הלינק הזה עם האורחים:", st_pub_upd:"מתעדכן עם השינויים שלכם…",
   st_err:"משהו השתבש", st_err_p:"כבר קיבלתי התראה. אפשר לנסות לשמור שוב, או לחכות למייל ממני.",
   st_pending:"השינויים התקבלו. הם יופיעו במדריך תוך פחות מ־24 שעות.",
@@ -310,7 +310,10 @@ function setUi(l) {
   try { localStorage.setItem("clave-lang", ui); } catch (e) {}
 }
 
+function locked() { return !!(rec && (rec.approved || (rec.input && rec.status !== "error"))); }
 function drawHead() {
+  const lk = locked() && !liveMode();
+  $("h1").hidden = lk; $("lead").hidden = lk;
   if (liveMode()) { $("h1").textContent = t("le_h1"); $("lead").textContent = t("le_lead"); return; }
   const edit = rec && rec.input;
   $("h1").textContent = t(edit ? "h1_edit" : "h1_new");
@@ -363,6 +366,7 @@ function drawStatus() {
   const cp = $("cp");
   if (cp) cp.onclick = async () => { try { await navigator.clipboard.writeText(rec.guideUrl); } catch (e) {} cp.textContent = t("copied"); setTimeout(() => cp.textContent = t("copy"), 1500); };
   $("submit").disabled = rec.status === "processing";
+  form.hidden = locked();
 }
 
 function fill(i) {
@@ -516,7 +520,7 @@ document.querySelectorAll("[data-ui]").forEach((b) => b.onclick = () => setUi(b.
   if (!r0) { setUi(saved || "es"); $("notfound").hidden = false; return; }
   if (rec.input) fill(rec.input); else setMode("paste");
   if (liveMode()) { E = JSON.parse(JSON.stringify(rec.content)); tab = E.languages[0]; form.hidden = true; $("live").hidden = false; }
-  setUi(q.get("ui") || saved || rec.lang || "es");
+  setUi(q.get("ui") || rec.lang || saved || "es");
   $("page").hidden = false;
 })();
 </script>

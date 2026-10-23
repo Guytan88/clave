@@ -171,7 +171,10 @@ function setLang(l){
 document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
 let saved = new URLSearchParams(location.search).get("lang");
 if(!L[saved]){ try { saved = localStorage.getItem("clave-lang"); } catch(e){} }
-setLang(L[saved] ? saved : "es");
+function detectLang(){ const ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]).map(l=>String(l).toLowerCase());
+  for(const l of ls){ if(l.startsWith("he")||l.startsWith("iw")) return "he"; if(l.startsWith("es")||l.startsWith("pt")||l.startsWith("ca")||l.startsWith("gl")) return "es"; if(l.startsWith("en")) return "en"; }
+  return ls.length && ls[0] ? "en" : "es"; }
+setLang(L[saved] ? saved : detectLang());
 if(location.hash){ const t=document.querySelector(location.hash); if(t) t.scrollIntoView(); }
 </script>
 </body>

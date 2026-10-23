@@ -597,7 +597,10 @@ document.querySelectorAll(".copy").forEach(btn=>btn.addEventListener("click", as
 
 let saved = null;
 try { saved = localStorage.getItem("clave-lang"); } catch(e){}
-setLang(saved && T[saved] ? saved : "es");
+function detectLang(){ const ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]).map(l=>String(l).toLowerCase());
+  for(const l of ls){ if(l.startsWith("he")||l.startsWith("iw")) return "he"; if(l.startsWith("es")||l.startsWith("pt")||l.startsWith("ca")||l.startsWith("gl")) return "es"; if(l.startsWith("en")) return "en"; }
+  return ls.length && ls[0] ? "en" : "es"; }
+setLang(saved && T[saved] ? saved : detectLang());
 loadPayPal();
 </script>
 </body>

@@ -35,7 +35,8 @@ export default async function handler(req, res) {
   const { id, k, input } = body(req);
   const g = await loadGuide(String(id || ""));
   if (!tokenOk(g, k)) return res.status(404).json({ error: "not_found" });
-  if (g.approved) return res.status(409).json({ error: "locked" });   // after approval the form is closed; edits go through the live editor
+  // The form can be sent once. After that it's locked (edits go through the live editor once the guide is approved).
+  if (g.approved || (g.input && g.status !== "error")) return res.status(409).json({ error: "locked" });
   if (g.status === "processing" && Date.now() - Date.parse(g.updated) < 6 * 60 * 1000) return res.status(409).json({ error: "busy" });
   if ((g.edits || 0) >= cfg.maxEdits) return res.status(429).json({ error: "too_many_edits" });
 
