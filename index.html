@@ -165,6 +165,26 @@
   details[open] summary::after{transform:rotate(45deg)}
   details p{margin:10px 0 0;color:var(--muted);max-width:60ch}
 
+  /* Done for you */
+  .dfy{background:var(--marigold);color:var(--ink)}
+  .dfy h2{max-width:none;margin-bottom:12px}
+  .dfy-lead{font-size:19px;margin:0 0 34px;max-width:62ch}
+  .dfy-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:22px;align-items:stretch}
+  .dfy-you,.dfy-me{background:#fff;border-radius:20px;padding:24px}
+  .dfy-me{background:var(--ink);color:#fff}
+  .dfy-grid h3{font-family:var(--head);font-size:22px;margin:0 0 4px}
+  .dfy-sub{margin:0 0 16px;font-size:15px;opacity:.75}
+  .dfy-opt{border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+  .dfy-opt b{display:block;margin-bottom:2px}
+  .dfy-opt span{font-size:15px;color:var(--muted)}
+  .dfy-or{display:block;text-align:center;font-size:13px;font-weight:600;color:var(--muted);margin:-2px 0 8px;text-transform:uppercase;letter-spacing:.08em}
+  .dfy-me ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  .dfy-me li{display:flex;gap:10px;align-items:flex-start}
+  .dfy-me li::before{content:"✓";color:var(--marigold);font-weight:700}
+  .dfy-arrow{display:grid;place-items:center;font-family:var(--head);font-size:40px;font-weight:800}
+  html[dir="rtl"] .dfy-arrow{transform:scaleX(-1)}
+  @media (max-width:900px){ .dfy-grid{grid-template-columns:1fr} .dfy-arrow{transform:rotate(90deg)!important;font-size:32px;margin:-6px 0} }
+
   /* Trust strip */
   .trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px;padding:0;list-style:none;font-size:15px;color:var(--ink)}
   .trust li{display:flex;align-items:center;gap:8px}
@@ -335,6 +355,28 @@
       </div>
     </div>
   </div>
+
+  <section class="dfy" id="hecho">
+    <div class="wrap">
+      <h2 data-i18n="dfy_h"></h2>
+      <p class="dfy-lead" data-i18n="dfy_p"></p>
+      <div class="dfy-grid">
+        <div class="dfy-you">
+          <h3 data-i18n="dfy_you"></h3>
+          <p class="dfy-sub" data-i18n="dfy_you_sub"></p>
+          <div class="dfy-opt"><b data-i18n="dfy_o1"></b><span data-i18n="dfy_o1d"></span></div>
+          <span class="dfy-or" data-i18n="dfy_or"></span>
+          <div class="dfy-opt"><b data-i18n="dfy_o2"></b><span data-i18n="dfy_o2d"></span></div>
+        </div>
+        <div class="dfy-arrow" aria-hidden="true">→</div>
+        <div class="dfy-me">
+          <h3 data-i18n="dfy_me"></h3>
+          <p class="dfy-sub" data-i18n="dfy_me_sub"></p>
+          <ul><li data-i18n="dfy_m1"></li><li data-i18n="dfy_m2"></li><li data-i18n="dfy_m3"></li><li data-i18n="dfy_m4"></li><li data-i18n="dfy_m5"></li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="white" id="antes">
     <div class="wrap">
@@ -544,7 +586,7 @@ const T = {
 es:{
   nav_cta:"Pedir mi guía",
   hero_h:"Tus huéspedes preguntan siempre lo mismo. Respóndeles con un solo enlace.",
-  hero_p:"Armo la guía de tu alojamiento (wifi, llegada, reglas de la casa, recomendaciones) en una página que se abre en cualquier celular. Tú me mandas los datos; en 24 horas tienes tu enlace listo para compartir.",
+  hero_p:"Yo armo la guía de tu alojamiento (wifi, llegada, reglas, recomendaciones) en una página que se abre en cualquier celular. Tú solo pegas los mensajes de WhatsApp que ya mandas, o llenas unos datos; en 24 horas tienes tu enlace.",
   cta_main:"Quiero mi guía por US$49",
   cta_demo:"Ver guías de ejemplo",
   hero_note:"Pago único. La editas tú cuando quieras durante el año.",
@@ -589,7 +631,7 @@ es:{
   f4q:"¿Cuánto tiempo estará en línea?", f4a:"Garantizo que tu guía esté en línea al menos un año, sin pagos adicionales. Después puede seguir funcionando, pero ya sin garantía.",
   f5q:"¿Y si tengo varios alojamientos?", f5a:"Cada alojamiento tiene su propia guía. Escríbeme y te hago un precio por varias.",
   fin_h:"Ten tu guía lista antes de tu próxima reserva",
-  t1:"Pago único de US$49", t2:"Lista en menos de 24 horas", t3:"Hasta 20 idiomas", t4:"Sin apps: se abre en cualquier celular",
+  t1:"Pago único de US$49", t2:"Lista en menos de 24 horas", t3:"Hasta 20 idiomas", t4:"Yo la armo por ti",
   ba_h:"Del caos de mensajes a una guía que sí se lee", ba_before:"Antes", ba_after:"Con Clave",
   w1:"¡Hola! Bienvenidos 😊 El check-in es a partir de las 3. La clave del wifi es colibri2024 (con minúscula)…",
   w2:"Ah, el agua caliente tarda unos 10 minutos. El control del aire está en el buró de la recámara…",
@@ -616,12 +658,19 @@ es:{
   f7q:"¿Airbnb no tiene ya un manual de la casa?", f7a:"Sí, y puedes seguir usándolo. Pero vive dentro de la app de Airbnb y es texto plano. Tu guía de Clave es una página con diseño, botón para copiar el wifi y hasta 20 idiomas, que funciona en cualquier lugar: Airbnb, Booking, WhatsApp o reservas directas. Incluso puedes pegar el enlace dentro del manual de Airbnb.",
   f8q:"¿Y los códigos de acceso? ¿Es seguro?", f8a:"Tu guía tiene una dirección única que solo conoce quien recibe el enlace, y no aparece en Google. Aun así, no incluye códigos de puerta ni de caja de llaves: esos se los sigues mandando por mensaje, como siempre. Si los escribes en el formulario, no los publico.",
   f9q:"¿Puedo ver cómo queda antes de pagar?", f9a:"Sí. Mira la guía de ejemplo: puedes cambiar entre todos los estilos y los idiomas. Tu guía tendrá el mismo nivel, con tus datos.",
+  dfy_h:"Tú no armas nada. Yo hago tu guía.", dfy_p:"No es otra app que tienes que aprender a usar. Me mandas lo que ya tienes y yo me encargo de todo lo demás.",
+  dfy_you:"Tú", dfy_you_sub:"5 minutos, desde el celular. Elige una opción:",
+  dfy_o1:"Pegar tus mensajes de siempre", dfy_o1d:"Copia y pega los mensajes de WhatsApp que ya les mandas a tus huéspedes. Así, tal cual.",
+  dfy_or:"o", dfy_o2:"Llenar unos campos cortos", dfy_o2d:"Nombre, horarios, wifi, reglas y tus lugares favoritos. Lo opcional lo puedes dejar vacío.",
+  dfy_me:"Yo", dfy_me_sub:"Me encargo del resto, en menos de 24 horas:",
+  dfy_m1:"Ordeno y redacto la información por secciones", dfy_m2:"La traduzco a los idiomas que elijas", dfy_m3:"La pongo en el estilo que va con tu alojamiento",
+  dfy_m4:"La reviso yo mismo antes de publicarla", dfy_m5:"Te mando el enlace listo para pegar en Airbnb",
   foot:"Clave. Guías digitales para alojamientos. shasi.contact@gmail.com"
 },
 en:{
   nav_cta:"Order my guide",
   hero_h:"Your guests keep asking the same things. Answer them all with one link.",
-  hero_p:"I build your rental's guide (wifi, check-in, house rules, local tips) as a page that opens on any phone. You send me the details; within 24 hours you have a link ready to share.",
+  hero_p:"I build your rental's guide (wifi, check-in, house rules, local tips) as a page that opens on any phone. You just paste the WhatsApp messages you already send, or fill in a few details; within 24 hours you have your link.",
   cta_main:"Get my guide for US$49",
   cta_demo:"See example guides",
   hero_note:"One payment. Edit it yourself anytime during the year.",
@@ -666,7 +715,7 @@ en:{
   f4q:"How long will it stay online?", f4a:"I guarantee your guide stays online for at least one year, with no extra payments. After that it may keep working, but without a guarantee.",
   f5q:"What if I have several listings?", f5a:"Each listing gets its own guide. Message me for a multi-listing price.",
   fin_h:"Have your guide ready before your next booking",
-  t1:"One payment of US$49", t2:"Ready in under 24 hours", t3:"Up to 20 languages", t4:"No apps: opens on any phone",
+  t1:"One payment of US$49", t2:"Ready in under 24 hours", t3:"Up to 20 languages", t4:"I build it for you",
   ba_h:"From a mess of messages to a guide guests actually read", ba_before:"Before", ba_after:"With Clave",
   w1:"Hi! Welcome 😊 Check-in is from 3. The wifi password is colibri2024 (all lowercase)…",
   w2:"Oh, and the hot water takes about 10 minutes. The AC remote is on the bedroom nightstand…",
@@ -693,12 +742,19 @@ en:{
   f7q:"Doesn't Airbnb already have a house manual?", f7a:"Yes, and you can keep using it. But it lives inside the Airbnb app and it's plain text. Your Clave guide is a designed page with a copy-wifi button and up to 20 languages that works anywhere: Airbnb, Booking, WhatsApp or direct bookings. You can even paste the link into your Airbnb house manual.",
   f8q:"What about access codes? Is it safe?", f8a:"Your guide has a unique address that only people with the link know, and it doesn't show up on Google. Even so, it never includes door or key-box codes: you keep sending those by message, as usual. If you write them in the form, I won't publish them.",
   f9q:"Can I see what it looks like before paying?", f9a:"Yes. Check the example guide: you can switch between all the styles and languages. Your guide will be just as polished, with your details.",
+  dfy_h:"You don't build anything. I make your guide.", dfy_p:"It's not another app you have to learn. You send me what you already have and I take care of everything else.",
+  dfy_you:"You", dfy_you_sub:"5 minutes, from your phone. Pick one:",
+  dfy_o1:"Paste your usual messages", dfy_o1d:"Copy and paste the WhatsApp messages you already send your guests. Just as they are.",
+  dfy_or:"or", dfy_o2:"Fill in a few short fields", dfy_o2d:"Name, times, wifi, rules and your favorite spots. Optional fields can stay empty.",
+  dfy_me:"Me", dfy_me_sub:"I handle the rest, in under 24 hours:",
+  dfy_m1:"I organize and write up the information by section", dfy_m2:"I translate it into the languages you choose", dfy_m3:"I put it in the style that suits your place",
+  dfy_m4:"I review it myself before publishing", dfy_m5:"I send you the link, ready to paste into Airbnb",
   foot:"Clave. Digital guides for vacation rentals. shasi.contact@gmail.com"
 },
 he:{
   nav_cta:"להזמנת מדריך",
   hero_h:"האורחים שלך שואלים שוב ושוב את אותן שאלות. תענה להם בלינק אחד.",
-  hero_p:"אני בונה את מדריך הנכס שלך (וויי־פיי, הגעה, חוקי הבית והמלצות) בדף אחד שנפתח בכל טלפון. אתה שולח לי את הפרטים, ותוך 24 שעות יש לך לינק מוכן לשיתוף.",
+  hero_p:"אני בונה את מדריך הנכס שלך (וויי־פיי, הגעה, חוקי הבית והמלצות) בדף אחד שנפתח בכל טלפון. אתה רק מדביק את הודעות הוואטסאפ שאתה כבר שולח, או ממלא כמה פרטים; תוך 24 שעות יש לך לינק.",
   cta_main:"אני רוצה מדריך ב־49$",
   cta_demo:"לצפייה במדריכים לדוגמה",
   hero_note:"תשלום אחד. עורכים בעצמכם מתי שרוצים במהלך השנה.",
@@ -743,7 +799,7 @@ he:{
   f4q:"כמה זמן המדריך יהיה באוויר?", f4a:"אני מתחייב שהמדריך יהיה באוויר לפחות שנה, בלי תשלומים נוספים. אחר כך הוא עשוי להמשיך לעבוד, אבל ללא אחריות.",
   f5q:"ויש לי כמה נכסים?", f5a:"לכל נכס מדריך משלו. כתוב לי ונסגור מחיר לכמה נכסים.",
   fin_h:"שיהיה לך מדריך מוכן לפני ההזמנה הבאה",
-  t1:"תשלום אחד של 49$", t2:"מוכן תוך פחות מ־24 שעות", t3:"עד 20 שפות", t4:"בלי אפליקציות: נפתח בכל טלפון",
+  t1:"תשלום אחד של 49$", t2:"מוכן תוך פחות מ־24 שעות", t3:"עד 20 שפות", t4:"אני בונה אותו בשבילך",
   ba_h:"מבלגן של הודעות למדריך שאורחים באמת קוראים", ba_before:"לפני", ba_after:"עם Clave",
   w1:"היי! ברוכים הבאים 😊 הצ'ק־אין מ־15:00. הסיסמה לוויי־פיי היא colibri2024 (באותיות קטנות)…",
   w2:"אה, והמים החמים לוקחים בערך 10 דקות. השלט של המזגן על השידה בחדר השינה…",
@@ -770,6 +826,13 @@ he:{
   f7q:"לאיירביאנבי אין כבר מדריך בית?", f7a:"יש, ואפשר להמשיך להשתמש בו. אבל הוא נמצא בתוך האפליקציה של איירביאנבי, והוא טקסט פשוט. המדריך של Clave הוא דף מעוצב עם כפתור להעתקת הוויי־פיי ועד 20 שפות, שעובד בכל מקום: איירביאנבי, בוקינג, וואטסאפ או הזמנות ישירות. אפשר אפילו להדביק את הלינק בתוך מדריך הבית של איירביאנבי.",
   f8q:"ומה עם קודי כניסה? זה בטוח?", f8a:"למדריך יש כתובת ייחודית שרק מי שקיבל את הלינק מכיר, והוא לא מופיע בגוגל. ובכל זאת, הוא אף פעם לא כולל קודים של דלת או של כספת מפתחות: אותם ממשיכים לשלוח בהודעה, כרגיל. אם כתבתם אותם בטופס, אני לא מפרסם אותם.",
   f9q:"אפשר לראות איך זה נראה לפני שמשלמים?", f9a:"כן. במדריך לדוגמה אפשר לעבור בין כל הסגנונות והשפות. המדריך שלך יהיה באותה רמה, עם הפרטים שלך.",
+  dfy_h:"אתה לא בונה כלום. אני מכין לך את המדריך.", dfy_p:"זו לא עוד אפליקציה שצריך ללמוד. שולחים לי מה שכבר יש לך, ואני דואג לכל השאר.",
+  dfy_you:"אתה", dfy_you_sub:"5 דקות, מהטלפון. בוחרים אחת:",
+  dfy_o1:"להדביק את ההודעות הרגילות שלך", dfy_o1d:"מעתיקים ומדביקים את הודעות הוואטסאפ שאתה כבר שולח לאורחים. בדיוק כמו שהן.",
+  dfy_or:"או", dfy_o2:"למלא כמה שדות קצרים", dfy_o2d:"שם, שעות, ויי־פיי, חוקים והמקומות שאתה אוהב. שדות רשות אפשר להשאיר ריקים.",
+  dfy_me:"אני", dfy_me_sub:"דואג לכל השאר, תוך פחות מ־24 שעות:",
+  dfy_m1:"מסדר ומנסח את המידע לפי חלקים", dfy_m2:"מתרגם לשפות שבחרת", dfy_m3:"מעצב בסגנון שמתאים לנכס שלך",
+  dfy_m4:"בודק בעצמי לפני הפרסום", dfy_m5:"שולח לך לינק מוכן להדבקה באיירביאנבי",
   foot:"Clave. מדריכים דיגיטליים לנכסי אירוח. shasi.contact@gmail.com"
 }};
 
