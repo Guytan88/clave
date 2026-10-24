@@ -84,6 +84,11 @@
   .add{border:1.5px dashed var(--line);background:none;border-radius:10px;padding:8px 14px;font:500 14px var(--body);color:var(--green);cursor:pointer}
   .sticky{position:sticky;bottom:0;background:linear-gradient(transparent,var(--bg) 30%);padding:18px 0 14px;margin-top:6px}
   .ok{color:var(--green);font-weight:600;font-size:15px;margin:8px 0 0}
+  .sos-title{display:block;font-weight:500;font-size:15px;margin-bottom:2px}
+  .sos-hint{display:block;font-size:13.5px;color:var(--muted);margin-bottom:8px}
+  .sos-row{display:grid;grid-template-columns:1.4fr 1fr auto;gap:8px;margin-bottom:8px;align-items:center}
+  .sos-row .x{border:0;background:none;color:var(--muted);font-size:22px;line-height:1;cursor:pointer;padding:4px 8px}
+  @media (max-width:600px){ .sos-row{grid-template-columns:1fr 1fr auto} }
   footer{padding:24px 0 40px;color:var(--muted);font-size:14px;text-align:center}
   @media (max-width:600px){ .themes,.langs{grid-template-columns:repeat(2,1fr)} .row{grid-template-columns:1fr} .card{padding:20px 16px} }
 </style>
@@ -170,7 +175,13 @@
         <p class="hint" data-t="s_extra_h"></p>
         <label class="f"><span data-t="f_welcome"></span><textarea name="welcome" maxlength="1500"></textarea></label>
         <label class="f"><span data-t="f_recs"></span><textarea name="recs" maxlength="5000"></textarea></label>
-        <label class="f"><span data-t="f_sos"></span><input type="text" name="emergency" maxlength="600"></label>
+        <div class="f sos-box">
+          <span class="sos-title" data-t="f_sos"></span>
+          <span class="sos-hint" data-t="sos_hint"></span>
+          <div id="sos"></div>
+          <button type="button" class="add" id="sos_add" data-t="sos_add"></button>
+          <input type="hidden" name="emergency">
+        </div>
       </section>
 
       <button class="btn btn-main" id="submit" type="submit"></button>
@@ -206,7 +217,7 @@ es:{
   f_arrival:"Llegada (estacionamiento, cómo encontrar el lugar…)", f_house:"Instrucciones de la casa (agua caliente, aire, cocina, lavadora…)",
   f_rules:"Normas de la casa", f_checkout:"Antes de irse (llaves, toallas, basura…)",
   s_extra:"Toques personales", s_extra_h:"Opcional, pero es lo que hace única tu guía.",
-  f_welcome:"Mensaje de bienvenida", f_recs:"Tus recomendaciones (lugares para comer, pasear… una frase de cada uno)", f_sos:"Teléfonos de emergencia",
+  f_welcome:"Mensaje de bienvenida", f_recs:"Tus recomendaciones (lugares para comer, pasear… una frase de cada uno)", f_sos:"Teléfonos de emergencia", sos_hint:"Agrega los que quieras, cada uno con su descripción.", sos_label:"Para qué (ej. Ambulancia)", sos_num:"Número", sos_add:"+ Agregar otro número",
   submit_new:"Crear mi guía", submit_edit:"Guardar cambios", sending:"Enviando…",
   missing:"Faltan datos: ", m_theme:"estilo", m_languages:"idiomas", m_name:"nombre del alojamiento", m_place:"ciudad", m_host:"tu nombre", m_whatsapp:"WhatsApp", m_content:"información para huéspedes",
   e_busy:"Tu guía todavía se está generando. Espera un minuto e inténtalo de nuevo.", e_many:"Llegaste al límite de ediciones. Escríbeme y lo resolvemos.", e_gen:"No se pudo guardar. Inténtalo de nuevo o escríbeme.",
@@ -239,7 +250,7 @@ en:{
   f_arrival:"Arrival (parking, how to find the place…)", f_house:"House instructions (hot water, AC, kitchen, washing machine…)",
   f_rules:"House rules", f_checkout:"Before leaving (keys, towels, trash…)",
   s_extra:"Personal touches", s_extra_h:"Optional, but it's what makes your guide special.",
-  f_welcome:"Welcome message", f_recs:"Your recommendations (places to eat, things to do… one line each)", f_sos:"Emergency numbers",
+  f_welcome:"Welcome message", f_recs:"Your recommendations (places to eat, things to do… one line each)", f_sos:"Emergency numbers", sos_hint:"Add as many as you like, each with a description.", sos_label:"What for (e.g. Ambulance)", sos_num:"Number", sos_add:"+ Add another number",
   submit_new:"Create my guide", submit_edit:"Save changes", sending:"Sending…",
   missing:"Missing: ", m_theme:"style", m_languages:"languages", m_name:"property name", m_place:"city", m_host:"your name", m_whatsapp:"WhatsApp", m_content:"information for guests",
   e_busy:"Your guide is still being generated. Wait a minute and try again.", e_many:"You've reached the edit limit. Write to me and we'll sort it out.", e_gen:"Couldn't save. Try again or write to me.",
@@ -272,7 +283,7 @@ he:{
   f_arrival:"הגעה (חניה, איך מוצאים את המקום…)", f_house:"הוראות הבית (מים חמים, מזגן, מטבח, כביסה…)",
   f_rules:"חוקי הבית", f_checkout:"לפני היציאה (מפתחות, מגבות, זבל…)",
   s_extra:"נגיעות אישיות", s_extra_h:"רשות, אבל זה מה שעושה את המדריך מיוחד.",
-  f_welcome:"הודעת ברוכים הבאים", f_recs:"ההמלצות שלכם (מקומות לאכול, לטייל… שורה לכל אחד)", f_sos:"מספרי חירום",
+  f_welcome:"הודעת ברוכים הבאים", f_recs:"ההמלצות שלכם (מקומות לאכול, לטייל… שורה לכל אחד)", f_sos:"מספרי חירום", sos_hint:"אפשר להוסיף כמה שרוצים, לכל אחד תיאור.", sos_label:"למה (למשל: אמבולנס)", sos_num:"מספר", sos_add:"+ הוספת מספר",
   submit_new:"צור את המדריך", submit_edit:"שמירת שינויים", sending:"שולח…",
   missing:"חסר: ", m_theme:"סגנון", m_languages:"שפות", m_name:"שם הנכס", m_place:"עיר", m_host:"השם שלך", m_whatsapp:"וואטסאפ", m_content:"מידע לאורחים",
   e_busy:"המדריך עדיין נוצר. חכו דקה ונסו שוב.", e_many:"הגעתם למגבלת העריכות. כתבו לי ונסדר.", e_gen:"השמירה נכשלה. נסו שוב או כתבו לי.",
@@ -306,7 +317,7 @@ function setUi(l) {
   document.querySelectorAll("[data-ui]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.ui === ui));
   document.querySelectorAll("[data-t]").forEach((el) => { el.textContent = t(el.dataset.t); });
   $("notfound").textContent = t("notfound");
-  drawThemes(); drawLangs(); drawStatus(); drawHead(); if (liveMode()) drawLive();
+  drawThemes(); drawLangs(); drawSos(); drawStatus(); drawHead(); if (liveMode()) drawLive();
   try { localStorage.setItem("clave-lang", ui); } catch (e) {}
 }
 
@@ -369,10 +380,35 @@ function drawStatus() {
   form.hidden = locked();
 }
 
+/* ---------------- Emergency numbers: description + number rows ---------------- */
+let sos = [{ l: "", n: "" }];
+function parseSos(str) {
+  const rows = String(str || "").split("\n").map((x) => x.trim()).filter(Boolean).map((x) => {
+    const m = x.match(/^(.*?)[:\-–]\s*([+\d][\d\s\-()+]*)$/);
+    return m ? { l: m[1].trim(), n: m[2].trim() } : { l: "", n: x };
+  });
+  return rows.length ? rows : [{ l: "", n: "" }];
+}
+function drawSos() {
+  const box = $("sos"); box.innerHTML = "";
+  sos.forEach((r, i) => {
+    const row = document.createElement("div"); row.className = "sos-row";
+    const a = document.createElement("input"); a.type = "text"; a.maxLength = 60; a.placeholder = t("sos_label"); a.value = r.l; a.oninput = () => r.l = a.value;
+    const b = document.createElement("input"); b.type = "tel"; b.maxLength = 25; b.dir = "ltr"; b.placeholder = t("sos_num"); b.value = r.n; b.oninput = () => r.n = b.value;
+    const x = document.createElement("button"); x.type = "button"; x.className = "x"; x.textContent = "×"; x.ariaLabel = "remove";
+    x.onclick = () => { sos.splice(i, 1); if (!sos.length) sos.push({ l: "", n: "" }); drawSos(); };
+    row.append(a, b, x); box.append(row);
+  });
+  $("sos_add").hidden = sos.length >= 10;
+}
+$("sos_add").onclick = () => { sos.push({ l: "", n: "" }); drawSos(); $("sos").lastElementChild.querySelector("input").focus(); };
+const sosText = () => sos.filter((r) => r.n.trim()).map((r) => (r.l.trim() ? `${r.l.trim()}: ${r.n.trim()}` : r.n.trim())).join("\n");
+
 function fill(i) {
   for (const k of ["name", "place", "host", "whatsapp", "ci", "co", "wifi_net", "wifi_pw", "welcome", "paste", "arrival", "house", "rules", "checkout", "recs", "emergency"])
     if (form[k] && i[k] != null) form[k].value = i[k];
   chosen = [...(i.languages || [])];
+  sos = parseSos(i.emergency);
   setMode(i.mode || "paste");
 }
 
@@ -388,6 +424,7 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const err = $("err"); err.hidden = true;
   document.querySelectorAll(".bad").forEach((x) => x.classList.remove("bad"));
+  form.emergency.value = sosText();
   const data = Object.fromEntries(new FormData(form));
   data.languages = chosen; data.mode = mode;
   const miss = [];

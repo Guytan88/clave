@@ -19,7 +19,7 @@ function clean(raw) {
     mode: raw.mode === "paste" ? "paste" : "fields",
     paste: str(raw.paste, 15000),
     arrival: str(raw.arrival, 3000), house: str(raw.house, 6000), rules: str(raw.rules, 3000), checkout: str(raw.checkout, 3000),
-    recs: str(raw.recs, 5000), emergency: str(raw.emergency, 600),
+    recs: str(raw.recs, 5000), emergency: str(raw.emergency, 1200),
   };
   const missing = [];
   if (!i.theme) missing.push("theme");

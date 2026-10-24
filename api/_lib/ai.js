@@ -40,7 +40,7 @@ Rules:
 - house: one item per topic (title of 1-3 words + 1-2 sentences).
 - rules and checkout: one short line each.
 - spots (recommendations): name exactly as the host wrote it, one line on why it's worth it, "cat" = a 1-3 word category (e.g. "To eat", "Beach"), "dist" only if the host gave a distance/time, otherwise omit it. Group spots of the same category together.
-- emergency: lines like "Ambulance: 911". If the host gave none, use the official national emergency number of the property's country (one line).
+- emergency: one line per number the host gave, as "description: number" (translate the description, keep the number exactly). If the host gave none, use the official national emergency number of the property's country (one line).
 - note: if the host wrote a welcome message, use it (cleaned up). Otherwise write a warm 2-sentence welcome.
 - Empty sections are empty arrays. Warm, clear, concise tone. Plain text only, no markdown, no emojis.`;
 
