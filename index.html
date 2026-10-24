@@ -620,7 +620,7 @@ es:{
   ag_pre:"He leído y acepto los ", ag_terms:"Términos", ag_and:" y la ", ag_priv:"Política de privacidad", ag_end:".", ag_need:"Para continuar, marca la casilla de Términos y privacidad.",
   f6q:"¿Hay reembolsos?", f6a:"Si cancelas antes de enviar el formulario, o si no puedo entregar tu guía, te devuelvo todo. Como cada guía se hace a la medida, una vez entregada no es reembolsable; para eso puedes editarla tú mismo todo el año.",
   ft_terms:"Términos", ft_priv:"Privacidad",
-  pay_note:"Paga con PayPal o con tarjeta. Al terminar pasas directo al formulario de tu alojamiento (y te llega el enlace por correo).", pay_soon:"El pago estará disponible muy pronto. Escríbeme a shasi.contact@gmail.com.", pay_err:"No se pudo completar el pago. Intenta de nuevo o escríbeme.", pay_redirect:"¡Pago recibido! Abriendo el formulario…", pay_after_err:"El pago se recibió (pedido {id}), pero no pude abrir el formulario. Revisa tu correo o escríbeme a shasi.contact@gmail.com.",
+  pay_note:"Paga con PayPal o con tarjeta. Al terminar te llega un correo con el enlace al formulario de tu alojamiento.", pay_soon:"El pago estará disponible muy pronto. Escríbeme a shasi.contact@gmail.com.", pay_err:"No se pudo completar el pago. Intenta de nuevo o escríbeme.", pay_redirect:"¡Pago recibido! Abriendo el formulario…", pay_after_err:"El pago se recibió (pedido {id}), pero no pude abrir el formulario. Revisa tu correo o escríbeme a shasi.contact@gmail.com.",
   ab_h:"Sobre mí",
   ab_p:"Construyo sitios web y le hago la vida más fácil a los anfitriones. Armo cada guía personalmente, con tus datos, para que tus huéspedes tengan todo a mano y tú dejes de contestar lo mismo una y otra vez. ¿Tienes dudas antes de pedir? Escríbeme.",
   ab_btn:"Escribir por WhatsApp",
@@ -704,7 +704,7 @@ en:{
   ag_pre:"I have read and agree to the ", ag_terms:"Terms", ag_and:" and ", ag_priv:"Privacy Policy", ag_end:".", ag_need:"To continue, tick the Terms and privacy box.",
   f6q:"Are there refunds?", f6a:"If you cancel before submitting the form, or if I can't deliver your guide, you get everything back. Since each guide is custom-made, it isn't refundable once delivered; that's why you can edit it yourself all year.",
   ft_terms:"Terms", ft_priv:"Privacy",
-  pay_note:"Pay with PayPal or a card. When you're done, you go straight to your property form (and get the link by email).", pay_soon:"Payment will be available very soon. Write to shasi.contact@gmail.com.", pay_err:"The payment didn't go through. Please try again or write to me.", pay_redirect:"Payment received! Opening the form…", pay_after_err:"Your payment went through (order {id}), but the form didn\'t open. Check your email or write to shasi.contact@gmail.com.",
+  pay_note:"Pay with PayPal or a card. Right after, you'll get an email with the link to your property form.", pay_soon:"Payment will be available very soon. Write to shasi.contact@gmail.com.", pay_err:"The payment didn't go through. Please try again or write to me.", pay_redirect:"Payment received! Opening the form…", pay_after_err:"Your payment went through (order {id}), but the form didn\'t open. Check your email or write to shasi.contact@gmail.com.",
   ab_h:"A bit about me",
   ab_p:"I build websites and make life easier for hosts. I put together every guide personally, with your details, so your guests have everything at hand and you stop answering the same questions over and over. Questions before ordering? Write to me.",
   ab_btn:"Message on WhatsApp",
@@ -788,7 +788,7 @@ he:{
   ag_pre:"קראתי ואני מסכים/ה ל", ag_terms:"תנאי השימוש", ag_and:" ול", ag_priv:"מדיניות הפרטיות", ag_end:".", ag_need:"כדי להמשיך, יש לסמן את תיבת התנאים והפרטיות.",
   f6q:"יש החזר כספי?", f6a:"אם מבטלים לפני שליחת הטופס, או אם לא אצליח למסור את המדריך, מקבלים הכל בחזרה. מאחר שכל מדריך מוכן במיוחד, אחרי המסירה אין החזר; בשביל זה אפשר לערוך אותו בעצמכם כל השנה.",
   ft_terms:"תנאי שימוש", ft_priv:"פרטיות",
-  pay_note:"תשלום בפייפאל או בכרטיס אשראי. בסיום עוברים ישר לטופס פרטי הנכס (והקישור מגיע גם במייל).", pay_soon:"התשלום יהיה זמין בקרוב. כתבו לי: shasi.contact@gmail.com", pay_err:"התשלום לא הושלם. נסו שוב או כתבו לי.", pay_redirect:"התשלום התקבל! פותח את הטופס…", pay_after_err:"התשלום התקבל (הזמנה {id}), אבל הטופס לא נפתח. בדקו את המייל או כתבו לי: shasi.contact@gmail.com.",
+  pay_note:"תשלום בפייפאל או בכרטיס אשראי. מיד אחרי התשלום מגיע מייל עם קישור לטופס פרטי הנכס.", pay_soon:"התשלום יהיה זמין בקרוב. כתבו לי: shasi.contact@gmail.com", pay_err:"התשלום לא הושלם. נסו שוב או כתבו לי.", pay_redirect:"התשלום התקבל! פותח את הטופס…", pay_after_err:"התשלום התקבל (הזמנה {id}), אבל הטופס לא נפתח. בדקו את המייל או כתבו לי: shasi.contact@gmail.com.",
   ab_h:"קצת עליי",
   ab_p:"אני בונה אתרים ומקל על החיים של מארחים. כל מדריך אני מכין בעצמי, עם הפרטים שלך, כדי שלאורחים יהיה הכל בהישג יד ואתה תפסיק לענות על אותן שאלות שוב ושוב. יש שאלה לפני שמזמינים? כתוב לי.",
   ab_btn:"לכתוב בוואטסאפ",
@@ -882,7 +882,7 @@ function loadPayPal(){
         payMsg("pay_redirect");
         return fetch("/api/paid",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({orderID:order.id,lang:current})})
           .then(async r=>{ if(r.ok) return r.json(); const t=await r.text().catch(()=>""); throw new Error("server "+r.status+" "+t.slice(0,120)); })
-          .then(j=>{ location.href=j.editUrl; })
+          .then(j=>{ location.href="/thanks?order="+encodeURIComponent(order.id)+"&lang="+current+"&email="+encodeURIComponent(j.email||""); })
           .catch(e=>{ console.error("paid failed", e); const el=document.getElementById("pay-msg"); el.textContent=T[current].pay_after_err.replace("{id}",order.id)+" ["+String(e.message||e)+"]"; el.hidden=false; });
       }).catch(err=>{
         // Card declined → let the buyer try another card (PayPal's recommended handling)

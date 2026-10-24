@@ -2,6 +2,8 @@
 import { db, cfg, body, getPayPalOrder, randId, randToken, saveGuide, loadGuide, siteUrl, links } from "./_lib/core.js";
 import { mailPaid } from "./_lib/mail.js";
 
+const mask = (e) => { const [u, d] = String(e || "").split("@"); return d ? `${u.slice(0, 2)}***@${d}` : ""; };
+
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "method" });
   const { orderID, lang } = body(req);
@@ -14,7 +16,7 @@ export default async function handler(req, res) {
     const existing = await db.get(`o:${order}`);
     if (existing) {
       const g = await loadGuide(existing);
-      if (g) return res.json({ editUrl: links(base, g).edit });
+      if (g) return res.json({ editUrl: links(base, g).edit, email: mask(g.email) });
     }
 
     // Test orders (no payment): only while TEST_EMAIL is set in Vercel, and they always go to that address.
@@ -44,7 +46,7 @@ export default async function handler(req, res) {
       try { await mailPaid(uiLang, g.email, { order, amount: g.amount, edit: l.edit }); mail = "sent"; }
       catch (e) { console.error("mailPaid failed", e); mail = "failed: " + String(e.message || e).slice(0, 200); }
     }
-    return res.json(test ? { editUrl: l.edit, mail } : { editUrl: l.edit });
+    return res.json(test ? { editUrl: l.edit, mail, email: mask(g.email) } : { editUrl: l.edit, email: mask(g.email) });
   } catch (e) {
     console.error(e);
     return res.status(500).json({ error: "server" });

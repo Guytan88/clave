@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Clave · Pago recibido</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#EDEFEA; --ink:#1D2B24; --muted:#56625B; --green:#2E5E4E; --green-deep:#22463A; --marigold:#F2B632; --line:#CFD5CC;
+    --head:'Bricolage Grotesque','Rubik',system-ui,sans-serif; --body:'Rubik',system-ui,sans-serif; }
+  html[lang="he"]{ --head:'Rubik',system-ui,sans-serif; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:620px;margin-inline:auto;padding:16px}
+  header{display:flex;justify-content:space-between;align-items:center;padding-block:4px 20px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:800;font-size:22px;text-decoration:none;color:var(--ink)}
+  .lang{display:flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px}
+  .lang button{border:0;background:none;font:500 14px var(--body);color:var(--muted);padding:6px 11px;border-radius:999px;cursor:pointer}
+  .lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+  .card{background:#fff;border-radius:22px;padding:34px 26px;text-align:center}
+  .ok{width:68px;height:68px;border-radius:50%;background:var(--green);display:grid;place-items:center;margin:0 auto 18px}
+  h1{font-family:var(--head);font-weight:800;font-size:clamp(28px,6vw,38px);line-height:1.1;margin:0 0 8px;letter-spacing:-.02em}
+  html[lang="he"] h1{letter-spacing:0}
+  .order{display:inline-block;background:var(--bg);border-radius:10px;padding:6px 14px;font-size:15px;margin:4px 0 22px}
+  .order b{font-family:ui-monospace,Consolas,monospace;letter-spacing:.02em}
+  .steps{text-align:start;list-style:none;padding:0;margin:0 0 22px;display:grid;gap:14px;counter-reset:s}
+  .steps li{display:flex;gap:14px;align-items:flex-start;counter-increment:s}
+  .steps li::before{content:counter(s);flex:none;width:30px;height:30px;border-radius:50%;background:var(--marigold);display:grid;place-items:center;font-weight:600;font-size:15px}
+  .steps b{display:block}
+  .steps span{color:var(--muted);font-size:15.5px}
+  .note{background:#FFF6DD;border:1px solid #F0D58A;border-radius:14px;padding:14px 16px;text-align:start;font-size:15px}
+  .note a{color:var(--green);font-weight:600}
+  footer{text-align:center;color:var(--muted);font-size:14px;padding:22px 0}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="/"><svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true"><rect x="1" y="1" width="28" height="28" rx="8" fill="#2E5E4E"/><circle cx="12" cy="15" r="5" fill="none" stroke="#F2B632" stroke-width="3"/><path d="M17 15h8M22 15v4" stroke="#F2B632" stroke-width="3" stroke-linecap="round"/></svg>Clave</a>
+    <div class="lang" role="group" aria-label="Idioma"><button data-lang="es">ES</button><button data-lang="en">EN</button><button data-lang="he">עב</button></div>
+  </header>
+
+  <div class="card">
+    <div class="ok"><svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <h1 data-t="h"></h1>
+    <div class="order" id="orderBox"><span data-t="order"></span> <b id="order"></b></div>
+    <ol class="steps">
+      <li><div><b data-t="s1"></b><span id="s1d"></span></div></li>
+      <li><div><b data-t="s2"></b><span data-t="s2d"></span></div></li>
+      <li><div><b data-t="s3"></b><span data-t="s3d"></span></div></li>
+    </ol>
+    <div class="note"><span data-t="spam"></span> <a href="mailto:shasi.contact@gmail.com">shasi.contact@gmail.com</a></div>
+  </div>
+  <footer><a href="/legal" data-t="legal"></a></footer>
+</div>
+<script>
+const T = {
+  es:{ title:"Pago recibido", h:"¡Pago recibido! Gracias", order:"Pedido:",
+       s1:"Abre el correo que te acabo de enviar", s1d:"Llega a {email} con el asunto «Pago recibido · Completa los datos de tu guía».", s1d0:"Llega al correo de tu cuenta de PayPal, con el asunto «Pago recibido · Completa los datos de tu guía».",
+       s2:"Completa el formulario de tu alojamiento", s2d:"Toca el botón del correo. Llenas unos campos cortos o pegas tus mensajes de WhatsApp de siempre (unos 5 minutos).",
+       s3:"Recibe tu guía", s3d:"En menos de 24 horas te llega el enlace para tus huéspedes y otro para editarla cuando quieras.",
+       spam:"¿No ves el correo en unos minutos? Revisa la carpeta de spam o promociones, o escríbeme:", legal:"Términos y privacidad" },
+  en:{ title:"Payment received", h:"Payment received! Thank you", order:"Order:",
+       s1:"Open the email I just sent you", s1d:"It's on its way to {email}, with the subject “Payment received · Fill in your guide details”.", s1d0:"It's on its way to your PayPal email, with the subject “Payment received · Fill in your guide details”.",
+       s2:"Fill in your property form", s2d:"Tap the button in the email. Fill in a few short fields or paste your usual WhatsApp messages (about 5 minutes).",
+       s3:"Get your guide", s3d:"Within 24 hours you'll receive the link for your guests, plus one to edit it anytime.",
+       spam:"Don't see the email within a few minutes? Check your spam or promotions folder, or write to me:", legal:"Terms & privacy" },
+  he:{ title:"התשלום התקבל", h:"התשלום התקבל! תודה", order:"מספר הזמנה:",
+       s1:"פתחו את המייל שנשלח אליכם עכשיו", s1d:"הוא בדרך אל {email}, בנושא „התשלום התקבל · מלאו את פרטי המדריך”.", s1d0:"הוא בדרך לכתובת המייל של חשבון הפייפאל שלכם, בנושא „התשלום התקבל · מלאו את פרטי המדריך”.",
+       s2:"מלאו בטופס את פרטי הנכס", s2d:"לוחצים על הכפתור במייל. ממלאים כמה שדות קצרים או מדביקים את הודעות הוואטסאפ הרגילות (בערך 5 דקות).",
+       s3:"מקבלים את המדריך", s3d:"תוך פחות מ־24 שעות מגיע הלינק לאורחים, ועוד לינק לעריכה מתי שרוצים.",
+       spam:"המייל לא הגיע תוך כמה דקות? בדקו בתיקיית הספאם או קידומי מכירות, או כתבו לי:", legal:"תנאי שימוש ופרטיות" },
+};
+const q = new URLSearchParams(location.search);
+const order = (q.get("order") || "").replace(/[^A-Z0-9]/gi, "");
+const email = (q.get("email") || "").slice(0, 80);
+function setLang(l) {
+  const d = T[l] || T.es; l = T[l] ? l : "es";
+  document.documentElement.lang = l; document.documentElement.dir = l === "he" ? "rtl" : "ltr";
+  document.title = "Clave · " + d.title;
+  document.querySelectorAll("[data-t]").forEach((el) => el.textContent = d[el.dataset.t]);
+  const esc = (x) => x.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  document.getElementById("s1d").innerHTML = email ? esc(d.s1d).replace("{email}", `<bdi dir="ltr">${esc(email)}</bdi>`) : esc(d.s1d0);
+  document.querySelectorAll("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.lang === l));
+  try { localStorage.setItem("clave-lang", l); } catch (e) {}
+}
+document.getElementById("order").textContent = order;
+document.getElementById("orderBox").hidden = !order;
+document.querySelectorAll("[data-lang]").forEach((b) => b.onclick = () => setLang(b.dataset.lang));
+let saved = null; try { saved = localStorage.getItem("clave-lang"); } catch (e) {}
+setLang(q.get("lang") || saved || "es");
+</script>
+</body>
+</html>
