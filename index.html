@@ -4,10 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Clave · Guías digitales para alojamientos</title>
-<meta name="description" content="La guía de tu alojamiento en un solo enlace: wifi, llegada, reglas y recomendaciones. Lista en 24 horas por US$49.">
+<meta name="description" content="La guía de tu alojamiento en un solo enlace: wifi, llegada, reglas y recomendaciones, en hasta 20 idiomas. Lista en 24 horas. Pago único de US$49.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Clave · La guía de tu alojamiento en un solo enlace">
+<meta property="og:description" content="Wifi, llegada, reglas y recomendaciones en una página bonita, en hasta 20 idiomas. Lista en 24 horas. Pago único de US$49.">
+<meta property="og:image" content="https://claveguia.vercel.app/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Rubik:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@300;400&family=Heebo:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Rubik:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@300;400&family=Heebo:wght@300;400&family=Fraunces:ital,opsz@1,9..144&family=Archivo:wght@800&family=Bitter:wght@600&family=Cormorant+Garamond&family=Libre+Caslon+Text&family=Manrope:wght@300&family=Varela+Round&display=swap" rel="stylesheet">
 <style>
   /* ======= CONFIG: cambia estos enlaces antes de publicar =======
      PAYPAL_CLIENT_ID → Client ID de tu app en developer.paypal.com (es público)
@@ -158,6 +165,79 @@
   details[open] summary::after{transform:rotate(45deg)}
   details p{margin:10px 0 0;color:var(--muted);max-width:60ch}
 
+  /* Trust strip */
+  .trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px;padding:0;list-style:none;font-size:15px;color:var(--ink)}
+  .trust li{display:flex;align-items:center;gap:8px}
+  .trust li::before{content:"";width:18px;height:18px;flex:none;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.5l2.6 2.6L13 6.5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat}
+
+  /* Before / after */
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+  .ba-col{border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:14px}
+  .ba-before{background:#E7ECE6}
+  .ba-after{background:var(--green-deep);color:#fff}
+  .ba-tag{align-self:flex-start;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:4px 12px;background:#fff;color:var(--ink)}
+  .ba-after .ba-tag{background:var(--marigold)}
+  .wa-msg{background:#fff;border-radius:14px 14px 14px 4px;padding:10px 14px;font-size:14.5px;color:#30403A;box-shadow:0 2px 0 rgba(0,0,0,.05);max-width:92%}
+  html[dir="rtl"] .wa-msg{border-radius:14px 14px 4px 14px}
+  .wa-msg.host{align-self:flex-end;background:#DCF3D5;border-radius:14px 14px 4px 14px}
+  html[dir="rtl"] .wa-msg.host{border-radius:14px 14px 14px 4px}
+  .wa-msg small{display:block;text-align:end;font-size:11px;color:#8A968F;margin-top:2px}
+  .ba-cap{margin:auto 0 0;font-size:15px;color:var(--muted)}
+  .ba-after .ba-cap{color:rgba(255,255,255,.8)}
+  .mini{background:#FBFAF8;color:#2A1E1C;border-radius:16px;overflow:hidden;font-family:'Heebo',system-ui,sans-serif;max-width:340px}
+  .mini-top{background:#5E2328;color:#F3ECE3;text-align:center;padding:18px 12px 30px}
+  .mini-top em{font-family:'Frank Ruhl Libre',Georgia,serif;font-size:12px;color:#D8C39A}
+  .mini-top b{display:block;font-family:'Frank Ruhl Libre',Georgia,serif;font-weight:400;font-size:24px}
+  .mini-card{margin:-18px 12px 0;background:#fff;border:1px solid #E6DFD5;display:flex;justify-content:space-between;align-items:center;padding:10px 12px;font-size:13px;position:relative}
+  .mini-card span{font-family:'Frank Ruhl Libre',Georgia,serif;font-size:16px}
+  .mini-card i{font-style:normal;border:1px solid #5E2328;color:#5E2328;padding:4px 8px;font-size:11px}
+  .mini ul{list-style:none;margin:0;padding:10px 14px 14px}
+  .mini li{padding:8px 0;border-bottom:1px solid #E6DFD5;font-family:'Frank Ruhl Libre',Georgia,serif;font-size:15px}
+  .outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:40px}
+  .outcomes h3{font-size:19px;margin:0 0 6px}
+  .outcomes p{margin:0;color:var(--muted)}
+
+  /* Styles gallery */
+  .styles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .sty{display:block;text-decoration:none;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;transition:transform .2s,box-shadow .2s}
+  .sty:hover{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(29,43,36,.45)}
+  .sty-cover{height:118px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:10px}
+  .sty-cover small{font-size:11px;opacity:.75}
+  .sty-cover b{font-size:20px;line-height:1.1;font-weight:400}
+  .sty-name{padding:10px 12px;font-size:14.5px;font-weight:500;display:flex;justify-content:space-between;align-items:center}
+  .sty-name::after{content:"→";color:var(--green)}
+  html[dir="rtl"] .sty-name::after{content:"←"}
+  .sty-lead{color:var(--muted);margin:-20px 0 30px;max-width:60ch}
+
+  /* Who it's for */
+  .who{display:grid;grid-template-columns:1.3fr 1fr;gap:24px}
+  .who > div{border-radius:20px;padding:26px 24px;background:var(--surface);border:1px solid var(--line)}
+  .who h3{font-family:var(--head);font-size:21px;margin:0 0 14px}
+  .who ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  .who li{display:flex;gap:10px;align-items:flex-start}
+  .who li::before{flex:none;font-weight:700;margin-top:1px}
+  .who .yes li::before{content:"✓";color:var(--green)}
+  .who .no{background:transparent}
+  .who .no li{color:var(--muted)}
+  .who .no li::before{content:"✕";color:#9b2c1f}
+
+  /* Guarantee */
+  .guar{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:16px;margin:18px 0 0;max-width:420px}
+  .guar svg{flex:none}
+  .guar b{display:block;margin-bottom:2px}
+  .guar p{margin:0;font-size:14.5px;opacity:.9}
+  .secure{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--muted);margin:4px 0 8px}
+
+  /* Sticky mobile CTA */
+  .sticky-cta{position:fixed;inset-inline:12px;bottom:12px;z-index:60;display:none;align-items:center;justify-content:space-between;gap:12px;background:var(--ink);color:#fff;border-radius:16px;padding:10px 10px 10px 18px;box-shadow:0 14px 30px -12px rgba(0,0,0,.45);transform:translateY(140%);transition:transform .3s}
+  html[dir="rtl"] .sticky-cta{padding:10px 18px 10px 10px}
+  .sticky-cta.show{transform:none}
+  .sticky-cta b{font-family:var(--head);font-size:18px}
+  .sticky-cta .btn{padding:11px 16px;font-size:15px}
+  @media (max-width:760px){ .sticky-cta{display:flex} footer{padding-bottom:96px} }
+
+  @media (max-width:900px){ .ba,.who{grid-template-columns:1fr} .styles{grid-template-columns:repeat(2,1fr)} .outcomes{grid-template-columns:1fr;gap:20px} }
+
   .final{text-align:center}
   .final h2{margin-inline:auto}
   footer{padding-block:32px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
@@ -210,6 +290,9 @@
         <a class="btn btn-ghost" href="demo.html" data-i18n="cta_demo">Ver una guía de ejemplo</a>
       </div>
       <p class="note" data-i18n="hero_note"></p>
+      <ul class="trust">
+        <li data-i18n="t1"></li><li data-i18n="t2"></li><li data-i18n="t3"></li><li data-i18n="t4"></li>
+      </ul>
     </div>
 
     <div class="stage" aria-hidden="false">
@@ -252,7 +335,37 @@
     </div>
   </div>
 
-  <section class="white">
+  <section class="white" id="antes">
+    <div class="wrap">
+      <h2 data-i18n="ba_h"></h2>
+      <div class="ba">
+        <div class="ba-col ba-before">
+          <span class="ba-tag" data-i18n="ba_before"></span>
+          <div class="wa-msg host"><span data-i18n="w1"></span><small>14:02</small></div>
+          <div class="wa-msg host"><span data-i18n="w2"></span><small>14:03</small></div>
+          <div class="wa-msg host"><span data-i18n="w3"></span><small>14:03</small></div>
+          <div class="wa-msg"><span data-i18n="w4"></span><small>21:47</small></div>
+          <p class="ba-cap" data-i18n="ba_cap1"></p>
+        </div>
+        <div class="ba-col ba-after">
+          <span class="ba-tag" data-i18n="ba_after"></span>
+          <div class="mini" aria-hidden="true">
+            <div class="mini-top"><em data-i18n="m_welcome"></em><b>Casa Jacaranda</b></div>
+            <div class="mini-card"><div><small>Wifi</small><span>colibri2024</span></div><i data-i18n="copy"></i></div>
+            <ul><li data-i18n="arr_l"></li><li data-i18n="m_l1"></li><li data-i18n="m_l2"></li><li data-i18n="m_l3"></li></ul>
+          </div>
+          <p class="ba-cap" data-i18n="ba_cap2"></p>
+        </div>
+      </div>
+      <div class="outcomes">
+        <div><h3 data-i18n="o1t"></h3><p data-i18n="o1d"></p></div>
+        <div><h3 data-i18n="o2t"></h3><p data-i18n="o2d"></p></div>
+        <div><h3 data-i18n="o3t"></h3><p data-i18n="o3d"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
     <div class="wrap">
       <h2 data-i18n="inc_h"></h2>
       <div class="includes">
@@ -262,6 +375,23 @@
         <div class="inc"><h3 data-i18n="i4t"></h3><p data-i18n="i4d"></p></div>
         <div class="inc"><h3 data-i18n="i5t"></h3><p data-i18n="i5d"></p></div>
         <div class="inc"><h3 data-i18n="i6t"></h3><p data-i18n="i6d"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="white" id="estilos">
+    <div class="wrap">
+      <h2 data-i18n="st_h"></h2>
+      <p class="sty-lead" data-i18n="st_p"></p>
+      <div class="styles">
+        <a class="sty" href="demo.html#colonial"><div class="sty-cover" style="background:#5E2328;color:#F3ECE3"><small data-i18n="m_welcome"></small><b style="font-family:'Frank Ruhl Libre',Georgia,serif">Casa Jacaranda</b></div><div class="sty-name" data-i18n="sty_colonial"></div></a>
+        <a class="sty" href="demo.html#playa"><div class="sty-cover" style="background:#BFE1E6;color:#0F3346"><small data-i18n="m_welcome"></small><b style="font-family:'Fraunces',Georgia,serif">Casa Marea</b></div><div class="sty-name" data-i18n="sty_playa"></div></a>
+        <a class="sty" href="demo.html#ciudad"><div class="sty-cover" style="background:#F4F4F2;color:#000"><small data-i18n="m_welcome"></small><b style="font-family:'Archivo',system-ui,sans-serif;font-weight:800;letter-spacing:-.03em">Depto Roma</b></div><div class="sty-name" data-i18n="sty_ciudad"></div></a>
+        <a class="sty" href="demo.html#cabana"><div class="sty-cover" style="background:#24382C;color:#EFE8D8"><small data-i18n="m_welcome"></small><b style="font-family:'Bitter',Georgia,serif;font-weight:600">Cabaña El Pinar</b></div><div class="sty-name" data-i18n="sty_cabana"></div></a>
+        <a class="sty" href="demo.html#villa"><div class="sty-cover" style="background:#0B1F20;color:#EDE6D6"><small data-i18n="m_welcome"></small><b style="font-family:'Cormorant Garamond',Georgia,serif">Villa Lumbre</b></div><div class="sty-name" data-i18n="sty_villa"></div></a>
+        <a class="sty" href="demo.html#campo"><div class="sty-cover" style="background:#E9E3CC;color:#2F2B1F"><small data-i18n="m_welcome"></small><b style="font-family:'Libre Caslon Text',Georgia,serif">Finca Los Olivos</b></div><div class="sty-name" data-i18n="sty_campo"></div></a>
+        <a class="sty" href="demo.html#lago"><div class="sty-cover" style="background:#DCE6EC;color:#1B2B3A"><small data-i18n="m_welcome"></small><b style="font-family:'Manrope',system-ui,sans-serif;font-weight:300">Casa Bruma</b></div><div class="sty-name" data-i18n="sty_lago"></div></a>
+        <a class="sty" href="demo.html#familiar"><div class="sty-cover" style="background:#FFC93C;color:#1C2541"><small data-i18n="m_welcome"></small><b style="font-family:'Varela Round',system-ui,sans-serif">Casa Gaviota</b></div><div class="sty-name" data-i18n="sty_familiar"></div></a>
       </div>
     </div>
   </section>
@@ -313,6 +443,16 @@
     </div>
   </section>
 
+  <section style="padding-top:0">
+    <div class="wrap">
+      <h2 data-i18n="who_h"></h2>
+      <div class="who">
+        <div class="yes"><h3 data-i18n="yes_h"></h3><ul><li data-i18n="yes1"></li><li data-i18n="yes2"></li><li data-i18n="yes3"></li><li data-i18n="yes4"></li></ul></div>
+        <div class="no"><h3 data-i18n="no_h"></h3><ul><li data-i18n="no1"></li><li data-i18n="no2"></li></ul></div>
+      </div>
+    </div>
+  </section>
+
   <section id="precio" style="padding-top:0">
     <div class="wrap">
       <div class="price">
@@ -320,6 +460,10 @@
           <h2 data-i18n="pr_h"></h2>
           <div class="amount">US$49</div>
           <div class="amount-sub" data-i18n="pr_sub"></div>
+          <div class="guar">
+            <svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5l8-3z" fill="#F2B632"/><path d="M8 12.2l2.6 2.6L16 9.5" fill="none" stroke="#22463A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b data-i18n="g_h"></b><p data-i18n="g_p"></p></div>
+          </div>
         </div>
         <div>
           <ul>
@@ -331,6 +475,7 @@
           </ul>
           <div class="paybox">
             <p class="pay-note" data-i18n="pay_note"></p>
+            <p class="secure"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10V8a6 6 0 1112 0v2h1v12H5V10h1zm2 0h8V8a4 4 0 10-8 0v2z" fill="currentColor"/></svg><span data-i18n="secure"></span></p>
             <label class="agree" id="agree-box"><input type="checkbox" id="agree"><span><span data-i18n="ag_pre"></span><a href="legal.html#terms" target="_blank" rel="noopener" data-i18n="ag_terms"></a><span data-i18n="ag_and"></span><a href="legal.html#privacy" target="_blank" rel="noopener" data-i18n="ag_priv"></a><span data-i18n="ag_end"></span></span></label>
             <p class="pay-msg" id="pay-msg" hidden></p>
             <div id="paypal-buttons"></div>
@@ -354,6 +499,9 @@
   <section>
     <div class="wrap faq">
       <h2 data-i18n="faq_h"></h2>
+      <details><summary data-i18n="f7q"></summary><p data-i18n="f7a"></p></details>
+      <details><summary data-i18n="f8q"></summary><p data-i18n="f8a"></p></details>
+      <details><summary data-i18n="f9q"></summary><p data-i18n="f9a"></p></details>
       <details><summary data-i18n="f1q"></summary><p data-i18n="f1a"></p></details>
       <details><summary data-i18n="f2q"></summary><p data-i18n="f2a"></p></details>
       <details><summary data-i18n="f3q"></summary><p data-i18n="f3a"></p></details>
@@ -373,6 +521,11 @@
     </div>
   </section>
 </main>
+
+<div class="sticky-cta" id="sticky" aria-hidden="true">
+  <b>US$49</b>
+  <a class="btn btn-main js-order" href="#" data-i18n="nav_cta"></a>
+</div>
 
 <footer>
   <div class="wrap">
@@ -435,6 +588,33 @@ es:{
   f4q:"¿Cuánto tiempo estará en línea?", f4a:"Garantizo que tu guía esté en línea al menos un año, sin pagos adicionales. Después puede seguir funcionando, pero ya sin garantía.",
   f5q:"¿Y si tengo varios alojamientos?", f5a:"Cada alojamiento tiene su propia guía. Escríbeme y te hago un precio por varias.",
   fin_h:"Ten tu guía lista antes de tu próxima reserva",
+  t1:"Pago único de US$49", t2:"Lista en menos de 24 horas", t3:"Hasta 20 idiomas", t4:"Sin apps: se abre en cualquier celular",
+  ba_h:"Del caos de mensajes a una guía que sí se lee", ba_before:"Antes", ba_after:"Con Clave",
+  w1:"¡Hola! Bienvenidos 😊 El check-in es a partir de las 3. La clave del wifi es colibri2024 (con minúscula)…",
+  w2:"Ah, el agua caliente tarda unos 10 minutos. El control del aire está en el buró de la recámara…",
+  w3:"Para la basura: orgánico en el bote verde y lo demás en el gris. El camión pasa martes y viernes…",
+  w4:"Perdón, ¿cuál era la clave del wifi? 😅",
+  ba_cap1:"Instrucciones largas, repartidas en varios mensajes y perdidas en el chat. Y las mismas preguntas en cada reserva.",
+  ba_cap2:"Un solo enlace ordenado, con el wifi a un toque y en el idioma de cada huésped. Lo pegas una vez en tu mensaje de bienvenida.",
+  arr_l:"Tu llegada",
+  o1t:"Menos preguntas repetidas", o1d:"Lo que hoy contestas en cada reserva ya está en la guía, a un toque.",
+  o2t:"Llegadas más tranquilas", o2d:"Horarios, estacionamiento e indicaciones claras antes de que tus huéspedes salgan de casa.",
+  o3t:"Una primera impresión profesional", o3d:"Un detalle cuidado que tus huéspedes notan desde el primer mensaje.",
+  st_h:"Un estilo para cada tipo de alojamiento", st_p:"Casa colonial, departamento en la ciudad, cabaña, villa de lujo… Toca uno para ver la guía completa.",
+  sty_colonial:"Colonial", sty_playa:"Playa", sty_ciudad:"Ciudad", sty_cabana:"Cabaña", sty_villa:"Villa de lujo", sty_campo:"Campo", sty_lago:"Lago", sty_familiar:"Familiar",
+  who_h:"¿Es para ti?", yes_h:"Es para ti si…",
+  yes1:"Tienes uno o varios alojamientos en Airbnb, Booking o con reservas directas.",
+  yes2:"Copias y pegas las mismas instrucciones en cada reserva.",
+  yes3:"Recibes huéspedes que hablan otros idiomas.",
+  yes4:"Quieres algo bonito y listo, sin aprender otra app ni pagar cada mes.",
+  no_h:"No es para ti si…",
+  no1:"Necesitas check-in automático, cerraduras inteligentes o integración con un sistema de gestión (PMS).",
+  no2:"Buscas una página web para recibir reservas y pagos.",
+  g_h:"Mi garantía", g_p:"Si por cualquier motivo no puedo entregar tu guía, te devuelvo el 100%. Una vez lista, queda en línea al menos 12 meses y la editas tú mismo sin costo.",
+  secure:"Pago seguro con PayPal. Los datos de tu tarjeta nunca pasan por este sitio.",
+  f7q:"¿Airbnb no tiene ya un manual de la casa?", f7a:"Sí, y puedes seguir usándolo. Pero vive dentro de la app de Airbnb y es texto plano. Tu guía de Clave es una página con diseño, botón para copiar el wifi y hasta 20 idiomas, que funciona en cualquier lugar: Airbnb, Booking, WhatsApp o reservas directas. Incluso puedes pegar el enlace dentro del manual de Airbnb.",
+  f8q:"¿Y los códigos de acceso? ¿Es seguro?", f8a:"Tu guía tiene una dirección única que solo conoce quien recibe el enlace, y no aparece en Google. Aun así, no incluye códigos de puerta ni de caja de llaves: esos se los sigues mandando por mensaje, como siempre. Si los escribes en el formulario, no los publico.",
+  f9q:"¿Puedo ver cómo queda antes de pagar?", f9a:"Sí. Mira la guía de ejemplo: puedes cambiar entre todos los estilos y los idiomas. Tu guía tendrá el mismo nivel, con tus datos.",
   foot:"Clave. Guías digitales para alojamientos. shasi.contact@gmail.com"
 },
 en:{
@@ -485,6 +665,33 @@ en:{
   f4q:"How long will it stay online?", f4a:"I guarantee your guide stays online for at least one year, with no extra payments. After that it may keep working, but without a guarantee.",
   f5q:"What if I have several listings?", f5a:"Each listing gets its own guide. Message me for a multi-listing price.",
   fin_h:"Have your guide ready before your next booking",
+  t1:"One payment of US$49", t2:"Ready in under 24 hours", t3:"Up to 20 languages", t4:"No apps: opens on any phone",
+  ba_h:"From a mess of messages to a guide guests actually read", ba_before:"Before", ba_after:"With Clave",
+  w1:"Hi! Welcome 😊 Check-in is from 3. The wifi password is colibri2024 (all lowercase)…",
+  w2:"Oh, and the hot water takes about 10 minutes. The AC remote is on the bedroom nightstand…",
+  w3:"For trash: food waste in the green bin and the rest in the grey one. Pickup is Tuesday and Friday…",
+  w4:"Sorry, what was the wifi password again? 😅",
+  ba_cap1:"Long instructions spread across several messages and lost in the chat. And the same questions with every booking.",
+  ba_cap2:"One tidy link, with the wifi one tap away and in each guest's language. You paste it once into your welcome message.",
+  arr_l:"Your arrival",
+  o1t:"Fewer repeat questions", o1d:"What you answer with every booking today is already in the guide, one tap away.",
+  o2t:"Smoother arrivals", o2d:"Times, parking and clear directions before your guests even leave home.",
+  o3t:"A professional first impression", o3d:"A thoughtful touch your guests notice from the very first message.",
+  st_h:"A style for every kind of place", st_p:"Colonial house, city apartment, cabin, luxury villa… Tap one to see the full guide.",
+  sty_colonial:"Colonial", sty_playa:"Beach", sty_ciudad:"City", sty_cabana:"Cabin", sty_villa:"Luxury villa", sty_campo:"Countryside", sty_lago:"Lake", sty_familiar:"Family",
+  who_h:"Is it for you?", yes_h:"It's for you if…",
+  yes1:"You have one or more places on Airbnb, Booking or with direct bookings.",
+  yes2:"You copy and paste the same instructions for every booking.",
+  yes3:"You host guests who speak other languages.",
+  yes4:"You want something beautiful and ready, without learning another app or paying monthly.",
+  no_h:"It's not for you if…",
+  no1:"You need automated check-in, smart locks or a property management system (PMS) integration.",
+  no2:"You're looking for a website to take bookings and payments.",
+  g_h:"My guarantee", g_p:"If for any reason I can't deliver your guide, you get 100% back. Once it's ready, it stays online for at least 12 months and you can edit it yourself at no cost.",
+  secure:"Secure payment with PayPal. Your card details never touch this site.",
+  f7q:"Doesn't Airbnb already have a house manual?", f7a:"Yes, and you can keep using it. But it lives inside the Airbnb app and it's plain text. Your Clave guide is a designed page with a copy-wifi button and up to 20 languages that works anywhere: Airbnb, Booking, WhatsApp or direct bookings. You can even paste the link into your Airbnb house manual.",
+  f8q:"What about access codes? Is it safe?", f8a:"Your guide has a unique address that only people with the link know, and it doesn't show up on Google. Even so, it never includes door or key-box codes: you keep sending those by message, as usual. If you write them in the form, I won't publish them.",
+  f9q:"Can I see what it looks like before paying?", f9a:"Yes. Check the example guide: you can switch between all the styles and languages. Your guide will be just as polished, with your details.",
   foot:"Clave. Digital guides for vacation rentals. shasi.contact@gmail.com"
 },
 he:{
@@ -535,6 +742,33 @@ he:{
   f4q:"כמה זמן המדריך יהיה באוויר?", f4a:"אני מתחייב שהמדריך יהיה באוויר לפחות שנה, בלי תשלומים נוספים. אחר כך הוא עשוי להמשיך לעבוד, אבל ללא אחריות.",
   f5q:"ויש לי כמה נכסים?", f5a:"לכל נכס מדריך משלו. כתוב לי ונסגור מחיר לכמה נכסים.",
   fin_h:"שיהיה לך מדריך מוכן לפני ההזמנה הבאה",
+  t1:"תשלום אחד של 49$", t2:"מוכן תוך פחות מ־24 שעות", t3:"עד 20 שפות", t4:"בלי אפליקציות: נפתח בכל טלפון",
+  ba_h:"מבלגן של הודעות למדריך שאורחים באמת קוראים", ba_before:"לפני", ba_after:"עם Clave",
+  w1:"היי! ברוכים הבאים 😊 הצ'ק־אין מ־15:00. הסיסמה לוויי־פיי היא colibri2024 (באותיות קטנות)…",
+  w2:"אה, והמים החמים לוקחים בערך 10 דקות. השלט של המזגן על השידה בחדר השינה…",
+  w3:"לגבי הזבל: אורגני בפח הירוק, וכל השאר באפור. הפינוי בימי שלישי ושישי…",
+  w4:"סליחה, מה הייתה הסיסמה של הוויי־פיי? 😅",
+  ba_cap1:"הוראות ארוכות, מפוזרות על כמה הודעות ונבלעות בצ'אט. ואותן שאלות בכל הזמנה.",
+  ba_cap2:"לינק אחד ומסודר, עם הוויי־פיי בנגיעה ובשפה של כל אורח. מדביקים אותו פעם אחת בהודעת הפתיחה.",
+  arr_l:"ההגעה",
+  o1t:"פחות שאלות חוזרות", o1d:"מה שאתם עונים היום בכל הזמנה כבר נמצא במדריך, בנגיעה.",
+  o2t:"הגעות רגועות יותר", o2d:"שעות, חניה והוראות הגעה ברורות עוד לפני שהאורחים יוצאים מהבית.",
+  o3t:"רושם ראשוני מקצועי", o3d:"פרט מוקפד שהאורחים שמים לב אליו כבר מההודעה הראשונה.",
+  st_h:"סגנון לכל סוג של נכס", st_p:"בית קולוניאלי, דירה בעיר, בקתה, וילת יוקרה… נגיעה באחד פותחת את המדריך המלא.",
+  sty_colonial:"קולוניאלי", sty_playa:"חוף", sty_ciudad:"עירוני", sty_cabana:"בקתה", sty_villa:"וילת יוקרה", sty_campo:"כפרי", sty_lago:"אגם", sty_familiar:"משפחתי",
+  who_h:"זה מתאים לך?", yes_h:"זה בשבילך אם…",
+  yes1:"יש לך נכס אחד או יותר באיירביאנבי, בבוקינג או בהזמנות ישירות.",
+  yes2:"אתה מעתיק ומדביק את אותן הוראות בכל הזמנה.",
+  yes3:"מגיעים אליך אורחים שמדברים שפות אחרות.",
+  yes4:"אתה רוצה משהו יפה ומוכן, בלי ללמוד עוד אפליקציה ובלי תשלום חודשי.",
+  no_h:"זה לא בשבילך אם…",
+  no1:"צריך לך צ'ק־אין אוטומטי, מנעולים חכמים או חיבור למערכת ניהול נכסים (PMS).",
+  no2:"אתה מחפש אתר שמקבל הזמנות ותשלומים.",
+  g_h:"האחריות שלי", g_p:"אם מכל סיבה שהיא לא אוכל למסור את המדריך, תקבל 100% מהכסף בחזרה. אחרי שהוא מוכן, הוא באוויר לפחות 12 חודשים ואפשר לערוך אותו בעצמך בלי עלות.",
+  secure:"תשלום מאובטח בפייפאל. פרטי הכרטיס שלך לא עוברים דרך האתר הזה.",
+  f7q:"לאיירביאנבי אין כבר מדריך בית?", f7a:"יש, ואפשר להמשיך להשתמש בו. אבל הוא נמצא בתוך האפליקציה של איירביאנבי, והוא טקסט פשוט. המדריך של Clave הוא דף מעוצב עם כפתור להעתקת הוויי־פיי ועד 20 שפות, שעובד בכל מקום: איירביאנבי, בוקינג, וואטסאפ או הזמנות ישירות. אפשר אפילו להדביק את הלינק בתוך מדריך הבית של איירביאנבי.",
+  f8q:"ומה עם קודי כניסה? זה בטוח?", f8a:"למדריך יש כתובת ייחודית שרק מי שקיבל את הלינק מכיר, והוא לא מופיע בגוגל. ובכל זאת, הוא אף פעם לא כולל קודים של דלת או של כספת מפתחות: אותם ממשיכים לשלוח בהודעה, כרגיל. אם כתבתם אותם בטופס, אני לא מפרסם אותם.",
+  f9q:"אפשר לראות איך זה נראה לפני שמשלמים?", f9a:"כן. במדריך לדוגמה אפשר לעבור בין כל הסגנונות והשפות. המדריך שלך יהיה באותה רמה, עם הפרטים שלך.",
   foot:"Clave. מדריכים דיגיטליים לנכסי אירוח. shasi.contact@gmail.com"
 }};
 
@@ -554,6 +788,11 @@ function setLang(l){
 document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
 
 document.querySelectorAll(".js-order").forEach(a=>a.href = "#precio");
+(function(){ const st=document.getElementById("sticky"), hero=document.querySelector(".hero"), price=document.getElementById("precio");
+  if(!("IntersectionObserver" in window)) return; let heroIn=true, priceIn=false;
+  const upd=()=>{ const on=!heroIn && !priceIn; st.classList.toggle("show",on); st.setAttribute("aria-hidden",String(!on)); };
+  new IntersectionObserver(e=>{ heroIn=e[0].isIntersecting; upd(); }).observe(hero);
+  new IntersectionObserver(e=>{ priceIn=e[0].isIntersecting; upd(); },{threshold:.15}).observe(price); })();
 
 /* ===== PayPal: pago y luego directo al formulario ===== */
 function payMsg(key){ const el=document.getElementById("pay-msg"); el.textContent=T[current][key]; el.hidden=false; }
