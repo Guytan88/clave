@@ -29,14 +29,20 @@ function layout(lang, inner) {
 const btn = (href, label, bg = "#F2B632", fg = "#1D2B24") =>
   `<p style="margin:20px 0"><a href="${href}" style="background:${bg};color:${fg};text-decoration:none;font-weight:bold;padding:14px 22px;border-radius:10px;display:inline-block">${esc(label)}</a></p>`;
 const p = (s) => `<p style="margin:0 0 14px">${s}</p>`;
+// Big, full-width call to action placed at the very top, with a plain link under it as a fallback.
+const bigBtn = (href, label, hint) =>
+  `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:6px 0 8px"><tr><td align="center" bgcolor="#F2B632" style="border-radius:12px">` +
+  `<a href="${href}" style="display:block;padding:18px 20px;font-size:19px;font-weight:bold;color:#1D2B24;text-decoration:none;border-radius:12px">${esc(label)}</a></td></tr></table>` +
+  `<p style="margin:0 0 22px;font-size:13px;color:#56625B">${esc(hint)}<br><a href="${href}" style="color:#2E5E4E;word-break:break-all">${esc(href)}</a></p>`;
 
 const T = {
   es: {
-    paid_s: "Pago recibido · Completa los datos de tu guía",
-    paid: (o) => p("¡Hola! Recibí tu pago, gracias por confiar en Clave.") + p(`Pedido: <b>${esc(o.order)}</b> · Monto: <b>${esc(o.amount)}</b>`) +
-      p("Ahora cuéntame de tu alojamiento: llena unos campos cortos o simplemente pega los mensajes de WhatsApp que ya les mandas a tus huéspedes. Toma unos 5 minutos.") +
-      btn(o.edit, "Completar los datos de mi alojamiento") + p("¿Preguntas? Responde a este correo."),
-    ready_s: "Tu guía está lista",
+    paid_s: (o) => `Pago recibido · Pedido ${o.order} · Completa tu formulario`,
+    paid: (o) => p("<b>¡Gracias! Recibí tu pago.</b> El último paso es contarme de tu alojamiento:") +
+      bigBtn(o.edit, "Completar el formulario →", "¿El botón no funciona? Copia este enlace en tu navegador:") +
+      p("Toma unos 5 minutos: llenas unos campos cortos o simplemente pegas los mensajes de WhatsApp que ya les mandas a tus huéspedes. En menos de 24 horas te llega tu guía.") +
+      p(`<span style="color:#56625B;font-size:14px">Pedido: <b>${esc(o.order)}</b> · Monto: <b>${esc(o.amount)}</b></span>`) + p("¿Preguntas? Responde a este correo."),
+    ready_s: (o) => `Tu guía de ${o.name} está lista`,
     ready: (o) => p("¡Tu guía ya está en línea! Aquí tienes tus dos enlaces:") +
       p("<b>1. Enlace para tus huéspedes</b><br>Pégalo en Airbnb → Mensajes → Mensajes programados, en tu mensaje de bienvenida.") + btn(o.guide, "Ver mi guía") +
       p(`<a href="${o.guide}">${esc(o.guide)}</a>`) +
@@ -44,11 +50,12 @@ const T = {
       p("Las instrucciones de acceso (códigos, llaves) envíalas aparte, como siempre. Tu guía está garantizada en línea por al menos 12 meses.") + p("¡Felices reservas!"),
   },
   en: {
-    paid_s: "Payment received · Fill in your guide details",
-    paid: (o) => p("Hi! I've received your payment. Thank you for choosing Clave.") + p(`Order: <b>${esc(o.order)}</b> · Amount: <b>${esc(o.amount)}</b>`) +
-      p("Now tell me about your place: fill in a few short fields or simply paste the WhatsApp messages you already send your guests. It takes about 5 minutes.") +
-      btn(o.edit, "Fill in my property details") + p("Questions? Just reply to this email."),
-    ready_s: "Your guide is ready",
+    paid_s: (o) => `Payment received · Order ${o.order} · Fill in your form`,
+    paid: (o) => p("<b>Thank you! I've received your payment.</b> The last step is to tell me about your place:") +
+      bigBtn(o.edit, "Fill in the form →", "Button not working? Copy this link into your browser:") +
+      p("It takes about 5 minutes: fill in a few short fields or simply paste the WhatsApp messages you already send your guests. Your guide arrives within 24 hours.") +
+      p(`<span style="color:#56625B;font-size:14px">Order: <b>${esc(o.order)}</b> · Amount: <b>${esc(o.amount)}</b></span>`) + p("Questions? Just reply to this email."),
+    ready_s: (o) => `Your guide for ${o.name} is ready`,
     ready: (o) => p("Your guide is live! Here are your two links:") +
       p("<b>1. Link for your guests</b><br>Paste it in Airbnb → Messages → Scheduled messages, in your welcome message.") + btn(o.guide, "View my guide") +
       p(`<a href="${o.guide}">${esc(o.guide)}</a>`) +
@@ -56,11 +63,12 @@ const T = {
       p("Send access instructions (codes, keys) separately, as usual. Your guide is guaranteed online for at least 12 months.") + p("Happy hosting!"),
   },
   he: {
-    paid_s: "התשלום התקבל · מלאו את פרטי המדריך",
-    paid: (o) => p("שלום! התשלום התקבל, תודה שבחרת ב־Clave.") + p(`הזמנה: <b>${esc(o.order)}</b> · סכום: <b>${esc(o.amount)}</b>`) +
-      p("עכשיו ספרו לי על הנכס: ממלאים כמה שדות קצרים, או פשוט מדביקים את הודעות הוואטסאפ שאתם כבר שולחים לאורחים. לוקח בערך 5 דקות.") +
-      btn(o.edit, "למילוי פרטי הנכס") + p("שאלות? פשוט עונים למייל."),
-    ready_s: "המדריך שלך מוכן",
+    paid_s: (o) => `התשלום התקבל · הזמנה ${o.order} · מלאו את הטופס`,
+    paid: (o) => p("<b>תודה! התשלום התקבל.</b> נשאר שלב אחד: לספר לי על הנכס.") +
+      bigBtn(o.edit, "למילוי הטופס ←", "הכפתור לא עובד? מעתיקים את הקישור הזה לדפדפן:") +
+      p("לוקח בערך 5 דקות: ממלאים כמה שדות קצרים, או פשוט מדביקים את הודעות הוואטסאפ שאתם כבר שולחים לאורחים. המדריך מגיע תוך פחות מ־24 שעות.") +
+      p(`<span style="color:#56625B;font-size:14px">הזמנה: <b>${esc(o.order)}</b> · סכום: <b>${esc(o.amount)}</b></span>`) + p("שאלות? פשוט עונים למייל."),
+    ready_s: (o) => `המדריך של ${o.name} מוכן`,
     ready: (o) => p("המדריך שלך באוויר! הנה שני הקישורים שלך:") +
       p("<b>1. קישור לאורחים</b><br>מדביקים באיירביאנבי ← הודעות ← הודעות מתוזמנות, בהודעת הפתיחה.") + btn(o.guide, "לצפייה במדריך") +
       p(`<a href="${o.guide}">${esc(o.guide)}</a>`) +
@@ -70,8 +78,8 @@ const T = {
 };
 const t = (lang) => T[lang] || T.en;
 
-export const mailPaid = (lang, to, o) => send({ to, subject: t(lang).paid_s, html: layout(lang, t(lang).paid(o)), replyTo: cfg.adminEmail });
-export const mailReady = (lang, to, o) => send({ to, subject: t(lang).ready_s, html: layout(lang, t(lang).ready(o)), replyTo: cfg.adminEmail });
+export const mailPaid = (lang, to, o) => send({ to, subject: t(lang).paid_s(o), html: layout(lang, t(lang).paid(o)), replyTo: cfg.adminEmail });
+export const mailReady = (lang, to, o) => send({ to, subject: t(lang).ready_s(o), html: layout(lang, t(lang).ready(o)), replyTo: cfg.adminEmail });
 
 // Admin (Hebrew)
 export function mailAdmin(kind, g, l) {

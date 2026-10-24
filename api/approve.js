@@ -16,7 +16,7 @@ async function run(req, res) {
   if (!g.approved) {
     g.approved = true; g.status = "published"; g.approvedAt = new Date().toISOString();
     await saveGuide(g);
-    if (g.email) await mailReady(g.lang, g.email, { guide: l.guide, edit: l.edit });
+    if (g.email) await mailReady(g.lang, g.email, { guide: l.guide, edit: l.edit, name: g.content.name });
   }
   html(res, 200, "אושר", `<h2 style="margin-top:0">✓ המדריך אושר ונשלח ללקוח</h2>
 <p><b>${esc(g.content.name)}</b><br>${esc(g.email)}</p>
