@@ -19,12 +19,7 @@ export default async function handler(req, res) {
       if (g) return res.json({ editUrl: links(base, g).edit, email: mask(g.email) });
     }
 
-    // Test orders (no payment): only while TEST_EMAIL is set in Vercel, and they always go to that address.
-    const test = order.startsWith("TEST") && process.env.TEST_EMAIL;
-    const o = test
-      ? { status: "COMPLETED", payer: { email_address: process.env.TEST_EMAIL, name: { given_name: "Test" } },
-          purchase_units: [{ payments: { captures: [{ amount: { value: cfg.priceUsd.toFixed(2), currency_code: "USD" } }] } }] }
-      : await getPayPalOrder(order);
+    const o = await getPayPalOrder(order);
     const cap = o?.purchase_units?.[0]?.payments?.captures?.[0];
     if (!o || o.status !== "COMPLETED" || !cap) return res.status(402).json({ error: "not_paid" });
     if (Number(cap.amount?.value) < cfg.priceUsd || cap.amount?.currency_code !== "USD") return res.status(402).json({ error: "amount" });
@@ -46,7 +41,7 @@ export default async function handler(req, res) {
       try { await mailPaid(uiLang, g.email, { order, amount: g.amount, edit: l.edit }); mail = "sent"; }
       catch (e) { console.error("mailPaid failed", e); mail = "failed: " + String(e.message || e).slice(0, 200); }
     }
-    return res.json(test ? { editUrl: l.edit, mail, email: mask(g.email) } : { editUrl: l.edit, email: mask(g.email) });
+    return res.json({ editUrl: l.edit, email: mask(g.email) });
   } catch (e) {
     console.error(e);
     return res.status(500).json({ error: "server" });

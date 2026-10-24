@@ -6,7 +6,7 @@ import path from "node:path";
 export const DEV = process.env.CLAVE_DEV === "1";
 
 export const cfg = {
-  priceUsd: Number(process.env.PRICE_USD || 1), // TEMP TEST — restore to 49
+  priceUsd: Number(process.env.PRICE_USD || 49),
   adminEmail: process.env.ADMIN_EMAIL || process.env.GMAIL_USER || "shasi.contact@gmail.com",
   adminSecret: process.env.ADMIN_SECRET || (DEV ? "dev-secret" : ""),
   siteUrl: (process.env.SITE_URL || "").replace(/\/$/, ""),
