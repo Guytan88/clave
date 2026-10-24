@@ -98,7 +98,7 @@
   <div class="wrap bar">
     <a class="brand" href="/">Clave</a>
     <div class="lang" role="group" aria-label="Idioma / Language">
-      <button data-ui="es">ES</button><button data-ui="en">EN</button><button data-ui="he">עב</button>
+      <button data-ui="es">ES</button><button data-ui="en">EN</button><button data-ui="pt">PT</button><button data-ui="fr">FR</button><button data-ui="he">עב</button>
     </div>
   </div>
 </header>
@@ -198,6 +198,8 @@ const SW = { colonial:"#5E2328", playa:"#1C6E8C", ciudad:"#2F4BFF", cabana:"#243
 const TL = {
   es:{ colonial:"Colonial", playa:"Playa", ciudad:"Ciudad", cabana:"Cabaña", villa:"Villa de lujo", campo:"Campo", lago:"Lago", familiar:"Familiar" },
   en:{ colonial:"Colonial", playa:"Beach", ciudad:"City", cabana:"Cabin", villa:"Luxury villa", campo:"Countryside", lago:"Lake", familiar:"Family" },
+  pt:{ colonial:"Colonial", playa:"Praia", ciudad:"Cidade", cabana:"Chalé", villa:"Villa de luxo", campo:"Campo", lago:"Lago", familiar:"Família" },
+  fr:{ colonial:"Colonial", playa:"Plage", ciudad:"Ville", cabana:"Chalet", villa:"Villa de luxe", campo:"Campagne", lago:"Lac", familiar:"Famille" },
   he:{ colonial:"קולוניאלי", playa:"חוף", ciudad:"עירוני", cabana:"בקתה", villa:"וילת יוקרה", campo:"כפרי", lago:"אגם", familiar:"משפחתי" },
 };
 const T = {
@@ -266,6 +268,72 @@ en:{
   ph_title:"Title", ph_text:"Text", ph_cat:"Category (e.g. To eat)", ph_name:"Place name", ph_dist:"Distance (optional)",
   add:"+ Add", save:"Save changes", saving:"Saving…", saved:"Saved ✓ Your guide is updated.", open_guide:"View my guide →",
   copy:"Copy", copied:"Copied", open:"Open", notfound:"We couldn't find this guide. Check the link in your email.", legal:"Terms & privacy"
+},
+pt:{
+  h1_new:"Me conte sobre sua acomodação", lead_new:"Preencha o que puder; os campos opcionais podem ficar vazios. Eu organizo, traduzo e faço o design do seu guia.",
+  h1_edit:"Editar meu guia", lead_edit:"Mude o que quiser e salve. Seu guia se atualiza em um ou dois minutos.",
+  s_style:"Estilo de design", s_style_h:"Escolha o que mais combina com sua acomodação.", see_styles:"Ver os estilos no guia de exemplo →",
+  s_langs:"Idiomas do guia", s_langs_h:"Escolha até 20. O primeiro que você marcar será o idioma principal; os hóspedes trocam com um toque.", main:"principal",
+  s_place:"Sua acomodação", s_place_h:"É assim que aparece na capa do guia.",
+  f_name:"Nome da acomodação", f_place:"Cidade ou região", f_host:"Seu nome (como os hóspedes vão ver)", f_wa:"WhatsApp com código do país",
+  s_ess:"Horários e wifi", s_ess_h:"Opcional. Se deixar vazio, não aparece no guia.",
+  f_ci:"Check-in a partir de", f_co:"Check-out até", f_wn:"Nome da rede wifi", f_wp:"Senha do wifi",
+  s_content:"Informações para seus hóspedes", s_content_h:"O mais fácil: cole as mensagens de WhatsApp que você já envia. Ou preencha por seções.",
+  m_paste:"Colar minhas mensagens", m_fields:"Preencher por seções",
+  no_codes:"Não inclua códigos de porta, de cofre de chaves nem número do apartamento: o guia é público. Continue enviando as instruções de acesso por mensagem.",
+  f_paste:"Cole aqui suas mensagens de sempre (boas-vindas, instruções, regras, saída…)",
+  f_arrival:"Chegada (estacionamento, como encontrar o lugar…)", f_house:"Instruções da casa (água quente, ar, cozinha, máquina de lavar…)",
+  f_rules:"Regras da casa", f_checkout:"Antes de sair (chaves, toalhas, lixo…)",
+  s_extra:"Toques pessoais", s_extra_h:"Opcional, mas é o que torna seu guia especial.",
+  f_welcome:"Mensagem de boas-vindas", f_recs:"Suas recomendações (lugares para comer, passear… uma frase de cada)", f_sos:"Telefones de emergência", sos_hint:"Adicione quantos quiser, cada um com sua descrição.", sos_label:"Para quê (ex.: Ambulância)", sos_num:"Número", sos_add:"+ Adicionar outro número",
+  submit_new:"Criar meu guia", submit_edit:"Salvar alterações", sending:"Enviando…",
+  missing:"Faltam dados: ", m_theme:"estilo", m_languages:"idiomas", m_name:"nome da acomodação", m_place:"cidade", m_host:"seu nome", m_whatsapp:"WhatsApp", m_content:"informações para hóspedes",
+  e_busy:"Seu guia ainda está sendo gerado. Espere um minuto e tente de novo.", e_many:"Você chegou ao limite de edições. Me escreva e resolvemos.", e_gen:"Não foi possível salvar. Tente de novo ou me escreva.",
+  st_proc:"Preparando seu guia…", st_proc_p:"Estou organizando e traduzindo suas informações. Leva um ou dois minutos; pode fechar esta página.",
+  st_review:"Recebido!", st_review_p:"Vou revisar seu guia e ele chega por e-mail em menos de 24 horas, com o link para seus hóspedes. Nesse e-mail também virá um link para você editá-lo quando quiser.",
+  st_pub:"Seu guia está online", st_pub_p:"Compartilhe este link com seus hóspedes:", st_pub_upd:"Atualizando com suas alterações…",
+  st_err:"Algo deu errado", st_err_p:"Já fui avisado. Você pode tentar salvar de novo ou esperar meu e-mail.",
+  st_pending:"Recebi suas alterações. Elas aparecerão no guia em menos de 24 horas.",
+  le_h1:"Editar meu guia", le_lead:"Mude o que quiser e salve: seu guia se atualiza na hora.",
+  le_fixed:"O nome da acomodação e a cidade são fixos (cada guia é para uma acomodação). Precisa mudar? Me escreva.",
+  le_gen:"Dados gerais", le_style:"Estilo de design", le_texts:"Textos do guia", le_texts_h:"Cada idioma é editado separadamente: se mudar algo, mude também nos outros idiomas.",
+  le_note:"Mensagem de boas-vindas", le_arrival:"Sua chegada", le_house:"A acomodação", le_rules:"Regras da casa", le_spots:"Recomendações", le_checkout:"Antes de sair", le_sos:"Emergências",
+  ph_title:"Título", ph_text:"Texto", ph_cat:"Categoria (ex.: Para comer)", ph_name:"Nome do lugar", ph_dist:"Distância (opcional)",
+  add:"+ Adicionar", save:"Salvar alterações", saving:"Salvando…", saved:"Salvo ✓ Seu guia já está atualizado.", open_guide:"Ver meu guia →",
+  copy:"Copiar", copied:"Copiado", open:"Abrir", notfound:"Não encontramos este guia. Confira o link do seu e-mail.", legal:"Termos e privacidade"
+},
+fr:{
+  h1_new:"Parlez-moi de votre logement", lead_new:"Remplissez ce que vous pouvez ; les champs facultatifs peuvent rester vides. J'organise, je traduis et je mets en page votre guide.",
+  h1_edit:"Modifier mon guide", lead_edit:"Changez ce que vous voulez et enregistrez. Votre guide se met à jour en une ou deux minutes.",
+  s_style:"Style", s_style_h:"Choisissez celui qui va le mieux avec votre logement.", see_styles:"Voir les styles dans le guide d'exemple →",
+  s_langs:"Langues du guide", s_langs_h:"Jusqu'à 20. La première cochée sera la langue principale ; les voyageurs changent en un geste.", main:"principale",
+  s_place:"Votre logement", s_place_h:"C'est ce qui apparaîtra sur la couverture du guide.",
+  f_name:"Nom du logement", f_place:"Ville ou région", f_host:"Votre prénom (tel que les voyageurs le verront)", f_wa:"WhatsApp avec indicatif du pays",
+  s_ess:"Horaires et wifi", s_ess_h:"Facultatif. Laissés vides, ils n'apparaissent pas dans le guide.",
+  f_ci:"Arrivée à partir de", f_co:"Départ avant", f_wn:"Nom du réseau wifi", f_wp:"Mot de passe du wifi",
+  s_content:"Infos pour vos voyageurs", s_content_h:"Le plus simple : collez les messages WhatsApp que vous envoyez déjà. Ou remplissez par sections.",
+  m_paste:"Coller mes messages", m_fields:"Remplir par sections",
+  no_codes:"N'incluez pas de codes de porte, de boîte à clés ni de numéro d'appartement : le guide est public. Continuez à envoyer les instructions d'accès par message.",
+  f_paste:"Collez ici vos messages habituels (bienvenue, instructions, règles, départ…)",
+  f_arrival:"Arrivée (stationnement, comment trouver le logement…)", f_house:"Instructions de la maison (eau chaude, clim, cuisine, lave-linge…)",
+  f_rules:"Règles de la maison", f_checkout:"Avant de partir (clés, serviettes, poubelles…)",
+  s_extra:"Touches personnelles", s_extra_h:"Facultatif, mais c'est ce qui rend votre guide unique.",
+  f_welcome:"Message de bienvenue", f_recs:"Vos recommandations (restaurants, balades… une phrase pour chacune)", f_sos:"Numéros d'urgence", sos_hint:"Ajoutez-en autant que vous voulez, chacun avec sa description.", sos_label:"Pour quoi (ex. Ambulance)", sos_num:"Numéro", sos_add:"+ Ajouter un numéro",
+  submit_new:"Créer mon guide", submit_edit:"Enregistrer", sending:"Envoi…",
+  missing:"Il manque : ", m_theme:"style", m_languages:"langues", m_name:"nom du logement", m_place:"ville", m_host:"votre prénom", m_whatsapp:"WhatsApp", m_content:"infos pour les voyageurs",
+  e_busy:"Votre guide est encore en cours de création. Attendez une minute et réessayez.", e_many:"Vous avez atteint la limite de modifications. Écrivez-moi et on règle ça.", e_gen:"Impossible d'enregistrer. Réessayez ou écrivez-moi.",
+  st_proc:"Préparation de votre guide…", st_proc_p:"J'organise et je traduis vos infos. Cela prend une ou deux minutes ; vous pouvez fermer cette page.",
+  st_review:"Bien reçu !", st_review_p:"Je vais relire votre guide et vous l'envoyer par e-mail en moins de 24 heures, avec le lien pour vos voyageurs. Cet e-mail contiendra aussi un lien pour le modifier vous-même quand vous voulez.",
+  st_pub:"Votre guide est en ligne", st_pub_p:"Partagez ce lien avec vos voyageurs :", st_pub_upd:"Mise à jour avec vos modifications…",
+  st_err:"Un problème est survenu", st_err_p:"J'ai été prévenu. Vous pouvez réessayer d'enregistrer, ou attendre mon e-mail.",
+  st_pending:"J'ai bien reçu vos modifications. Elles apparaîtront dans votre guide en moins de 24 heures.",
+  le_h1:"Modifier mon guide", le_lead:"Changez ce que vous voulez et enregistrez : votre guide se met à jour immédiatement.",
+  le_fixed:"Le nom du logement et la ville sont fixes (chaque guide est pour un logement). Besoin de les changer ? Écrivez-moi.",
+  le_gen:"Informations générales", le_style:"Style", le_texts:"Textes du guide", le_texts_h:"Chaque langue se modifie séparément : si vous changez quelque chose, changez-le aussi dans les autres langues.",
+  le_note:"Message de bienvenue", le_arrival:"Votre arrivée", le_house:"Le logement", le_rules:"Règles de la maison", le_spots:"Recommandations", le_checkout:"Avant de partir", le_sos:"Urgences",
+  ph_title:"Titre", ph_text:"Texte", ph_cat:"Catégorie (ex. Pour manger)", ph_name:"Nom du lieu", ph_dist:"Distance (facultatif)",
+  add:"+ Ajouter", save:"Enregistrer", saving:"Enregistrement…", saved:"Enregistré ✓ Votre guide est à jour.", open_guide:"Voir mon guide →",
+  copy:"Copier", copied:"Copié", open:"Ouvrir", notfound:"Ce guide est introuvable. Vérifiez le lien de votre e-mail.", legal:"Conditions et confidentialité"
 },
 he:{
   h1_new:"ספרו לי על הנכס", lead_new:"מלאו מה שאפשר; שדות רשות אפשר להשאיר ריקים. אני אסדר, אתרגם ואעצב את המדריך.",

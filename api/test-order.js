@@ -5,7 +5,7 @@ import { html } from "./_lib/core.js";
 
 export default async function handler(req, res) {
   if (!process.env.TEST_EMAIL) return html(res, 404, "לא זמין", "<h2>בדיקות כבויות</h2>");
-  const lang = ["es", "en", "he"].includes(req.query.lang) ? req.query.lang : "he";
+  const lang = ["es", "en", "pt", "fr", "he"].includes(req.query.lang) ? req.query.lang : "he";
   const out = {};
   const fake = { status: (c) => { out.code = c; return fake; }, json: (o) => { out.body = o; return fake; }, setHeader() {} };
   await handlerPaid({ method: "POST", body: { orderID: "TEST" + Date.now(), lang }, headers: req.headers }, fake);

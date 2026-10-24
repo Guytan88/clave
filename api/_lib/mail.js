@@ -62,6 +62,32 @@ const T = {
       p("<b>2. Link to edit (just for you, don't share it)</b><br>Change texts, times, wifi or the style anytime; it updates instantly.") + btn(o.edit, "Edit my guide", "#1D2B24", "#fff") +
       p("Send access instructions (codes, keys) separately, as usual. Your guide is guaranteed online for at least 12 months.") + p("Happy hosting!"),
   },
+  pt: {
+    paid_s: (o) => `Pagamento recebido · Pedido ${o.order} · Preencha seu formulário`,
+    paid: (o) => p("<b>Obrigado! Recebi seu pagamento.</b> O último passo é me contar sobre sua acomodação:") +
+      bigBtn(o.edit, "Preencher o formulário →", "O botão não funciona? Copie este link no navegador:") +
+      p("Leva uns 5 minutos: preencha alguns campos curtos ou simplesmente cole as mensagens de WhatsApp que você já envia aos hóspedes. Seu guia chega em menos de 24 horas.") +
+      p(`<span style="color:#56625B;font-size:14px">Pedido: <b>${esc(o.order)}</b> · Valor: <b>${esc(o.amount)}</b></span>`) + p("Dúvidas? É só responder este e-mail."),
+    ready_s: (o) => `Seu guia de ${o.name} está pronto`,
+    ready: (o) => p("Seu guia já está online! Aqui estão seus dois links:") +
+      p("<b>1. Link para seus hóspedes</b><br>Cole no Airbnb → Mensagens → Mensagens programadas, na sua mensagem de boas-vindas.") + btn(o.guide, "Ver meu guia") +
+      p(`<a href="${o.guide}">${esc(o.guide)}</a>`) +
+      p("<b>2. Link para editar (só para você, não compartilhe)</b><br>Mude textos, horários, wifi ou o estilo quando quiser; atualiza na hora.") + btn(o.edit, "Editar meu guia", "#1D2B24", "#fff") +
+      p("Envie as instruções de acesso (códigos, chaves) separadamente, como sempre. Seu guia fica online garantido por pelo menos 12 meses.") + p("Boas reservas!"),
+  },
+  fr: {
+    paid_s: (o) => `Paiement reçu · Commande ${o.order} · Remplissez votre formulaire`,
+    paid: (o) => p("<b>Merci ! J'ai bien reçu votre paiement.</b> Dernière étape : parlez-moi de votre logement.") +
+      bigBtn(o.edit, "Remplir le formulaire →", "Le bouton ne fonctionne pas ? Copiez ce lien dans votre navigateur :") +
+      p("Cela prend environ 5 minutes : remplissez quelques champs courts ou collez simplement les messages WhatsApp que vous envoyez déjà à vos voyageurs. Votre guide arrive en moins de 24 heures.") +
+      p(`<span style="color:#56625B;font-size:14px">Commande : <b>${esc(o.order)}</b> · Montant : <b>${esc(o.amount)}</b></span>`) + p("Une question ? Répondez simplement à cet e-mail."),
+    ready_s: (o) => `Votre guide pour ${o.name} est prêt`,
+    ready: (o) => p("Votre guide est en ligne ! Voici vos deux liens :") +
+      p("<b>1. Lien pour vos voyageurs</b><br>Collez-le dans Airbnb → Messages → Messages programmés, dans votre message de bienvenue.") + btn(o.guide, "Voir mon guide") +
+      p(`<a href="${o.guide}">${esc(o.guide)}</a>`) +
+      p("<b>2. Lien pour modifier (pour vous seul, ne le partagez pas)</b><br>Changez les textes, horaires, wifi ou le style quand vous voulez ; c'est mis à jour immédiatement.") + btn(o.edit, "Modifier mon guide", "#1D2B24", "#fff") +
+      p("Envoyez les instructions d'accès (codes, clés) à part, comme d'habitude. Votre guide est garanti en ligne au moins 12 mois.") + p("Bonnes réservations !"),
+  },
   he: {
     paid_s: (o) => `התשלום התקבל · הזמנה ${o.order} · מלאו את הטופס`,
     paid: (o) => p("<b>תודה! התשלום התקבל.</b> נשאר שלב אחד: לספר לי על הנכס.") +

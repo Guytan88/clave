@@ -42,7 +42,7 @@
 <div class="wrap">
   <header>
     <a class="brand" href="/"><svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true"><rect x="1" y="1" width="28" height="28" rx="8" fill="#2E5E4E"/><circle cx="12" cy="15" r="5" fill="none" stroke="#F2B632" stroke-width="3"/><path d="M17 15h8M22 15v4" stroke="#F2B632" stroke-width="3" stroke-linecap="round"/></svg>Clave</a>
-    <div class="lang" role="group" aria-label="Idioma"><button data-lang="es">ES</button><button data-lang="en">EN</button><button data-lang="he">עב</button></div>
+    <div class="lang" role="group" aria-label="Idioma"><button data-lang="es">ES</button><button data-lang="en">EN</button><button data-lang="pt">PT</button><button data-lang="fr">FR</button><button data-lang="he">עב</button></div>
   </header>
 
   <div class="card">
@@ -61,17 +61,27 @@
 <script>
 const T = {
   es:{ title:"Pago recibido", h:"¡Pago recibido! Gracias", order:"Pedido:",
-       s1:"Abre el correo que te acabo de enviar", s1d:"Llega a {email} con el asunto «Pago recibido · Completa los datos de tu guía».", s1d0:"Llega al correo de tu cuenta de PayPal, con el asunto «Pago recibido · Completa los datos de tu guía».",
+       s1:"Abre el correo que te acabo de enviar", s1d:"Llega a {email} con el asunto «Pago recibido · Pedido … · Completa tu formulario».", s1d0:"Llega al correo de tu cuenta de PayPal, con el asunto «Pago recibido · Pedido … · Completa tu formulario».",
        s2:"Completa el formulario de tu alojamiento", s2d:"Toca el botón del correo. Llenas unos campos cortos o pegas tus mensajes de WhatsApp de siempre (unos 5 minutos).",
        s3:"Recibe tu guía", s3d:"En menos de 24 horas te llega el enlace para tus huéspedes y otro para editarla cuando quieras.",
        spam:"¿No ves el correo en unos minutos? Revisa la carpeta de spam o promociones, o escríbeme:", legal:"Términos y privacidad" },
   en:{ title:"Payment received", h:"Payment received! Thank you", order:"Order:",
-       s1:"Open the email I just sent you", s1d:"It's on its way to {email}, with the subject “Payment received · Fill in your guide details”.", s1d0:"It's on its way to your PayPal email, with the subject “Payment received · Fill in your guide details”.",
+       s1:"Open the email I just sent you", s1d:"It's on its way to {email}, with the subject “Payment received · Order … · Fill in your form”.", s1d0:"It's on its way to your PayPal email, with the subject “Payment received · Order … · Fill in your form”.",
        s2:"Fill in your property form", s2d:"Tap the button in the email. Fill in a few short fields or paste your usual WhatsApp messages (about 5 minutes).",
        s3:"Get your guide", s3d:"Within 24 hours you'll receive the link for your guests, plus one to edit it anytime.",
        spam:"Don't see the email within a few minutes? Check your spam or promotions folder, or write to me:", legal:"Terms & privacy" },
+  pt:{ title:"Pagamento recebido", h:"Pagamento recebido! Obrigado", order:"Pedido:",
+       s1:"Abra o e-mail que acabei de enviar", s1d:"Ele está a caminho de {email}, com o assunto «Pagamento recebido · Pedido … · Preencha seu formulário».", s1d0:"Ele está a caminho do e-mail da sua conta PayPal, com o assunto «Pagamento recebido · Pedido … · Preencha seu formulário».",
+       s2:"Preencha o formulário da sua acomodação", s2d:"Toque no botão do e-mail. Preencha alguns campos curtos ou cole suas mensagens de WhatsApp de sempre (uns 5 minutos).",
+       s3:"Receba seu guia", s3d:"Em menos de 24 horas chega o link para seus hóspedes e outro para editar quando quiser.",
+       spam:"Não viu o e-mail em alguns minutos? Confira a pasta de spam ou promoções, ou me escreva:", legal:"Termos e privacidade" },
+  fr:{ title:"Paiement reçu", h:"Paiement reçu ! Merci", order:"Commande :",
+       s1:"Ouvrez l'e-mail que je viens de vous envoyer", s1d:"Il arrive à {email}, avec l'objet « Paiement reçu · Commande … · Remplissez votre formulaire ».", s1d0:"Il arrive à l'adresse e-mail de votre compte PayPal, avec l'objet « Paiement reçu · Commande … · Remplissez votre formulaire ».",
+       s2:"Remplissez le formulaire de votre logement", s2d:"Touchez le bouton de l'e-mail. Remplissez quelques champs courts ou collez vos messages WhatsApp habituels (environ 5 minutes).",
+       s3:"Recevez votre guide", s3d:"En moins de 24 heures, vous recevez le lien pour vos voyageurs, et un autre pour le modifier quand vous voulez.",
+       spam:"Pas d'e-mail après quelques minutes ? Vérifiez vos spams ou l'onglet Promotions, ou écrivez-moi :", legal:"Conditions et confidentialité" },
   he:{ title:"התשלום התקבל", h:"התשלום התקבל! תודה", order:"מספר הזמנה:",
-       s1:"פתחו את המייל שנשלח אליכם עכשיו", s1d:"הוא בדרך אל {email}, בנושא „התשלום התקבל · מלאו את פרטי המדריך”.", s1d0:"הוא בדרך לכתובת המייל של חשבון הפייפאל שלכם, בנושא „התשלום התקבל · מלאו את פרטי המדריך”.",
+       s1:"פתחו את המייל שנשלח אליכם עכשיו", s1d:"הוא בדרך אל {email}, בנושא „התשלום התקבל · הזמנה … · מלאו את הטופס”.", s1d0:"הוא בדרך לכתובת המייל של חשבון הפייפאל שלכם, בנושא „התשלום התקבל · הזמנה … · מלאו את הטופס”.",
        s2:"מלאו בטופס את פרטי הנכס", s2d:"לוחצים על הכפתור במייל. ממלאים כמה שדות קצרים או מדביקים את הודעות הוואטסאפ הרגילות (בערך 5 דקות).",
        s3:"מקבלים את המדריך", s3d:"תוך פחות מ־24 שעות מגיע הלינק לאורחים, ועוד לינק לעריכה מתי שרוצים.",
        spam:"המייל לא הגיע תוך כמה דקות? בדקו בתיקיית הספאם או קידומי מכירות, או כתבו לי:", legal:"תנאי שימוש ופרטיות" },

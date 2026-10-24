@@ -47,7 +47,7 @@
   <div class="wrap bar">
     <a class="brand" href="index.html">Clave</a>
     <div class="lang" role="group" aria-label="Idioma / Language">
-      <button data-lang="es">ES</button><button data-lang="en">EN</button><button data-lang="he">עב</button>
+      <button data-lang="es">ES</button><button data-lang="en">EN</button><button data-lang="pt">PT</button><button data-lang="fr">FR</button><button data-lang="he">עב</button>
     </div>
   </div>
 </header>
@@ -84,7 +84,7 @@ es:{
     ["Qué datos recibo","De PayPal: tu nombre, correo y número de pedido (nunca los datos de tu tarjeta). Del formulario: tu nombre, correo, número de WhatsApp y la información del alojamiento que decides compartir."],
     ["Para qué los uso","Solo para preparar, publicar y mantener tu guía, comunicarme contigo sobre tu pedido y cumplir obligaciones contables y legales. No vendo tus datos ni los uso para publicidad."],
     ["Qué se publica","La guía es una página pública. Lo que pongas en ella, incluido el número de WhatsApp para el botón de contacto, lo podrá ver cualquier persona que tenga el enlace."],
-    ["Con quién se comparten","Uso proveedores para operar el servicio: PayPal (pagos), un proveedor de alojamiento web y base de datos (Vercel y Upstash, para guardar y publicar la guía), Google (correo) y herramientas de redacción y traducción, incluida inteligencia artificial. Cada uno trata los datos según sus propias políticas. Algunos pueden estar fuera de tu país."],
+    ["Con quién se comparten","Uso proveedores para operar el servicio: PayPal (pagos), un proveedor de alojamiento web y base de datos (Vercel y Supabase, para guardar y publicar la guía), Google (correo) y herramientas de redacción y traducción, incluida inteligencia artificial. Cada uno trata los datos según sus propias políticas. Algunos pueden estar fuera de tu país."],
     ["Cookies","Esta página solo guarda en tu navegador el idioma que elegiste. Al pagar, PayPal puede usar sus propias cookies. Las fuentes se cargan desde Google Fonts. Las guías no tienen analítica ni seguimiento de huéspedes."],
     ["Cuánto tiempo los guardo","Mientras tu guía esté en línea y después, solo lo necesario para registros contables y legales."],
     ["Tus derechos","Puedes pedirme ver, corregir o borrar tus datos escribiendo a "+EMAIL+". Borrar los datos implica dar de baja la guía."],
@@ -112,12 +112,68 @@ en:{
     ["What I receive","From PayPal: your name, email and order number (never your card details). From the form: your name, email, WhatsApp number and the property information you choose to share."],
     ["What I use it for","Only to prepare, publish and maintain your guide, contact you about your order, and meet accounting and legal obligations. I don't sell your data or use it for advertising."],
     ["What gets published","The guide is a public page. Anything in it, including the WhatsApp number for the contact button, can be seen by anyone with the link."],
-    ["Who it's shared with","I use providers to run the service: PayPal (payments), a web hosting and database provider (Vercel and Upstash, to store and publish the guide), Google (email) and writing and translation tools, including AI. Each handles data under its own policies. Some may be outside your country."],
+    ["Who it's shared with","I use providers to run the service: PayPal (payments), a web hosting and database provider (Vercel and Supabase, to store and publish the guide), Google (email) and writing and translation tools, including AI. Each handles data under its own policies. Some may be outside your country."],
     ["Cookies","This site only stores your chosen language in your browser. When you pay, PayPal may use its own cookies. Fonts load from Google Fonts. Guides have no analytics or guest tracking."],
     ["How long I keep it","While your guide is online and afterwards only as needed for accounting and legal records."],
     ["Your rights","You can ask me to access, correct or delete your data by writing to "+EMAIL+". Deleting your data means taking the guide offline."],
     ["Security","I take reasonable measures to protect your data, but no system on the internet is 100% secure."],
     ["Age","The service is for people 18 and older."]
+  ]}
+},
+pt:{
+  title:"Termos e privacidade", back:"Voltar ao início", upd:"Última atualização: 24 de outubro de 2026",
+  terms:{ h:"Termos de serviço", s:[
+    ["1. Quem presta o serviço","A Clave é um serviço operado por um trabalhador autônomo registrado em Israel. Você pode me contatar em "+EMAIL+". Ao pagar pelo serviço, você aceita estes termos."],
+    ["2. O que você compra","Um pagamento único de US$49 por um guia digital para uma (1) acomodação: uma página web que eu preparo com as informações que você envia no formulário, publicada num link para compartilhar com seus hóspedes. O serviço é destinado a anfitriões que o usam como parte da sua atividade de hospedagem."],
+    ["3. Entrega","Depois do pagamento, você preenche o formulário. Normalmente entrego o link em menos de 24 horas a partir do recebimento do formulário completo. Se houver atraso, aviso por e-mail. Se faltar informação, eu escrevo para você e o prazo conta a partir de quando eu a receber."],
+    ["4. Suas informações","Você é responsável por que as informações enviadas sejam corretas, atualizadas e de uso permitido. Não inclua códigos de acesso, senhas privadas nem dados pessoais de hóspedes: o guia é uma página pública que qualquer pessoa com o link pode ver. Eu organizo, traduzo e apresento suas informações, mas não verifico sua exatidão. Posso recusar ou remover conteúdo ilegal, ofensivo ou que viole direitos de terceiros."],
+    ["5. Alterações","Você recebe um link privado para editar seu guia você mesmo, sem custo, durante os 12 meses em que ele fica online garantido. Guarde bem esse link: quem o tiver pode editar o guia. Eu reviso a primeira versão antes de publicá-la; as edições posteriores são publicadas automaticamente e você é responsável pelo conteúdo delas. Cada compra corresponde a um guia para uma única acomodação; o nome e a cidade da acomodação não podem ser alterados depois da publicação."],
+    ["6. Cancelamentos e reembolsos","Se você cancelar antes de enviar o formulário, devolvo o valor integral. Se por qualquer motivo eu não conseguir entregar o guia, devolvo o valor integral. Como o guia é feito sob medida com suas informações, ele não é reembolsável depois de entregue, salvo quando a lei aplicável exigir o contrário. Se algo não estiver certo, me escreva primeiro: quase tudo se resolve com uma alteração. Peço que me contate antes de abrir uma disputa no PayPal."],
+    ["7. Pagamentos","Os pagamentos são processados pelo PayPal. Eu nunca recebo nem guardo os dados do seu cartão. Os preços são em dólares americanos; seu banco pode cobrar taxas de conversão."],
+    ["8. Tempo online","Garanto que o guia ficará online por pelo menos 12 meses a partir da entrega. Podem ocorrer interrupções breves por manutenção ou falhas dos provedores de hospedagem; nesse caso, restabeleço o quanto antes. Depois de 12 meses o guia pode continuar funcionando, mas sem garantia."],
+    ["9. Propriedade","O texto que você enviou continua sendo seu. O design, as ilustrações e o código do guia pertencem à Clave; você recebe uma licença para usar o guia com seus hóspedes. Só mostrarei seu guia como exemplo com a sua permissão."],
+    ["10. Limitação de responsabilidade","O serviço é oferecido \"no estado em que se encontra\". Não sou responsável pelo conteúdo que você fornece, pelas ações dos seus hóspedes, avaliações, reservas perdidas ou danos indiretos. Em qualquer caso, minha responsabilidade total se limita ao valor pago pelo serviço. Nada nestes termos limita direitos que a lei não permite limitar."],
+    ["11. Sem vínculo com plataformas","A Clave não é afiliada nem endossada pelo Airbnb, Booking ou qualquer outra plataforma. Seus nomes são marcas de seus respectivos donos."],
+    ["12. Lei aplicável","Estes termos são regidos pelas leis do Estado de Israel, e os tribunais competentes de Israel têm jurisdição, sem prejuízo dos direitos garantidos pela lei obrigatória do seu país. Posso atualizar estes termos; a versão vigente no momento da sua compra é a que se aplica ao seu pedido."]
+  ]},
+  privacy:{ h:"Política de privacidade", s:[
+    ["Quais dados recebo","Do PayPal: seu nome, e-mail e número do pedido (nunca os dados do cartão). Do formulário: seu nome, e-mail, WhatsApp e as informações da acomodação que você decidir compartilhar."],
+    ["Para que os uso","Só para preparar, publicar e manter seu guia, falar com você sobre o pedido e cumprir obrigações contábeis e legais. Não vendo seus dados nem os uso para publicidade."],
+    ["O que é publicado","O guia é uma página pública. Tudo o que estiver nele, inclusive o WhatsApp do botão de contato, pode ser visto por qualquer pessoa com o link."],
+    ["Com quem compartilho","Uso provedores para operar o serviço: PayPal (pagamentos), provedores de hospedagem e banco de dados (Vercel e Supabase, para guardar e publicar o guia), Google (e-mail) e ferramentas de redação e tradução, incluindo inteligência artificial. Cada um trata os dados segundo suas próprias políticas. Alguns podem estar fora do seu país."],
+    ["Cookies","Este site só guarda no seu navegador o idioma escolhido. Ao pagar, o PayPal pode usar seus próprios cookies. As fontes são carregadas do Google Fonts. Os guias não têm análise nem rastreamento de hóspedes."],
+    ["Por quanto tempo guardo","Enquanto seu guia estiver online e, depois, só o necessário para registros contábeis e legais."],
+    ["Seus direitos","Você pode me pedir para ver, corrigir ou apagar seus dados escrevendo para "+EMAIL+". Apagar os dados significa tirar o guia do ar."],
+    ["Segurança","Tomo medidas razoáveis para proteger seus dados, mas nenhum sistema na internet é 100% seguro."],
+    ["Idade","O serviço é apenas para maiores de 18 anos."]
+  ]}
+},
+fr:{
+  title:"Conditions et confidentialité", back:"Retour à l'accueil", upd:"Dernière mise à jour : 24 octobre 2026",
+  terms:{ h:"Conditions d'utilisation", s:[
+    ["1. Qui fournit le service","Clave est un service exploité par un entrepreneur individuel enregistré en Israël. Vous pouvez me joindre à "+EMAIL+". En payant le service, vous acceptez ces conditions."],
+    ["2. Ce que vous achetez","Un paiement unique de 49 US$ pour un guide numérique pour un (1) logement : une page web que je prépare à partir des informations envoyées dans le formulaire, publiée sur un lien à partager avec vos voyageurs. Le service s'adresse aux hôtes qui l'utilisent dans le cadre de leur activité de location."],
+    ["3. Livraison","Après le paiement, vous remplissez le formulaire. Je livre généralement le lien en moins de 24 heures après réception du formulaire complet. En cas de retard, je vous préviens par e-mail. S'il manque des informations, je vous écris et le délai court à partir de leur réception."],
+    ["4. Vos informations","Vous êtes responsable de l'exactitude des informations envoyées, de leur mise à jour et de votre droit de les utiliser. N'incluez pas de codes d'accès, de mots de passe privés ni de données personnelles de voyageurs : le guide est une page publique visible par toute personne ayant le lien. J'organise, traduis et présente vos informations, mais je ne vérifie pas leur exactitude. Je peux refuser ou retirer un contenu illégal, offensant ou portant atteinte aux droits de tiers."],
+    ["5. Modifications","Vous recevez un lien privé pour modifier votre guide vous-même, gratuitement, pendant les 12 mois où il est garanti en ligne. Gardez ce lien en sécurité : toute personne qui l'a peut modifier le guide. Je relis la première version avant publication ; les modifications suivantes sont publiées automatiquement et vous êtes responsable de leur contenu. Chaque achat correspond à un guide pour un seul logement ; le nom et la ville du logement ne peuvent pas être modifiés après la publication."],
+    ["6. Annulations et remboursements","Si vous annulez avant d'envoyer le formulaire, je vous rembourse intégralement. Si pour une raison quelconque je ne peux pas livrer le guide, je vous rembourse intégralement. Le guide étant fait sur mesure avec vos informations, il n'est pas remboursable une fois livré, sauf si la loi applicable en dispose autrement. Si quelque chose ne va pas, écrivez-moi d'abord : presque tout se règle par une modification. Merci de me contacter avant d'ouvrir un litige PayPal."],
+    ["7. Paiements","Les paiements sont traités par PayPal. Je ne reçois ni ne conserve jamais vos données de carte. Les prix sont en dollars américains ; votre banque peut appliquer des frais de conversion."],
+    ["8. Durée en ligne","Je garantis que le guide restera en ligne au moins 12 mois à compter de la livraison. De brèves interruptions peuvent survenir pour maintenance ou panne d'un hébergeur ; dans ce cas, je le rétablis au plus vite. Après 12 mois, le guide peut continuer à fonctionner, mais sans garantie."],
+    ["9. Propriété","Le texte que vous avez envoyé reste le vôtre. Le design, les illustrations et le code du guide appartiennent à Clave ; vous recevez une licence pour utiliser le guide avec vos voyageurs. Je ne montrerai votre guide en exemple qu'avec votre accord."],
+    ["10. Limitation de responsabilité","Le service est fourni « en l'état ». Je ne suis pas responsable du contenu que vous fournissez, des actes de vos voyageurs, des avis, des réservations perdues ni des dommages indirects. En tout état de cause, ma responsabilité totale est limitée au montant payé pour le service. Rien dans ces conditions ne limite des droits que la loi ne permet pas de limiter."],
+    ["11. Aucun lien avec les plateformes","Clave n'est ni affilié ni approuvé par Airbnb, Booking ou toute autre plateforme. Leurs noms sont des marques de leurs propriétaires respectifs."],
+    ["12. Droit applicable","Ces conditions sont régies par le droit de l'État d'Israël, et les tribunaux compétents d'Israël sont compétents, sans préjudice des droits que vous accorde la loi impérative de votre pays. Je peux mettre à jour ces conditions ; la version en vigueur au moment de votre achat s'applique à votre commande."]
+  ]},
+  privacy:{ h:"Politique de confidentialité", s:[
+    ["Ce que je reçois","De PayPal : votre nom, e-mail et numéro de commande (jamais vos données de carte). Du formulaire : votre nom, e-mail, numéro WhatsApp et les informations du logement que vous choisissez de partager."],
+    ["À quoi elles servent","Uniquement à préparer, publier et maintenir votre guide, vous contacter au sujet de votre commande et respecter mes obligations comptables et légales. Je ne vends pas vos données et ne les utilise pas pour de la publicité."],
+    ["Ce qui est publié","Le guide est une page publique. Tout ce qu'il contient, y compris le numéro WhatsApp du bouton de contact, est visible par toute personne ayant le lien."],
+    ["Avec qui elles sont partagées","J'utilise des prestataires pour faire fonctionner le service : PayPal (paiements), un hébergeur et une base de données (Vercel et Supabase, pour stocker et publier le guide), Google (e-mail) et des outils de rédaction et de traduction, y compris l'intelligence artificielle. Chacun traite les données selon sa propre politique. Certains peuvent se trouver hors de votre pays."],
+    ["Cookies","Ce site enregistre uniquement la langue choisie dans votre navigateur. Lors du paiement, PayPal peut utiliser ses propres cookies. Les polices sont chargées depuis Google Fonts. Les guides n'ont ni statistiques ni suivi des voyageurs."],
+    ["Durée de conservation","Tant que votre guide est en ligne, puis seulement ce qui est nécessaire pour les obligations comptables et légales."],
+    ["Vos droits","Vous pouvez me demander d'accéder à vos données, de les corriger ou de les supprimer en écrivant à "+EMAIL+". Supprimer vos données signifie mettre le guide hors ligne."],
+    ["Sécurité","Je prends des mesures raisonnables pour protéger vos données, mais aucun système sur internet n'est sûr à 100 %."],
+    ["Âge","Le service est réservé aux personnes de 18 ans et plus."]
   ]}
 },
 he:{
@@ -140,7 +196,7 @@ he:{
     ["איזה מידע אני מקבל","מפייפאל: שם, מייל ומספר הזמנה (אף פעם לא פרטי כרטיס). מהטופס: שם, מייל, מספר וואטסאפ ומידע על הנכס שבחרת לשתף."],
     ["למה אני משתמש בו","רק כדי להכין, לפרסם ולתחזק את המדריך שלך, ליצור איתך קשר לגבי ההזמנה ולעמוד בחובות חשבונאיות וחוקיות. אני לא מוכר את המידע ולא משתמש בו לפרסום."],
     ["מה מתפרסם","המדריך הוא דף ציבורי. כל מה שמופיע בו, כולל מספר הוואטסאפ בכפתור יצירת הקשר, גלוי לכל מי שיש לו את הלינק."],
-    ["עם מי המידע משותף","אני נעזר בספקים כדי להפעיל את השירות: פייפאל (תשלומים), ספקי אחסון ומסד נתונים (Vercel ו־Upstash, לשמירה ולפרסום המדריך), גוגל (מייל) וכלי כתיבה ותרגום, כולל בינה מלאכותית. כל ספק מטפל במידע לפי המדיניות שלו. חלקם עשויים להיות מחוץ למדינתך."],
+    ["עם מי המידע משותף","אני נעזר בספקים כדי להפעיל את השירות: פייפאל (תשלומים), ספקי אחסון ומסד נתונים (Vercel ו־Supabase, לשמירה ולפרסום המדריך), גוגל (מייל) וכלי כתיבה ותרגום, כולל בינה מלאכותית. כל ספק מטפל במידע לפי המדיניות שלו. חלקם עשויים להיות מחוץ למדינתך."],
     ["עוגיות","האתר שומר בדפדפן רק את השפה שבחרת. בזמן התשלום פייפאל עשויה להשתמש בעוגיות משלה. הגופנים נטענים מ־Google Fonts. במדריכים אין אנליטיקה או מעקב אחרי אורחים."],
     ["כמה זמן המידע נשמר","כל עוד המדריך באוויר, ואחר כך רק כמה שנדרש לרישומים חשבונאיים וחוקיים."],
     ["הזכויות שלך","אפשר לבקש לעיין במידע, לתקן או למחוק אותו בכתיבה ל־"+EMAIL+". מחיקת המידע פירושה הורדת המדריך מהאוויר."],
@@ -172,7 +228,7 @@ document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",
 let saved = new URLSearchParams(location.search).get("lang");
 if(!L[saved]){ try { saved = localStorage.getItem("clave-lang"); } catch(e){} }
 function detectLang(){ const ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]).map(l=>String(l).toLowerCase());
-  for(const l of ls){ if(l.startsWith("he")||l.startsWith("iw")) return "he"; if(l.startsWith("es")||l.startsWith("pt")||l.startsWith("ca")||l.startsWith("gl")) return "es"; if(l.startsWith("en")) return "en"; }
+  for(const l of ls){ if(l.startsWith("he")||l.startsWith("iw")) return "he"; if(l.startsWith("pt")) return "pt"; if(l.startsWith("fr")) return "fr"; if(l.startsWith("es")||l.startsWith("ca")||l.startsWith("gl")) return "es"; if(l.startsWith("en")) return "en"; }
   return ls.length && ls[0] ? "en" : "es"; }
 setLang(L[saved] ? saved : detectLang());
 if(location.hash){ const t=document.querySelector(location.hash); if(t) t.scrollIntoView(); }

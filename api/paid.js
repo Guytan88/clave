@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   const { orderID, lang } = body(req);
   const order = String(orderID || "");
   if (!/^[A-Z0-9]{8,40}$/.test(order)) return res.status(400).json({ error: "order" });
-  const uiLang = ["es", "en", "he"].includes(lang) ? lang : "en";
+  const uiLang = ["es", "en", "pt", "fr", "he"].includes(lang) ? lang : "en";
   const base = siteUrl(req);
 
   try {
