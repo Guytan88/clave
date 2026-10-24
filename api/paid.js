@@ -1,5 +1,5 @@
 // POST {orderID, lang} after PayPal capture: verify the payment, create the guide record, email the buyer.
-import { db, cfg, body, getPayPalOrder, randId, randToken, saveGuide, loadGuide, siteUrl, links } from "./_lib/core.js";
+import { db, cfg, pricing, body, getPayPalOrder, randId, randToken, saveGuide, loadGuide, siteUrl, links } from "./_lib/core.js";
 import { mailPaid } from "./_lib/mail.js";
 
 const mask = (e) => { const [u, d] = String(e || "").split("@"); return d ? `${u.slice(0, 2)}***@${d}` : ""; };
@@ -22,7 +22,10 @@ export default async function handler(req, res) {
     const o = await getPayPalOrder(order);
     const cap = o?.purchase_units?.[0]?.payments?.captures?.[0];
     if (!o || o.status !== "COMPLETED" || !cap) return res.status(402).json({ error: "not_paid" });
-    if (Number(cap.amount?.value) < cfg.priceUsd || cap.amount?.currency_code !== "USD") return res.status(402).json({ error: "amount" });
+    // Accept the launch price while launch spots remain (plus a small grace for buyers already at checkout).
+    const pr = await pricing();
+    const minOk = pr.sold < pr.limit + 3 ? cfg.launchPrice : cfg.regularPrice;
+    if (Number(cap.amount?.value) < minOk || cap.amount?.currency_code !== "USD") return res.status(402).json({ error: "amount" });
 
     const g = {
       id: randId(10), token: randToken(), order, lang: uiLang,
