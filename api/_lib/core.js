@@ -6,10 +6,7 @@ import path from "node:path";
 export const DEV = process.env.CLAVE_DEV === "1";
 
 export const cfg = {
-  // Launch pricing: the first LAUNCH_LIMIT real sales pay LAUNCH_PRICE, then the price becomes PRICE_USD.
-  launchPrice: Number(process.env.LAUNCH_PRICE || 49),
-  launchLimit: Number(process.env.LAUNCH_LIMIT || 20),
-  regularPrice: Number(process.env.PRICE_USD || 89),
+  priceUsd: Number(process.env.PRICE_USD || 49),
   adminEmail: process.env.ADMIN_EMAIL || process.env.GMAIL_USER || "shasi.contact@gmail.com",
   adminSecret: process.env.ADMIN_SECRET || (DEV ? "dev-secret" : ""),
   siteUrl: (process.env.SITE_URL || "").replace(/\/$/, ""),
@@ -60,28 +57,6 @@ function store() {
     put: async (k, v, onlyIfNew) => { const d = devDb(); if (onlyIfNew && k in d) return false; d[k] = v; devSave(d); return true; },
   };
 }
-async function listGuides() {
-  if (SB_URL && SB_KEY) {
-    const r = await fetch(`${SB_URL}/rest/v1/clave?key=like.g:*&select=o:value->>order,a:value->>amount`, { headers: sbHeaders() });
-    if (!r.ok) throw new Error(`supabase list ${r.status}`);
-    return r.json();
-  }
-  if (!DEV) throw new Error("Storage is not configured");
-  return Object.entries(devDb()).filter(([k]) => k.startsWith("g:")).map(([, v]) => ({ o: v.order, a: v.amount }));
-}
-
-/** Real sales so far: excludes test orders and anything paid below the launch price (e.g. the US$1 test). */
-export async function soldCount() {
-  const rows = await listGuides();
-  return rows.filter((r) => r.o && !String(r.o).startsWith("TEST") && Number(String(r.a || "").replace(/[^\d.]/g, "")) >= cfg.launchPrice).length;
-}
-
-export async function pricing() {
-  const sold = await soldCount();
-  const launch = sold < cfg.launchLimit;
-  return { price: launch ? cfg.launchPrice : cfg.regularPrice, regular: cfg.regularPrice, launch, left: Math.max(0, cfg.launchLimit - sold), limit: cfg.launchLimit, sold };
-}
-
 export const db = {
   get: (k) => store().get(k),
   setNX: (k, v) => store().put(k, v, true),
@@ -114,7 +89,7 @@ const PP_API = process.env.PAYPAL_API || "https://api-m.paypal.com";
 export async function getPayPalOrder(orderId) {
   if (DEV && orderId.startsWith("TEST")) {
     return { id: orderId, status: "COMPLETED", payer: { email_address: "buyer@example.com", name: { given_name: "Test" } },
-      purchase_units: [{ payments: { captures: [{ amount: { value: String(cfg.launchPrice.toFixed(2)), currency_code: "USD" } }] } }] };
+      purchase_units: [{ payments: { captures: [{ amount: { value: String(cfg.priceUsd.toFixed(2)), currency_code: "USD" } }] } }] };
   }
   const id = process.env.PAYPAL_CLIENT_ID, secret = process.env.PAYPAL_SECRET;
   if (!id || !secret) throw new Error("PayPal keys missing");

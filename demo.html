@@ -606,7 +606,6 @@ function render(){
   document.documentElement.dir = lang==="he" ? "rtl" : "ltr";
   document.documentElement.dataset.theme = theme;
   document.querySelectorAll("[data-i18n]").forEach(el=>{ const k=el.dataset.i18n; if(typeof d[k]==="string") el.textContent=d[k]; });
-  if(window.__price){ const n=window.__price, f=lang==="fr"?n+" US$":lang==="he"?n+"$":"US$"+n; const b=document.querySelector('.buy a'); b.textContent=d.buy_btn.replace(/US\$49|49 US\$|49\$/,f); }
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang===lang));
 
   $("art").innerHTML = ART[theme];
@@ -660,7 +659,6 @@ window.addEventListener("hashchange",()=>{ const k=location.hash.slice(1); if(P[
 function setLang(l){ lang=l; render(); }     // used by tests
 function setTheme(t){ theme=t; render(); }
 render();
-fetch("/api/price").then(r=>r.ok?r.json():null).then(j=>{ if(j&&j.price){ window.__price=j.price; render(); } }).catch(()=>{});
 </script>
 </body>
 </html>

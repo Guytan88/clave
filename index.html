@@ -211,15 +211,6 @@
   .lg-card ul.ok li::before{content:"✓";color:var(--marigold);font-weight:700}
   @media (max-width:900px){ .rv{grid-template-columns:1fr} }
 
-  /* Launch price */
-  .launch{display:flex;align-items:center;gap:12px;margin:2px 0 6px}
-  .launch-tag{white-space:nowrap;background:var(--marigold);color:var(--ink);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:4px 12px}
-  .was{font-family:var(--head);font-size:26px;opacity:.65}
-  .launch-left{margin:10px 0 0;font-size:15px;color:var(--marigold);font-weight:500}
-  .launch-left:empty{display:none}
-  .launch-hero{display:inline-flex;align-items:center;gap:8px;margin:16px 0 0;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14.5px;font-weight:500}
-  .launch-hero::before{content:"";width:8px;height:8px;border-radius:50%;background:#E0A100;box-shadow:0 0 0 4px rgba(224,161,0,.2)}
-
   /* Trust strip */
   .trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px;padding:0;list-style:none;font-size:15px;color:var(--ink)}
   .trust li{display:flex;align-items:center;gap:8px}
@@ -347,7 +338,6 @@
         <a class="btn btn-main js-order" href="#" data-i18n="cta_main">Quiero mi guía por US$49</a>
         <a class="btn btn-ghost" href="demo.html" data-i18n="cta_demo">Ver una guía de ejemplo</a>
       </div>
-      <p class="launch-hero" id="launchHero" hidden></p>
       <p class="note" data-i18n="hero_note"></p>
       <ul class="trust">
         <li data-i18n="t1"></li><li data-i18n="t2"></li><li data-i18n="t3"></li><li data-i18n="t4"></li>
@@ -569,10 +559,8 @@
       <div class="price">
         <div>
           <h2 data-i18n="pr_h"></h2>
-          <div class="launch" id="launch" hidden><span class="launch-tag" data-i18n="ln_tag"></span><s class="was" id="was"></s></div>
-          <div class="amount" id="amount">US$49</div>
+          <div class="amount">US$49</div>
           <div class="amount-sub" data-i18n="pr_sub"></div>
-          <p class="launch-left" id="launchLeft"></p>
           <div class="guar">
             <svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5l8-3z" fill="#F2B632"/><path d="M8 12.2l2.6 2.6L16 9.5" fill="none" stroke="#22463A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div><b data-i18n="g_h"></b><p data-i18n="g_p"></p></div>
@@ -636,7 +624,7 @@
 </main>
 
 <div class="sticky-cta" id="sticky" aria-hidden="true">
-  <b id="stickyPrice">US$49</b>
+  <b>US$49</b>
   <a class="btn btn-main js-order" href="#" data-i18n="nav_cta"></a>
 </div>
 
@@ -649,8 +637,7 @@
 
 <script>
 const PAYPAL_CLIENT_ID = "BAA4_VAKoF6MbVFaA4BNhvkzYEFxCFu-HI-Z72pn6QO56_Kvt9brmK2viITHcqoyrlQtxgP2je27EiLHsk"; // ← developer.paypal.com → Apps & Credentials → Live
-let PRICE = "49.00";   // updated from /api/price (launch price → regular price after the launch spots)
-let PINFO = { price:49, regular:89, launch:true, left:null, limit:20 };
+const PRICE = "49.00";
 
 
 const T = {
@@ -745,7 +732,6 @@ es:{
   rv_note:"La guía no garantiza calificaciones, pero ataca justo lo que más suele fallar: llegadas confusas, preguntas sin respuesta y reglas que nadie leyó.",
   lg_h:"Habla el idioma de cada huésped", lg_p:"Tú escribes una vez, en tu idioma. Cada huésped lee la guía en el suyo, con un toque.",
   lg1:"Menos malentendidos con reglas, horarios y salida.", lg2:"Los huéspedes extranjeros se sienten bienvenidos desde el primer mensaje.", lg3:"Hasta 20 idiomas, sin que tengas que traducir nada.",
-  ln_tag:"Precio de lanzamiento", ln_left:"Quedan {left} de {limit} lugares a este precio. Después: {reg}.", ln_hero:"Precio de lanzamiento: quedan {left} lugares a {price} (después {reg})",
   foot:"Clave. Guías digitales para alojamientos. shasi.contact@gmail.com"
 },
 en:{
@@ -839,7 +825,6 @@ en:{
   rv_note:"The guide doesn't guarantee ratings, but it tackles exactly what most often goes wrong: confusing arrivals, unanswered questions and rules nobody read.",
   lg_h:"Speak every guest's language", lg_p:"You write once, in your language. Each guest reads the guide in theirs, with one tap.",
   lg1:"Fewer misunderstandings about rules, times and checkout.", lg2:"International guests feel welcome from the very first message.", lg3:"Up to 20 languages, without you translating a thing.",
-  ln_tag:"Launch price", ln_left:"{left} of {limit} spots left at this price. After that: {reg}.", ln_hero:"Launch price: {left} spots left at {price} (then {reg})",
   foot:"Clave. Digital guides for vacation rentals. shasi.contact@gmail.com"
 },
 pt:{
@@ -933,7 +918,6 @@ pt:{
   rv_note:"O guia não garante avaliações, mas resolve justamente o que mais costuma dar errado: chegadas confusas, perguntas sem resposta e regras que ninguém leu.",
   lg_h:"Fale o idioma de cada hóspede", lg_p:"Você escreve uma vez, no seu idioma. Cada hóspede lê o guia no dele, com um toque.",
   lg1:"Menos mal-entendidos sobre regras, horários e saída.", lg2:"Hóspedes estrangeiros se sentem bem-vindos desde a primeira mensagem.", lg3:"Até 20 idiomas, sem você precisar traduzir nada.",
-  ln_tag:"Preço de lançamento", ln_left:"Restam {left} de {limit} vagas por este preço. Depois: {reg}.", ln_hero:"Preço de lançamento: restam {left} vagas por {price} (depois {reg})",
   foot:"Clave. Guias digitais para acomodações. shasi.contact@gmail.com"
 },
 fr:{
@@ -1027,7 +1011,6 @@ fr:{
   rv_note:"Le guide ne garantit pas les notes, mais il règle justement ce qui coince le plus souvent : arrivées confuses, questions sans réponse et règles que personne n'a lues.",
   lg_h:"Parlez la langue de chaque voyageur", lg_p:"Vous écrivez une fois, dans votre langue. Chaque voyageur lit le guide dans la sienne, en un geste.",
   lg1:"Moins de malentendus sur les règles, les horaires et le départ.", lg2:"Les voyageurs étrangers se sentent bienvenus dès le premier message.", lg3:"Jusqu'à 20 langues, sans rien traduire vous-même.",
-  ln_tag:"Prix de lancement", ln_left:"Plus que {left} places sur {limit} à ce prix. Ensuite : {reg}.", ln_hero:"Prix de lancement : plus que {left} places à {price} (ensuite {reg})",
   foot:"Clave. Guides numériques pour locations de vacances. shasi.contact@gmail.com"
 },
 he:{
@@ -1121,25 +1104,10 @@ he:{
   rv_note:"המדריך לא מבטיח ציונים, אבל פותר בדיוק את מה שהכי הרבה פעמים משתבש: הגעה מבלבלת, שאלות בלי תשובה וחוקים שאף אחד לא קרא.",
   lg_h:"מדבר בשפה של כל אורח", lg_p:"אתה כותב פעם אחת, בשפה שלך. כל אורח קורא את המדריך בשפה שלו, בנגיעה.",
   lg1:"פחות אי־הבנות בחוקים, בשעות וביציאה.", lg2:"אורחים מחו\"ל מרגישים רצויים כבר מההודעה הראשונה.", lg3:"עד 20 שפות, בלי שתצטרך לתרגם כלום.",
-  ln_tag:"מחיר השקה", ln_left:"נשארו {left} מתוך {limit} מקומות במחיר הזה. אחר כך: {reg}.", ln_hero:"מחיר השקה: נשארו {left} מקומות ב־{price} (אחר כך {reg})",
   foot:"Clave. מדריכים דיגיטליים לנכסי אירוח. shasi.contact@gmail.com"
 }};
 
 let current = "es";
-function fmtPrice(n){ return current==="fr" ? n+" US$" : current==="he" ? n+"$" : "US$"+n; }
-function withPrice(t){ return typeof t==="string" ? t.replace(/US\$49|49 US\$|49\$/g, ()=>fmtPrice(PINFO.price)) : t; }
-function drawLaunch(){
-  const d=T[current], on=PINFO.launch && PINFO.left!=null;
-  const fill=(t)=>t.replace("{left}",PINFO.left).replace("{limit}",PINFO.limit).replace("{reg}",fmtPrice(PINFO.regular)).replace("{price}",fmtPrice(PINFO.price));
-  document.getElementById("amount").textContent=fmtPrice(PINFO.price);
-  document.getElementById("stickyPrice").textContent=fmtPrice(PINFO.price);
-  document.getElementById("launch").hidden=!on; document.getElementById("launchHero").hidden=!on;
-  if(on){
-    document.getElementById("was").textContent=fmtPrice(PINFO.regular);
-    document.getElementById("launchLeft").textContent=fill(d.ln_left);
-    document.getElementById("launchHero").textContent=fill(d.ln_hero);
-  }
-}
 function setLang(l){
   current = l;
   const d = T[l];
@@ -1147,9 +1115,8 @@ function setLang(l){
   document.documentElement.dir = l === "he" ? "rtl" : "ltr";
   document.querySelectorAll("[data-i18n]").forEach(el=>{
     const k = el.dataset.i18n;
-    if (d[k] !== undefined) el.textContent = withPrice(d[k]);
+    if (d[k] !== undefined) el.textContent = d[k];
   });
-  drawLaunch();
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang === l));
   try { localStorage.setItem("clave-lang", l); } catch(e){}
 }
@@ -1215,7 +1182,6 @@ function detectLang(){ const ls=(navigator.languages&&navigator.languages.length
   return ls.length && ls[0] ? "en" : "es"; }
 setLang(saved && T[saved] ? saved : detectLang());
 loadPayPal();
-fetch("/api/price").then(r=>r.ok?r.json():null).then(j=>{ if(!j||!j.price) return; PINFO=j; PRICE=Number(j.price).toFixed(2); setLang(current); }).catch(()=>{});
 </script>
 </body>
 </html>
