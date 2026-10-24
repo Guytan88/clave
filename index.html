@@ -881,11 +881,17 @@ function loadPayPal(){
       onApprove:(data,actions)=>actions.order.capture().then(order=>{
         payMsg("pay_redirect");
         return fetch("/api/paid",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({orderID:order.id,lang:current})})
-          .then(r=>r.ok?r.json():Promise.reject(r.status))
+          .then(async r=>{ if(r.ok) return r.json(); const t=await r.text().catch(()=>""); throw new Error("server "+r.status+" "+t.slice(0,120)); })
           .then(j=>{ location.href=j.editUrl; })
-          .catch(()=>{ const el=document.getElementById("pay-msg"); el.textContent=T[current].pay_after_err.replace("{id}",order.id); el.hidden=false; });
+          .catch(e=>{ console.error("paid failed", e); const el=document.getElementById("pay-msg"); el.textContent=T[current].pay_after_err.replace("{id}",order.id)+" ["+String(e.message||e)+"]"; el.hidden=false; });
+      }).catch(err=>{
+        // Card declined → let the buyer try another card (PayPal's recommended handling)
+        const d=(err && err.message)||String(err);
+        console.error("capture failed", err);
+        if(/INSTRUMENT_DECLINED/.test(d)) return actions.restart();
+        const el=document.getElementById("pay-msg"); el.textContent=T[current].pay_err+" ["+d.slice(0,180)+"]"; el.hidden=false;
       }),
-      onError:()=>payMsg("pay_err")
+      onError:(err)=>{ console.error("paypal error", err); const el=document.getElementById("pay-msg"); el.textContent=T[current].pay_err+" ["+String((err&&err.message)||err).slice(0,180)+"]"; el.hidden=false; }
     }).render("#paypal-buttons");
   };
   sc.onerror=()=>payMsg("pay_err");
