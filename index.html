@@ -185,6 +185,32 @@
   html[dir="rtl"] .dfy-arrow{transform:scaleX(-1)}
   @media (max-width:900px){ .dfy-grid{grid-template-columns:1fr} .dfy-arrow{transform:rotate(90deg)!important;font-size:32px;margin:-6px 0} }
 
+  /* Reviews + languages */
+  .rv{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:stretch}
+  .rv-lead{color:var(--muted);margin:-20px 0 32px;max-width:62ch;font-size:18px}
+  .rv-card{background:var(--bg);border-radius:22px;padding:26px 24px}
+  .rv-top{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+  .rv-stars{color:#E0A100;font-size:24px;letter-spacing:2px;line-height:1}
+  .rv-top small{color:var(--muted);font-size:14px;line-height:1.35}
+  .rv-row{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:14px 0;border-top:1px solid var(--line)}
+  .rv-row b{font-size:16.5px}
+  .rv-bar{grid-column:1/-1;height:6px;border-radius:3px;background:#DCE2DA;overflow:hidden}
+  .rv-bar i{display:block;height:100%;width:96%;background:var(--green);border-radius:3px}
+  .rv-row span{grid-column:1/-1;color:var(--muted);font-size:15px}
+  .rv-row em{font-style:normal;justify-self:end;color:var(--green);font-weight:600}
+  .rv-note{margin:14px 0 0;font-size:13.5px;color:var(--muted)}
+  .lg-card{background:var(--ink);color:#fff;border-radius:22px;padding:26px 24px;display:flex;flex-direction:column}
+  .lg-card h3{font-family:var(--head);font-size:24px;margin:0 0 6px;line-height:1.2}
+  .lg-card > p{margin:0 0 18px;opacity:.82}
+  .phr{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:8px}
+  .phr li{display:flex;gap:12px;align-items:center;background:rgba(255,255,255,.07);border-radius:12px;padding:9px 12px;font-size:15px}
+  .phr li b{flex:none;min-width:38px;text-align:center;font-size:12px;letter-spacing:.04em;background:var(--marigold);color:var(--ink);border-radius:6px;padding:3px 6px}
+  .phr li span{flex:1}
+  .lg-card ul.ok{list-style:none;margin:auto 0 0;padding:0;display:grid;gap:10px}
+  .lg-card ul.ok li{display:flex;gap:10px}
+  .lg-card ul.ok li::before{content:"✓";color:var(--marigold);font-weight:700}
+  @media (max-width:900px){ .rv{grid-template-columns:1fr} }
+
   /* Trust strip */
   .trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px;padding:0;list-style:none;font-size:15px;color:var(--ink)}
   .trust li{display:flex;align-items:center;gap:8px}
@@ -424,7 +450,38 @@
     </div>
   </section>
 
-  <section class="white" id="estilos">
+  <section class="white" id="resenas">
+    <div class="wrap">
+      <h2 data-i18n="rv_h"></h2>
+      <p class="rv-lead" data-i18n="rv_p"></p>
+      <div class="rv">
+        <div class="rv-card">
+          <div class="rv-top"><span class="rv-stars" aria-hidden="true">★★★★★</span><small data-i18n="rv_cats"></small></div>
+          <div class="rv-row"><b data-i18n="rv_c1"></b><em>✓</em><div class="rv-bar"><i></i></div><span data-i18n="rv_c1d"></span></div>
+          <div class="rv-row"><b data-i18n="rv_c2"></b><em>✓</em><div class="rv-bar"><i></i></div><span data-i18n="rv_c2d"></span></div>
+          <div class="rv-row"><b data-i18n="rv_c3"></b><em>✓</em><div class="rv-bar"><i></i></div><span data-i18n="rv_c3d"></span></div>
+          <div class="rv-row"><b data-i18n="rv_c4"></b><em>✓</em><div class="rv-bar"><i></i></div><span data-i18n="rv_c4d"></span></div>
+          <p class="rv-note" data-i18n="rv_note"></p>
+        </div>
+        <div class="lg-card">
+          <h3 data-i18n="lg_h"></h3>
+          <p data-i18n="lg_p"></p>
+          <ul class="phr" aria-label="Ejemplo">
+            <li><b>ES</b><span dir="ltr">Silencio a partir de las 22:00.</span></li>
+            <li><b>EN</b><span dir="ltr">Quiet hours from 10 pm.</span></li>
+            <li><b>PT</b><span dir="ltr">Silêncio a partir das 22h.</span></li>
+            <li><b>FR</b><span dir="ltr">Silence à partir de 22 h.</span></li>
+            <li><b>DE</b><span dir="ltr">Ruhezeit ab 22 Uhr.</span></li>
+            <li><b>中文</b><span dir="ltr">晚上10点后请保持安静。</span></li>
+            <li><b>עב</b><span dir="rtl">שקט החל מ־22:00.</span></li>
+          </ul>
+          <ul class="ok"><li data-i18n="lg1"></li><li data-i18n="lg2"></li><li data-i18n="lg3"></li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="estilos">
     <div class="wrap">
       <h2 data-i18n="st_h"></h2>
       <p class="sty-lead" data-i18n="st_p"></p>
@@ -666,6 +723,15 @@ es:{
   dfy_me:"Yo", dfy_me_sub:"Me encargo del resto, en menos de 24 horas:",
   dfy_m1:"Ordeno y redacto la información por secciones", dfy_m2:"La traduzco a los idiomas que elijas", dfy_m3:"La pongo en el estilo que va con tu alojamiento",
   dfy_m4:"La reviso yo mismo antes de publicarla", dfy_m5:"Te mando el enlace listo para pegar en Airbnb",
+  rv_h:"Mejores estadías, mejores reseñas", rv_p:"Cuando el huésped tiene todo claro desde antes de llegar, la estadía empieza bien. Y eso se nota en cómo te califica.",
+  rv_cats:"Algunas de las categorías que tus huéspedes califican por separado en Airbnb",
+  rv_c1:"Llegada (check-in)", rv_c1d:"Horarios, estacionamiento y cómo llegar, claros antes de salir de casa.",
+  rv_c2:"Comunicación", rv_c2d:"Las respuestas a las preguntas de siempre, listas a cualquier hora, incluso cuando tú no puedes contestar.",
+  rv_c3:"Ubicación", rv_c3d:"Tus recomendaciones les ayudan a conocer y disfrutar la zona como un local.",
+  rv_c4:"Exactitud", rv_c4d:"Instrucciones de la casa para que todo funcione como debe, sin sorpresas.",
+  rv_note:"La guía no garantiza calificaciones, pero ataca justo lo que más suele fallar: llegadas confusas, preguntas sin respuesta y reglas que nadie leyó.",
+  lg_h:"Habla el idioma de cada huésped", lg_p:"Tú escribes una vez, en tu idioma. Cada huésped lee la guía en el suyo, con un toque.",
+  lg1:"Menos malentendidos con reglas, horarios y salida.", lg2:"Los huéspedes extranjeros se sienten bienvenidos desde el primer mensaje.", lg3:"Hasta 20 idiomas, sin que tengas que traducir nada.",
   foot:"Clave. Guías digitales para alojamientos. shasi.contact@gmail.com"
 },
 en:{
@@ -750,6 +816,15 @@ en:{
   dfy_me:"Me", dfy_me_sub:"I handle the rest, in under 24 hours:",
   dfy_m1:"I organize and write up the information by section", dfy_m2:"I translate it into the languages you choose", dfy_m3:"I put it in the style that suits your place",
   dfy_m4:"I review it myself before publishing", dfy_m5:"I send you the link, ready to paste into Airbnb",
+  rv_h:"Better stays, better reviews", rv_p:"When guests have everything clear before they arrive, the stay starts on the right foot. And it shows in how they rate you.",
+  rv_cats:"Some of the categories your guests rate separately on Airbnb",
+  rv_c1:"Check-in", rv_c1d:"Times, parking and directions, clear before they leave home.",
+  rv_c2:"Communication", rv_c2d:"Answers to the usual questions, ready at any hour, even when you can't reply.",
+  rv_c3:"Location", rv_c3d:"Your tips help them discover and enjoy the area like a local.",
+  rv_c4:"Accuracy", rv_c4d:"House instructions so everything works the way it should, with no surprises.",
+  rv_note:"The guide doesn't guarantee ratings, but it tackles exactly what most often goes wrong: confusing arrivals, unanswered questions and rules nobody read.",
+  lg_h:"Speak every guest's language", lg_p:"You write once, in your language. Each guest reads the guide in theirs, with one tap.",
+  lg1:"Fewer misunderstandings about rules, times and checkout.", lg2:"International guests feel welcome from the very first message.", lg3:"Up to 20 languages, without you translating a thing.",
   foot:"Clave. Digital guides for vacation rentals. shasi.contact@gmail.com"
 },
 pt:{
@@ -834,6 +909,15 @@ pt:{
   dfy_me:"Eu", dfy_me_sub:"Cuido do resto, em menos de 24 horas:",
   dfy_m1:"Organizo e escrevo a informação por seções", dfy_m2:"Traduzo para os idiomas que você escolher", dfy_m3:"Coloco no estilo que combina com sua acomodação",
   dfy_m4:"Reviso pessoalmente antes de publicar", dfy_m5:"Envio o link pronto para colar no Airbnb",
+  rv_h:"Estadias melhores, avaliações melhores", rv_p:"Quando o hóspede tem tudo claro antes de chegar, a estadia começa bem. E isso aparece na nota que ele te dá.",
+  rv_cats:"Algumas das categorias que seus hóspedes avaliam separadamente no Airbnb",
+  rv_c1:"Chegada (check-in)", rv_c1d:"Horários, estacionamento e como chegar, claros antes de sair de casa.",
+  rv_c2:"Comunicação", rv_c2d:"As respostas para as perguntas de sempre, prontas a qualquer hora, mesmo quando você não pode responder.",
+  rv_c3:"Localização", rv_c3d:"Suas dicas ajudam a conhecer e aproveitar a região como um local.",
+  rv_c4:"Precisão", rv_c4d:"Instruções da casa para que tudo funcione como deve, sem surpresas.",
+  rv_note:"O guia não garante avaliações, mas resolve justamente o que mais costuma dar errado: chegadas confusas, perguntas sem resposta e regras que ninguém leu.",
+  lg_h:"Fale o idioma de cada hóspede", lg_p:"Você escreve uma vez, no seu idioma. Cada hóspede lê o guia no dele, com um toque.",
+  lg1:"Menos mal-entendidos sobre regras, horários e saída.", lg2:"Hóspedes estrangeiros se sentem bem-vindos desde a primeira mensagem.", lg3:"Até 20 idiomas, sem você precisar traduzir nada.",
   foot:"Clave. Guias digitais para acomodações. shasi.contact@gmail.com"
 },
 fr:{
@@ -918,6 +1002,15 @@ fr:{
   dfy_me:"Moi", dfy_me_sub:"Je m'occupe du reste, en moins de 24 heures :",
   dfy_m1:"J'organise et rédige les infos par sections", dfy_m2:"Je les traduis dans les langues choisies", dfy_m3:"Je les mets dans le style qui va avec votre logement",
   dfy_m4:"Je relis moi-même avant de publier", dfy_m5:"Je vous envoie le lien, prêt à coller dans Airbnb",
+  rv_h:"De meilleurs séjours, de meilleurs avis", rv_p:"Quand le voyageur a tout compris avant d'arriver, le séjour commence bien. Et ça se voit dans la note qu'il vous donne.",
+  rv_cats:"Quelques-unes des catégories que vos voyageurs notent séparément sur Airbnb",
+  rv_c1:"Arrivée", rv_c1d:"Horaires, stationnement et itinéraire, clairs avant même de partir de chez eux.",
+  rv_c2:"Communication", rv_c2d:"Les réponses aux questions habituelles, disponibles à toute heure, même quand vous ne pouvez pas répondre.",
+  rv_c3:"Emplacement", rv_c3d:"Vos bonnes adresses les aident à découvrir et profiter du quartier comme des locaux.",
+  rv_c4:"Exactitude", rv_c4d:"Des instructions pour que tout fonctionne comme prévu, sans mauvaise surprise.",
+  rv_note:"Le guide ne garantit pas les notes, mais il règle justement ce qui coince le plus souvent : arrivées confuses, questions sans réponse et règles que personne n'a lues.",
+  lg_h:"Parlez la langue de chaque voyageur", lg_p:"Vous écrivez une fois, dans votre langue. Chaque voyageur lit le guide dans la sienne, en un geste.",
+  lg1:"Moins de malentendus sur les règles, les horaires et le départ.", lg2:"Les voyageurs étrangers se sentent bienvenus dès le premier message.", lg3:"Jusqu'à 20 langues, sans rien traduire vous-même.",
   foot:"Clave. Guides numériques pour locations de vacances. shasi.contact@gmail.com"
 },
 he:{
@@ -1002,6 +1095,15 @@ he:{
   dfy_me:"אני", dfy_me_sub:"דואג לכל השאר, תוך פחות מ־24 שעות:",
   dfy_m1:"מסדר ומנסח את המידע לפי חלקים", dfy_m2:"מתרגם לשפות שבחרת", dfy_m3:"מעצב בסגנון שמתאים לנכס שלך",
   dfy_m4:"בודק בעצמי לפני הפרסום", dfy_m5:"שולח לך לינק מוכן להדבקה באיירביאנבי",
+  rv_h:"אירוח טוב יותר, ביקורות טובות יותר", rv_p:"כשלאורח הכל ברור עוד לפני שהוא מגיע, השהות מתחילה ברגל ימין. וזה מורגש בציון שהוא נותן לך.",
+  rv_cats:"חלק מהקטגוריות שהאורחים מדרגים בנפרד באיירביאנבי",
+  rv_c1:"הגעה (צ'ק־אין)", rv_c1d:"שעות, חניה ואיך מגיעים, ברורים עוד לפני שיוצאים מהבית.",
+  rv_c2:"תקשורת", rv_c2d:"התשובות לשאלות הקבועות מחכות בכל שעה, גם כשאתה לא יכול לענות.",
+  rv_c3:"מיקום", rv_c3d:"ההמלצות שלך עוזרות להם להכיר וליהנות מהאזור כמו מקומיים.",
+  rv_c4:"דיוק", rv_c4d:"הוראות הבית דואגות שהכל יעבוד כמו שצריך, בלי הפתעות.",
+  rv_note:"המדריך לא מבטיח ציונים, אבל פותר בדיוק את מה שהכי הרבה פעמים משתבש: הגעה מבלבלת, שאלות בלי תשובה וחוקים שאף אחד לא קרא.",
+  lg_h:"מדבר בשפה של כל אורח", lg_p:"אתה כותב פעם אחת, בשפה שלך. כל אורח קורא את המדריך בשפה שלו, בנגיעה.",
+  lg1:"פחות אי־הבנות בחוקים, בשעות וביציאה.", lg2:"אורחים מחו\"ל מרגישים רצויים כבר מההודעה הראשונה.", lg3:"עד 20 שפות, בלי שתצטרך לתרגם כלום.",
   foot:"Clave. מדריכים דיגיטליים לנכסי אירוח. shasi.contact@gmail.com"
 }};
 
