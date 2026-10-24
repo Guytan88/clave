@@ -208,6 +208,14 @@
   [data-theme="familiar"] .rule{height:8px;width:38px;border-radius:4px}
   [data-theme="familiar"] .wa{border:2px solid var(--orn);border-radius:999px}
 
+  /* Buy bar (demo only) */
+  .buy{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;display:flex;align-items:center;gap:14px;background:#1D2B24;color:#fff;border-radius:16px;padding:10px 10px 10px 18px;box-shadow:0 16px 36px -12px rgba(0,0,0,.5);font-family:'Heebo',system-ui,sans-serif;width:min(520px,calc(100% - 24px))}
+  html[dir="rtl"] .buy{padding:10px 18px 10px 10px}
+  .buy p{margin:0;font-size:14.5px;line-height:1.3;flex:1}
+  .buy p b{display:block;font-size:16px}
+  .buy a{flex:none;background:#F2B632;color:#1D2B24;text-decoration:none;font-weight:700;font-size:15px;border-radius:11px;padding:12px 16px;white-space:nowrap}
+  .buy a:hover{background:#E9A91C}
+  footer{padding-bottom:96px!important}
   @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -325,11 +333,17 @@
   <footer><a href="index.html" data-i18n="foot"></a></footer>
 </div>
 
+<div class="buy" role="complementary">
+  <p><b data-i18n="buy_h"></b><span data-i18n="buy_p"></span></p>
+  <a href="/#precio" data-i18n="buy_btn"></a>
+</div>
+
 <script>
 /* ============ Generic text (same for every property) ============ */
 const T = {
 es:{
   pick:"Estilo de ejemplo:",
+  buy_h:"¿Te gusta? La tuya, lista en 24 h", buy_p:"Pegas tus mensajes y yo hago el resto.", buy_btn:"Quiero la mía · US$49",
   welcome_to:"Bienvenidos a", ci_l:"Check-in", co_l:"Check-out",
   net:"Red", copy:"Copiar clave", copied:"Copiada",
   note:"Gracias por elegir nuestro alojamiento. En esta guía está todo lo que necesitas para tu estancia; si algo falta, escríbeme.",
@@ -360,6 +374,7 @@ es:{
 },
 en:{
   pick:"Example style:",
+  buy_h:"Like it? Yours, ready in 24 h", buy_p:"Paste your messages and I do the rest.", buy_btn:"Get mine · US$49",
   welcome_to:"Welcome to", ci_l:"Check-in", co_l:"Check-out",
   net:"Network", copy:"Copy password", copied:"Copied",
   note:"Thank you for choosing our place. Everything you need for your stay is in this guide; if anything is missing, write to me.",
@@ -390,6 +405,7 @@ en:{
 },
 he:{
   pick:"סגנון לדוגמה:",
+  buy_h:"אהבת? שלך מוכן תוך 24 שעות", buy_p:"מדביקים את ההודעות, ואני עושה את השאר.", buy_btn:"אני רוצה · 49$",
   welcome_to:"ברוכים הבאים ל", ci_l:"צ'ק־אין", co_l:"צ'ק־אאוט",
   net:"רשת", copy:"העתקת סיסמה", copied:"הועתקה",
   note:"תודה שבחרתם במקום שלנו. במדריך יש את כל מה שצריך לשהייה; אם משהו חסר, כתבו לי.",
@@ -558,7 +574,7 @@ function render(){
   }));
   const active = $("chips").querySelector('[aria-pressed="true"]');
   if(active) active.scrollIntoView({block:"nearest",inline:"center"});
-  try{ localStorage.setItem("clave-demo-lang", lang); }catch(e){}
+  try{ localStorage.setItem("clave-demo-lang", lang); localStorage.setItem("clave-lang", lang); }catch(e){}
 }
 
 document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>{ lang=b.dataset.lang; render(); }));
